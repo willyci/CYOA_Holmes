@@ -576,26 +576,36 @@ class KindleWebExporter:
         </div>
       `;
 
+      const startBtnHtml = `
+        <div style="text-align: center; margin: 20px 0 24px 0;">
+          <button class="choice-card" onclick="startStory('watson')" style="font-size: 1.15em; font-weight: bold; padding: 16px; border: 2px solid var(--text); background: var(--text); color: var(--bg); cursor: pointer; display: block; width: 100%;">
+            ${{isCn ? "▶ 立即开始阅读第一章 (Chapter 1)" : "▶ Start Reading from Chapter 1"}}
+          </button>
+        </div>
+      `;
+
       const einkNoteHtml = isCn
         ? `
           <div style="border: 2px solid var(--text); padding: 12px; margin-bottom: 20px; background-color: var(--card-bg);">
             <strong>Kindle 墨水屏阅读模式已就绪：</strong>
             <p style="margin: 6px 0 0 0; font-size: 0.9em;">
               专为 Kindle 原生浏览器调优：高对比度黑白排版、零延迟无动画渲染、超大触控按键。
-              您可直接在线选择视角开始探案，或通过下方下载离线电子书（支持 AZW3 / EPUB / MOBI）。
+              涵盖原著全15章经典宏篇，每章保留数千字详尽内容，您可在线沉浸阅读或下载离线电子书。
             </p>
           </div>
-          <h2 style="text-align: center; margin-top: 10px;">选择你的人物视角</h2>
+          ${{startBtnHtml}}
+          <h2 style="text-align: center; margin-top: 10px;">选择探索视角（全15章）</h2>
         `
         : `
           <div style="border: 2px solid var(--text); padding: 12px; margin-bottom: 20px; background-color: var(--card-bg);">
             <strong>Kindle E-Reader Mode Active:</strong>
             <p style="margin: 6px 0 0 0; font-size: 0.9em;">
               Optimized for e-ink web browsers with zero motion lag, large tap targets, and high contrast.
-              Select a perspective below to read online, or download offline Kindle e-books (AZW3 / EPUB / MOBI).
+              Featuring all 15 canonical chapters with extensive authentic prose. Read online or download offline e-books.
             </p>
           </div>
-          <h2 style="text-align: center; margin-top: 10px;">Select Your Point of View</h2>
+          ${{startBtnHtml}}
+          <h2 style="text-align: center; margin-top: 10px;">Select Perspective (15 Chapters)</h2>
         `;
 
       const povRoles = story.pov_roles;

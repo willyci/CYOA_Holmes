@@ -12,24 +12,21 @@ def test_story_graph_integrity(lang):
     manager = StoryGraphManager(story)
     stats = manager.validate_graph()
 
-    # All nodes reachable
-    assert stats["total_nodes"] == 54
-    assert stats["reachable_nodes"] == 54
+    # All nodes reachable across 15 canonical chapters
+    assert stats["total_nodes"] == 29
+    assert stats["reachable_nodes"] == 29
     assert len(stats["orphan_nodes"]) == 0
 
-    # Anchors present
+    # Anchors present across canonical milestones
     assert "anchor_chapter1" in stats["anchors"]
+    assert "anchor_curse" in stats["anchors"]
     assert "anchor_london_mission" in stats["anchors"]
     assert "anchor_arrival" in stats["anchors"]
     assert "anchor_convict" in stats["anchors"]
     assert "anchor_climax" in stats["anchors"]
+    assert "anchor_retrospection" in stats["anchors"]
 
-    # All 3 POVs represented
-    assert stats["pov_breakdown"]["watson"] == 19
-    assert stats["pov_breakdown"]["holmes"] == 17
-    assert stats["pov_breakdown"]["stapleton"] == 18
-
-    # Multiple endings exist
+    # Multiple endings exist (6 endings in Chapter 15)
     assert stats["endings_count"] == 6
 
 

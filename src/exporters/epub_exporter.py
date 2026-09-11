@@ -391,10 +391,31 @@ class EpubExporter:
         safe_title = html.escape(self.story.title)
         toc_heading = "目录" if self.is_cn else "Table of Contents"
         title_label = "书名页" if self.is_cn else "Title Page"
-        start_label = "选择人物视角" if self.is_cn else "Select Point of View"
-        w_label = "华生医生：抵达达特沼地" if self.is_cn else "Dr. Watson: Arrival at Dartmoor"
-        h_label = "福尔摩斯：荒原史前石屋" if self.is_cn else "Sherlock Holmes: The Stone Hut"
-        s_label = "斯台普吞：梅利琵宅邸" if self.is_cn else "Jack Stapleton: Merripit House"
+        start_label = "开始阅读 / 视角选择" if self.is_cn else "Start Reading / Perspective"
+
+        chapters_toc = [
+            ("ch01_part1_stick", "第一章 歇洛克·福尔摩斯先生" if self.is_cn else "Chapter 1: Mr. Sherlock Holmes"),
+            ("ch02_part1_legend", "第二章 巴斯克维尔的灾祸" if self.is_cn else "Chapter 2: The Curse of the Baskervilles"),
+            ("ch03_problem", "第三章 疑案" if self.is_cn else "Chapter 3: The Problem"),
+            ("ch04_part1_warning", "第四章 亨利·巴斯克维尔爵士" if self.is_cn else "Chapter 4: Sir Henry Baskerville"),
+            ("ch05_threads", "第五章 三条断了的线索" if self.is_cn else "Chapter 5: Three Broken Threads"),
+            ("ch06_part1_arrival", "第六章 巴斯克维尔庄园" if self.is_cn else "Chapter 6: Baskerville Hall"),
+            ("ch07_part1_naturalist", "第七章 梅利琵宅邸的主人斯台普吞" if self.is_cn else "Chapter 7: The Stapletons of Merripit House"),
+            ("ch08_watson_report", "第八章 华生医生的第一份报告" if self.is_cn else "Chapter 8: First Report of Dr. Watson"),
+            ("ch09_part1_midnight_watch", "第九章 沼地上的烛光" if self.is_cn else "Chapter 9: The Light upon the Moor"),
+            ("ch10_diary_and_laura", "第十章 华生医生日记摘录" if self.is_cn else "Chapter 10: Extract from the Diary of Dr. Watson"),
+            ("ch11_part1_lyons", "第十一章 岩岗上的人" if self.is_cn else "Chapter 11: The Man on the Tor"),
+            ("ch12_part1_revelations", "第十二章 沼地的惨剧" if self.is_cn else "Chapter 12: Death on the Moor"),
+            ("ch13_portrait", "第十三章 设网" if self.is_cn else "Chapter 13: Fixing the Nets"),
+            ("ch14_part1_fog_ambush", "第十四章 巴斯克维尔的猎犬" if self.is_cn else "Chapter 14: The Hound of the Baskervilles"),
+            ("ch15_victory", "第十五章 回顾" if self.is_cn else "Chapter 15: A Retrospection"),
+        ]
+
+        chapter_items = "\n".join(
+            f'      <li><a href="passages/{nid}.xhtml">{html.escape(label)}</a></li>'
+            for nid, label in chapters_toc
+            if nid in self.story.nodes
+        )
 
         return (
             '<?xml version="1.0" encoding="utf-8"?>\n'
@@ -410,9 +431,7 @@ class EpubExporter:
             '    <ol>\n'
             f'      <li><a href="title.xhtml">{title_label}</a></li>\n'
             f'      <li><a href="start.xhtml">{start_label}</a></li>\n'
-            f'      <li><a href="passages/{self.story.start_nodes[POV.WATSON]}.xhtml">{w_label}</a></li>\n'
-            f'      <li><a href="passages/{self.story.start_nodes[POV.HOLMES]}.xhtml">{h_label}</a></li>\n'
-            f'      <li><a href="passages/{self.story.start_nodes[POV.STAPLETON]}.xhtml">{s_label}</a></li>\n'
+            f'{chapter_items}\n'
             '    </ol>\n'
             '  </nav>\n'
             '  <nav epub:type="landmarks" hidden="">\n'
@@ -430,33 +449,51 @@ class EpubExporter:
         safe_title = html.escape(self.story.title)
         safe_author = html.escape(self.story.author)
         title_label = "书名页" if self.is_cn else "Title Page"
-        start_label = "选择人物视角" if self.is_cn else "Select Point of View"
-        w_label = "华生医生：实地侦查" if self.is_cn else "Dr. Watson: Field Investigation"
-        h_label = "福尔摩斯：隐蔽监视" if self.is_cn else "Sherlock Holmes: Covert Surveillance"
-        s_label = "斯台普吞：反派主谋" if self.is_cn else "Jack Stapleton: The Antagonist"
+        start_label = "开始阅读 / 视角选择" if self.is_cn else "Start Reading / Perspective"
 
+        chapters_toc = [
+            ("ch01_part1_stick", "第一章 歇洛克·福尔摩斯先生" if self.is_cn else "Chapter 1: Mr. Sherlock Holmes"),
+            ("ch02_part1_legend", "第二章 巴斯克维尔的灾祸" if self.is_cn else "Chapter 2: The Curse of the Baskervilles"),
+            ("ch03_problem", "第三章 疑案" if self.is_cn else "Chapter 3: The Problem"),
+            ("ch04_part1_warning", "第四章 亨利·巴斯克维尔爵士" if self.is_cn else "Chapter 4: Sir Henry Baskerville"),
+            ("ch05_threads", "第五章 三条断了的线索" if self.is_cn else "Chapter 5: Three Broken Threads"),
+            ("ch06_part1_arrival", "第六章 巴斯克维尔庄园" if self.is_cn else "Chapter 6: Baskerville Hall"),
+            ("ch07_part1_naturalist", "第七章 梅利琵宅邸的主人斯台普吞" if self.is_cn else "Chapter 7: The Stapletons of Merripit House"),
+            ("ch08_watson_report", "第八章 华生医生的第一份报告" if self.is_cn else "Chapter 8: First Report of Dr. Watson"),
+            ("ch09_part1_midnight_watch", "第九章 沼地上的烛光" if self.is_cn else "Chapter 9: The Light upon the Moor"),
+            ("ch10_diary_and_laura", "第十章 华生医生日记摘录" if self.is_cn else "Chapter 10: Extract from the Diary of Dr. Watson"),
+            ("ch11_part1_lyons", "第十一章 岩岗上的人" if self.is_cn else "Chapter 11: The Man on the Tor"),
+            ("ch12_part1_revelations", "第十二章 沼地的惨剧" if self.is_cn else "Chapter 12: Death on the Moor"),
+            ("ch13_portrait", "第十三章 设网" if self.is_cn else "Chapter 13: Fixing the Nets"),
+            ("ch14_part1_fog_ambush", "第十四章 巴斯克维尔的猎犬" if self.is_cn else "Chapter 14: The Hound of the Baskervilles"),
+            ("ch15_victory", "第十五章 回顾" if self.is_cn else "Chapter 15: A Retrospection"),
+        ]
+
+        play_order = 1
         nav_points = [
-            '    <navPoint id="np-title" playOrder="1">\n'
+            f'    <navPoint id="np-title" playOrder="{play_order}">\n'
             f'      <navLabel><text>{title_label}</text></navLabel>\n'
             '      <content src="title.xhtml"/>\n'
-            '    </navPoint>',
-            '    <navPoint id="np-start" playOrder="2">\n'
+            '    </navPoint>'
+        ]
+        play_order += 1
+        nav_points.append(
+            f'    <navPoint id="np-start" playOrder="{play_order}">\n'
             f'      <navLabel><text>{start_label}</text></navLabel>\n'
             '      <content src="start.xhtml"/>\n'
-            '    </navPoint>',
-            '    <navPoint id="np-watson" playOrder="3">\n'
-            f'      <navLabel><text>{w_label}</text></navLabel>\n'
-            f'      <content src="passages/{self.story.start_nodes[POV.WATSON]}.xhtml"/>\n'
-            '    </navPoint>',
-            '    <navPoint id="np-holmes" playOrder="4">\n'
-            f'      <navLabel><text>{h_label}</text></navLabel>\n'
-            f'      <content src="passages/{self.story.start_nodes[POV.HOLMES]}.xhtml"/>\n'
-            '    </navPoint>',
-            '    <navPoint id="np-stapleton" playOrder="5">\n'
-            f'      <navLabel><text>{s_label}</text></navLabel>\n'
-            f'      <content src="passages/{self.story.start_nodes[POV.STAPLETON]}.xhtml"/>\n'
-            '    </navPoint>',
-        ]
+            '    </navPoint>'
+        )
+
+        for nid, label in chapters_toc:
+            if nid in self.story.nodes:
+                play_order += 1
+                nav_points.append(
+                    f'    <navPoint id="np-{nid}" playOrder="{play_order}">\n'
+                    f'      <navLabel><text>{html.escape(label)}</text></navLabel>\n'
+                    f'      <content src="passages/{nid}.xhtml"/>\n'
+                    '    </navPoint>'
+                )
+
         nav_points_xml = "\n".join(nav_points)
 
         return (

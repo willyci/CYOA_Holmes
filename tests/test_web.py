@@ -48,15 +48,15 @@ def test_bilingual_kindle_web_generation():
 
         assert "en" in data
         assert "cn" in data
-        assert len(data["en"]["nodes"]) == 54
-        assert len(data["cn"]["nodes"]) == 54
+        assert len(data["en"]["nodes"]) == 29
+        assert len(data["cn"]["nodes"]) == 29
 
         # Verify Chinese names and English names
-        assert data["en"]["start_nodes"]["watson"] == "watson_ch1_baker_street"
-        assert data["cn"]["start_nodes"]["watson"] == "watson_ch1_baker_street"
-        assert data["en"]["start_nodes"]["holmes"] == "holmes_ch1_baker_street"
-        assert data["cn"]["start_nodes"]["holmes"] == "holmes_ch1_baker_street"
-        assert data["en"]["start_nodes"]["stapleton"] == "stapleton_ch1_london"
-        assert data["cn"]["start_nodes"]["stapleton"] == "stapleton_ch1_london"
+        assert data["en"]["start_nodes"]["watson"] == "ch01_part1_stick"
+        assert data["cn"]["start_nodes"]["watson"] == "ch01_part1_stick"
+        assert data["en"]["start_nodes"]["holmes"] == "ch01_part1_stick"
+        assert data["cn"]["start_nodes"]["holmes"] == "ch01_part1_stick"
+        assert data["en"]["start_nodes"]["stapleton"] == "ch01_part1_stick"
+        assert data["cn"]["start_nodes"]["stapleton"] == "ch01_part1_stick"
         assert data["cn"]["pov_roles"]["watson"]["name"] == "约翰·H·华生医生"
         assert data["en"]["pov_roles"]["watson"]["name"] == "Dr. John H. Watson"

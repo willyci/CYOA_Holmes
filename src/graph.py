@@ -126,6 +126,6 @@ class StoryGraphManager:
         all_paths = []
         for ending in endings:
             if nx.has_path(self.nx_graph, start_id, ending):
-                paths = list(nx.all_simple_paths(self.nx_graph, source=start_id, target=ending, cutoff=15))
+                paths = list(nx.all_simple_paths(self.nx_graph, source=start_id, target=ending, cutoff=35))
                 all_paths.extend(paths)
         return all_paths
