@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hound of the Baskervilles / 巴斯克维尔的猎犬 - CYOA</title>
+  <style>
+    /* =========================================================================
+       KINDLE E-INK OPTIMIZED STYLESHEET
+       Strict high contrast, no transitions/animations, book serif typography
+       ========================================================================= */
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      transition: none !important;
+      animation: none !important;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --card-bg: #f7f7f7;
+      --card-border: #000000;
+      --secondary-text: #333333;
+      --font-scale: 1.0;
+    }
+
+    body.dark-mode {
+      --bg: #000000;
+      --text: #ffffff;
+      --card-bg: #1a1a1a;
+      --card-border: #ffffff;
+      --secondary-text: #cccccc;
+    }
+
+    body {
+      font-family: "Bookerly", "PingFang SC", "Hiragino Sans GB", "Source Han Serif SC", "Songti SC", "SimSun", "Caecilia", "Georgia", serif;
+      font-size: calc(18px * var(--font-scale));
+      line-height: 1.65;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 10px 16px 60px 16px;
+    }
+
+    /* Header Bar */
+    header {
+      border-bottom: 2px solid var(--text);
+      padding: 8px 0;
+      margin-bottom: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-title {
+      font-size: calc(14px * var(--font-scale));
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    .header-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    /* Buttons */
+    button, .btn {
+      font-family: inherit;
+      font-size: calc(14px * var(--font-scale));
+      font-weight: bold;
+      color: var(--text);
+      background-color: var(--bg);
+      border: 2px solid var(--text);
+      padding: 6px 10px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      min-height: 38px;
+    }
+
+    button:active, .btn:active, button.selected {
+      background-color: var(--text);
+      color: var(--bg);
+    }
+
+    .btn-download {
+      border: 2px solid var(--text);
+      background-color: var(--card-bg);
+      font-size: calc(13px * var(--font-scale));
+      padding: 6px 8px;
+    }
+
+    /* Language Selection Banner */
+    .lang-banner {
+      border: 2px solid var(--text);
+      background-color: var(--card-bg);
+      padding: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .lang-btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .lang-btn-group button {
+      min-width: 140px;
+      padding: 10px 16px;
+      font-size: calc(16px * var(--font-scale));
+    }
+
+    /* POV Indicator */
+    .pov-indicator {
+      border: 1px solid var(--text);
+      padding: 6px 10px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--card-bg);
+      font-size: calc(14px * var(--font-scale));
+      letter-spacing: 0.5px;
+    }
+
+    .anchor-tag {
+      border: 1px solid var(--text);
+      padding: 2px 6px;
+      font-size: 0.8em;
+      font-weight: bold;
+    }
+
+    /* Prose */
+    h1.story-title {
+      font-size: calc(24px * var(--font-scale));
+      text-align: center;
+      margin: 16px 0 6px 0;
+      line-height: 1.25;
+    }
+
+    .story-subtitle {
+      text-align: center;
+      font-style: italic;
+      color: var(--secondary-text);
+      margin-bottom: 20px;
+      font-size: calc(15px * var(--font-scale));
+    }
+
+    h2.scene-title {
+      font-size: calc(22px * var(--font-scale));
+      margin: 12px 0 16px 0;
+      line-height: 1.3;
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 6px;
+    }
+
+    .prose p {
+      text-indent: 2em;
+      margin: 0 0 14px 0;
+      text-align: justify;
+    }
+
+    /* Clues Box */
+    .clues-panel {
+      border: 2px dashed var(--text);
+      padding: 10px 14px;
+      margin: 20px 0;
+      background-color: var(--card-bg);
+      font-size: calc(14px * var(--font-scale));
+    }
+
+    .clues-panel ul {
+      margin: 6px 0 0 18px;
+      padding: 0;
+    }
+
+    /* Choices */
+    .choices-section {
+      margin-top: 24px;
+      border-top: 2px solid var(--text);
+      padding-top: 14px;
+    }
+
+    .choices-header {
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      font-size: calc(15px * var(--font-scale));
+    }
+
+    .choice-card {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 14px;
+      padding: 14px 16px;
+      border: 2px solid var(--card-border);
+      background-color: var(--card-bg);
+      color: var(--text);
+      font-size: calc(17px * var(--font-scale));
+      line-height: 1.45;
+      cursor: pointer;
+      min-height: 52px;
+    }
+
+    .choice-card:active {
+      background-color: var(--text);
+      color: var(--bg);
+    }
+
+    .pov-switch-notice {
+      display: inline-block;
+      font-size: 0.85em;
+      font-style: italic;
+      margin-top: 4px;
+      border-top: 1px dashed var(--secondary-text);
+      padding-top: 4px;
+      width: 100%;
+    }
+
+    /* Ending */
+    .ending-card {
+      border: 3px double var(--text);
+      padding: 20px;
+      margin: 24px 0;
+      background-color: var(--card-bg);
+      text-align: center;
+    }
+
+    .ending-card h3 {
+      margin-top: 0;
+      font-size: calc(22px * var(--font-scale));
+    }
+
+    /* POV Cards */
+    .pov-picker {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .pov-card {
+      border: 2px solid var(--text);
+      padding: 16px;
+      background-color: var(--card-bg);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .pov-card:active {
+      background-color: var(--text);
+      color: var(--bg);
+    }
+
+    .pov-card h3 {
+      margin: 0 0 6px 0;
+      font-size: calc(19px * var(--font-scale));
+    }
+
+    .pov-card p {
+      margin: 0;
+      font-size: calc(15px * var(--font-scale));
+      color: var(--secondary-text);
+    }
+
+    .bottom-nav {
+      margin-top: 30px;
+      padding-top: 12px;
+      border-top: 1px solid var(--secondary-text);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: calc(14px * var(--font-scale));
+    }
+
+    /* Download Section */
+    .download-section {
+      margin-top: 28px;
+      border: 2px solid var(--text);
+      padding: 16px;
+      background-color: var(--card-bg);
+    }
+
+    .download-section h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: calc(18px * var(--font-scale));
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 6px;
+    }
+
+    .download-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .download-card {
+      border: 1px solid var(--text);
+      padding: 12px;
+      background-color: var(--bg);
+    }
+
+    .format-badge {
+      display: inline-block;
+      font-weight: bold;
+      font-size: calc(12px * var(--font-scale));
+      border: 1px solid var(--text);
+      padding: 2px 6px;
+      margin-bottom: 6px;
+      background-color: var(--text);
+      color: var(--bg);
+    }
+
+    .download-card p {
+      margin: 4px 0 8px 0;
+      font-size: calc(14px * var(--font-scale));
+      color: var(--secondary-text);
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Top Header -->
+    <header>
+      <div class="header-title" id="app-heading">Baskerville CYOA</div>
+      <div class="header-controls">
+        <button id="btn-lang" title="Toggle Language (English / 中文)">中 / EN</button>
+        <button id="btn-font-down" title="Decrease font" aria-label="Decrease font">A-</button>
+        <button id="btn-font-up" title="Increase font" aria-label="Increase font">A+</button>
+        <button id="btn-contrast" title="Toggle High Contrast / Dark mode">Contrast</button>
+        <a id="link-azw3" href="hound_of_the_baskervilles_en.azw3" class="btn btn-download" download title="Download AZW3 for Kindle (USB Sideload)">
+          &#8595; AZW3
+        </a>
+        <a id="link-epub" href="hound_of_the_baskervilles_en.epub" class="btn btn-download" download title="Download EPUB (Send to Kindle / Kobo)">
+          &#8595; EPUB
+        </a>
+        <a id="link-mobi" href="hound_of_the_baskervilles_en.mobi" class="btn btn-download" download title="Download MOBI (Legacy Kindle)">
+          &#8595; MOBI
+        </a>
+      </div>
+    </header>
+
+    <!-- Main View -->
+    <main id="app-root">
+      <!-- Dynamic rendering via JS -->
+    </main>
+  </div>
+
+  <script>
+    // Embedded Bilingual Story Graphs
+    const STORY_DATA = {"en": {"title": "The Hound of the Baskervilles: Multi-POV Interactive Edition", "author": "Sir Arthur Conan Doyle (Interactive Adaptation)", "description": "A Choose Your Own Adventure adaptation experienced through three perspectives: Dr. John H. Watson, Sherlock Holmes, and Jack Stapleton. Starting from Chapter 1 at 221B Baker Street.", "start_nodes": {"watson": "watson_ch1_baker_street", "holmes": "holmes_ch1_baker_street", "stapleton": "stapleton_ch1_london"}, "pov_roles": {"watson": {"name": "Dr. John H. Watson", "description": "Field observation, social interviews, and protective vigilance at Baskerville Hall."}, "holmes": {"name": "Sherlock Holmes", "description": "Covert surveillance from the moor stone hut, chemical analysis, and deduction."}, "stapleton": {"name": "Jack Stapleton", "description": "Mire navigation, deception, and managing hound preparations without raising suspicion."}}, "nodes": {"watson_ch1_baker_street": {"id": "watson_ch1_baker_street", "title": "Chapter 1: Mr. Sherlock Holmes", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "anchor", "anchor_name": "anchor_chapter1", "content": "Mr. Sherlock Holmes, who was usually very late in the mornings, save upon those not infrequent occasions when he was up all night, was seated at the breakfast table at 221B Baker Street. I stood upon the hearth-rug and picked up the stick which our visitor had left behind him the night before. It was a fine, thick piece of wood, bulbous-headed, of the sort known as a 'Penang lawyer'. Just under the head was a broad silver band nearly an inch across: 'To James Mortimer, M.R.C.S., from his friends of the C.C.H., 1884.'\n\n'Well, Watson, what do you make of it?' asked Holmes, his back turned to me. 'Since we missed him and have no notion of his errand, this accidental souvenir becomes of importance. Reconstruct the man by an examination of it.'", "is_ending": false, "clues": ["Penang-lawyer stick engraved: To James Mortimer, M.R.C.S., from his friends of the C.C.H., 1884", "Tooth-marks of a curly-haired spaniel"], "choices": [{"id": "w_guess_hunt_club", "text": "Conclude that C.C.H. stands for a local hunt club, noting the worn iron ferrule and dog tooth-marks.", "target": "watson_ch2_mortimer", "pov_switch": null, "pov_switch_name": null}, {"id": "w_guess_hospital", "text": "Deduce from M.R.C.S. that C.C.H. refers to Charing Cross Hospital and a country practitioner.", "target": "watson_ch2_mortimer", "pov_switch": null, "pov_switch_name": null}]}, "watson_ch2_mortimer": {"id": "watson_ch2_mortimer", "title": "Chapter 2: The Curse of the Baskervilles", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "branch", "anchor_name": null, "content": "Dr. James Mortimer entered our room—a tall, thin man with a prominent beak of a nose and two grey eyes behind gold-rimmed glasses. From his coat pocket he drew an old, yellowed manuscript dated 1742, recounting the terrible legend of wicked Hugo Baskerville and the foul demon hound that tore out his throat upon the moor.\n\nThen Mortimer laid before us the May 14 issue of the Devon County Chronicle detailing the sudden demise of Sir Charles Baskerville at the Yew Alley gate three months ago. Looking cautiously round the room, Mortimer lowered his voice to a trembling whisper:\n'Mr. Holmes, they were the footprints of a gigantic hound!'", "is_ending": false, "clues": ["1742 Hugo Baskerville manuscript of the spectral hound", "Footprints of a gigantic hound found twenty yards from Sir Charles's body"], "choices": [{"id": "w_ask_footprint", "text": "Cross-examine Mortimer on why he concealed the hound footprints from the public inquest.", "target": "watson_ch4_henry", "pov_switch": null, "pov_switch_name": null}, {"id": "w_ask_heir", "text": "Inquire about the arriving heir, young Henry Baskerville, landing at Waterloo from Canada.", "target": "watson_ch4_henry", "pov_switch": null, "pov_switch_name": null}]}, "watson_ch4_henry": {"id": "watson_ch4_henry", "title": "Chapter 4: Sir Henry Baskerville", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "branch", "anchor_name": null, "content": "The following morning brought Sir Henry Baskerville himself to Baker Street—a sturdy, fiery, dark-eyed gentleman of thirty, fresh from his farm in Canada. Upon his arrival at the Northumberland Hotel, an anonymous envelope had been delivered to him, containing words cut with short nail-scissors from yesterday's Times: 'As you value your life or your reason keep away from the moor.'\n\nMore baffling still, Sir Henry reported that one of his brand-new tan boots had mysteriously vanished outside his hotel bedroom door!", "is_ending": false, "clues": ["Anonymous warning letter: 'As you value your life or your reason keep away from the moor'", "Stolen new tan boot at Northumberland Hotel"], "choices": [{"id": "w_follow_henry_regent", "text": "Accompany Holmes into the street to secretly shadow Sir Henry down Regent Street.", "target": "watson_ch5_london_spy", "pov_switch": null, "pov_switch_name": null}, {"id": "w_examine_letter", "text": "Examine the Times clipped newsprint under Holmes's magnifying lens for watermarks and perfume.", "target": "watson_ch5_london_spy", "pov_switch": null, "pov_switch_name": null}]}, "watson_ch5_london_spy": {"id": "watson_ch5_london_spy", "title": "Chapter 5: Three Broken Threads", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "anchor", "anchor_name": "anchor_london_mission", "content": "Trailing Sir Henry down Regent Street, Holmes pointed out a hansom cab crawling along the curb. Through its side glass glared a passenger sporting a heavy black beard and sharp spectacles! When Holmes sprinted forward, the cab driver lashed his horse and vanished into Oxford Circus.\n\nAt the hotel, another bizarre twist occurred: Sir Henry's missing tan boot was returned, but an old, worn black boot was stolen in its place! The cabman, John Clayton, came forward and testified that his passenger had brazenly declared: 'You may tell him that your passenger was Mr. Sherlock Holmes!'\n\nWith the danger now acute, Holmes turned to me: 'Watson, there is deep water here. You must accompany Sir Henry to Baskerville Hall, guard him day and night with your service revolver, and report every fact to me!'", "is_ending": false, "clues": ["Bearded spy in Cab No. 2704 who mocked Holmes", "Stolen old black boot saturated with Sir Henry's scent"], "choices": [{"id": "w_board_express", "text": "Pack your revolver and luggage, and board the Devonshire express train from Paddington with Sir Henry.", "target": "watson_start", "pov_switch": null, "pov_switch_name": null}, {"id": "w_review_clues", "text": "Review the stolen boots and cab mystery with Holmes before departing for Dartmoor.", "target": "watson_start", "pov_switch": null, "pov_switch_name": null}]}, "watson_start": {"id": "watson_start", "title": "Chapter 6: Arrival at Dartmoor", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "anchor", "anchor_name": "anchor_arrival", "content": "The train ground to a shuddering halt at the small Devonshire platform. Sir Henry Baskerville stepped onto the gravel, adjusting his tweed cap against the chill October wind that swept down from the desolate granite tors. Mounted soldiers with carbines patrolled the tracks; the notorious convict Selden has broken out of Princetown Gaol.\n\nHolmes has entrusted me with the guardianship of Sir Henry. As our wagonette rattles toward the gloomy twin towers of Baskerville Hall, the vast moor stretches ahead like a petrified ocean.", "is_ending": false, "clues": ["Soldiers hunting Selden on Dartmoor"], "choices": [{"id": "w_to_hall", "text": "Proceed directly to Baskerville Hall to interview Barrymore the butler.", "target": "watson_baskerville_hall", "pov_switch": null, "pov_switch_name": null}, {"id": "w_to_alley", "text": "Inspect the perimeter of the Yew Alley where Sir Charles met his death.", "target": "watson_yew_alley", "pov_switch": null, "pov_switch_name": null}, {"id": "w_to_stapleton", "text": "Take a solitary walk along the edge of the moor toward Merripit House.", "target": "watson_meet_stapleton", "pov_switch": null, "pov_switch_name": null}]}, "watson_baskerville_hall": {"id": "watson_baskerville_hall", "title": "The Shadows of Baskerville Hall", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "branch", "anchor_name": null, "content": "Baskerville Hall is an imposing, shadowed pile of granite draped in ivy. Barrymore, the butler, received us with grave courtesy, yet his dark eyes flickered with restlessness. Later that night, muffled sobbing drifted from Mrs. Barrymore's chambers.\n\nI must uncover whether Barrymore is concealing a complicity in the curse, or if there is another thread to pull in Coombe Tracey where Sir Charles was known to receive letters.", "is_ending": false, "clues": ["Barrymore's nervous demeanor", "Weeping woman in the Hall"], "choices": [{"id": "w_watch_barrymore", "text": "Mount a silent night watch in the long corridor to discover Barrymore's purpose.", "target": "watson_night_watch", "pov_switch": null, "pov_switch_name": null}, {"id": "w_visit_lyons", "text": "Hire a trap and ride to Coombe Tracey to interview Mrs. Laura Lyons.", "target": "watson_laura_lyons", "pov_switch": null, "pov_switch_name": null}]}, "watson_yew_alley": {"id": "watson_yew_alley", "title": "The Yew Alley and the Moor Gate", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "branch", "anchor_name": null, "content": "The Yew Alley is a gloomy corridor flanked by twelve-foot yew hedges. At the far end, a small wicket-gate opens upon the vast expanse of the moor. It was here that Sir Charles stood for some minutes, dropping cigar ash, before fleeing in blind panic.\n\nDr. Mortimer's whisper echoes in my memory: 'Mr. Holmes, they were the footprints of a gigantic hound!' Beyond the gate, the path meanders toward the green quagmire of the Great Grimpen Mire.", "is_ending": false, "clues": ["Cigar ash at wicket gate", "Footprints leading toward moor"], "choices": [{"id": "w_alley_to_mire", "text": "Follow the footpath outward into the moor toward Merripit House.", "target": "watson_meet_stapleton", "pov_switch": null, "pov_switch_name": null}, {"id": "w_alley_to_hall", "text": "Return to Sir Henry and prepare for the night watch in the west wing.", "target": "watson_night_watch", "pov_switch": null, "pov_switch_name": null}]}, "watson_meet_stapleton": {"id": "watson_meet_stapleton", "title": "The Naturalist of Grimpen Mire", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "branch", "anchor_name": null, "content": "A small, neat man with a butterfly net and tin botanical box hailed me. It was Jack Stapleton, naturalist of Merripit House. As we conversed, a distant brown pony wandered onto the bright green turf of the Great Grimpen Mire. Within seconds, it was dragged down into the mire's bottomless throat, vanishing with a mournful whinny.\n\n'A false step means death,' smiled Stapleton. Moments later, his sister, Miss Beryl Stapleton, hurried up. Mistaking me in the mist for Sir Henry, she whispered passionately: 'Go back! Go back to London instantly!'", "is_ending": false, "clues": ["Great Grimpen Mire treacherous paths", "Beryl's urgent warning"], "choices": [{"id": "w_interrogate_beryl", "text": "Pull Miss Stapleton aside and demand the reason for her desperate warning.", "target": "watson_beryl_warning", "pov_switch": null, "pov_switch_name": null}, {"id": "w_return_with_caution", "text": "Note her words, decline to press her in front of Jack, and return to the Hall.", "target": "watson_night_watch", "pov_switch": null, "pov_switch_name": null}]}, "watson_beryl_warning": {"id": "watson_beryl_warning", "title": "A Whispered Warning", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "branch", "anchor_name": null, "content": "When Miss Stapleton discovered I was Dr. Watson and not the Baskerville heir, her face turned pale. 'Forget what I said,' she pleaded, though her eyes were wild with terror. 'My brother Jack must not know I spoke. But danger clings to every stone of this moor. If you love Sir Henry's life, take him away!'\n\nAs dusk fell, my eyes caught a tall, solitary figure silhouetted against the rising moon atop the high pinnacle of Black Tor.", "is_ending": false, "clues": ["Figure on the Tor", "Beryl's terror of her brother"], "choices": [{"id": "w_beryl_to_watch", "text": "Return to Baskerville Hall to keep Sir Henry under close guard.", "target": "watson_night_watch", "pov_switch": null, "pov_switch_name": null}, {"id": "w_scout_the_tor", "text": "Climb toward the rocky tors to investigate the solitary watcher.", "target": "watson_stalk_figure", "pov_switch": null, "pov_switch_name": null}]}, "watson_night_watch": {"id": "watson_night_watch", "title": "The Candle at the West Window", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "anchor", "anchor_name": "anchor_convict", "content": "At two in the morning, Sir Henry and I crept down the corridor. Barrymore stood at the end window, holding a candle to the pane and peering into the moor. Confronted, he broke down: the signal was for Selden, the escaped convict, who is Mrs. Barrymore's wayward brother!\n\nSuddenly, from the black moor outside, rose a long, deep howl—a blood-freezing sound that swelled and reverberated through the night. It was neither hound nor wolf, but a shriek of unnatural malice.", "is_ending": false, "clues": ["Barrymore signaling Selden", "The Hound's night howl"], "choices": [{"id": "w_pursue_moor", "text": "Seize revolvers and plunge into the darkness with Sir Henry to hunt down the signal.", "target": "watson_moor_pursuit", "pov_switch": null, "pov_switch_name": null}, {"id": "w_track_watcher", "text": "Leave the convict to the police and track the mysterious watcher on the tor.", "target": "watson_stalk_figure", "pov_switch": null, "pov_switch_name": null}]}, "watson_moor_pursuit": {"id": "watson_moor_pursuit", "title": "Pursuit Across the Tors", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "branch", "anchor_name": null, "content": "Cold rain stung our cheeks as Sir Henry and I scrambled over granite boulders. In the flash of a candle, we glimpsed the gaunt, savage face of Selden scurrying like an animal among the crevices. Sir Henry fired, but the convict vanished into the labyrinth of rocks.\n\nLooking up against the moonlit cloudbreak, I froze. High on the granite crag of the tor stood a second man—tall, thin, cloaked, his arms folded, watching the entire chase in motionless contemplation.", "is_ending": false, "clues": ["Man on the Tor confirmed cloaked and tall"], "choices": [{"id": "w_follow_second_man", "text": "Ascend the steep crags toward the stone huts where the watcher made his lair.", "target": "watson_stalk_figure", "pov_switch": null, "pov_switch_name": null}, {"id": "w_switch_to_holmes", "text": "[Switch POV to Sherlock Holmes inside his moor redoubt]", "target": "holmes_hut_interior", "pov_switch": "holmes", "pov_switch_name": "Sherlock Holmes"}]}, "watson_stalk_figure": {"id": "watson_stalk_figure", "title": "The Prehistoric Stone Hut", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "branch", "anchor_name": null, "content": "I climbed to the ancient circular stone huts left by prehistoric Britons. Inside one, sheltered from the gale, lay a blanket, a loaf of bread, and a tin of tongue. On a flat granite slab lay a discarded cigarette stub—imprinted with 'Bradley, Oxford Street'—and a scrawled note: 'Dr. Watson has gone to Coombe Tracey.'\n\nA shadow fell across the entrance. A hand rested on the doorframe.", "is_ending": false, "clues": ["Bradley cigarette stub", "Watson surveillance note"], "choices": [{"id": "w_wait_gun_drawn", "text": "Cock your service revolver and order the occupant to surrender.", "target": "watson_hut_reunion", "pov_switch": null, "pov_switch_name": null}, {"id": "w_flank_hut", "text": "Slip outside to catch the stranger from the blind side of the stones.", "target": "holmes_moor_ambush", "pov_switch": null, "pov_switch_name": null}]}, "watson_laura_lyons": {"id": "watson_laura_lyons", "title": "The Secret of Laura Lyons", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "branch", "anchor_name": null, "content": "In Coombe Tracey, Mrs. Laura Lyons sat trembling before me. Under relentless questioning, she wept and confessed: 'It was Jack Stapleton who dictated the letter to Sir Charles, pleading for funds at the Yew Alley gate! Then, at the last minute, he forbade me from going, promising he would handle the matter himself.'\n\nThe truth struck me like a blow. Stapleton had lured Sir Charles to the gate to unleash the beast!", "is_ending": false, "clues": ["Stapleton orchestrated Sir Charles's midnight meeting"], "choices": [{"id": "w_lyons_to_hut", "text": "Race back to find the mysterious moor watcher who may hold the key to stopping Stapleton.", "target": "watson_hut_reunion", "pov_switch": null, "pov_switch_name": null}, {"id": "w_lyons_confront_stapleton", "text": "Ride directly to Merripit House to confront Stapleton before he strikes again.", "target": "watson_direct_confrontation", "pov_switch": null, "pov_switch_name": null}]}, "watson_hut_reunion": {"id": "watson_hut_reunion", "title": "Reunion on the Moor", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "branch", "anchor_name": null, "content": "A dry, amused voice broke the tension: 'A lovely evening, my dear Watson. Really, you should not sit so close to the entrance; your shadow was visible from fifty yards away.'\n\nI lowered my revolver in astonishment. Sherlock Holmes stepped into the hut, lean, keen-eyed, and smiling! 'I have been living on the moor, Watson, to see with my own eyes while Stapleton believed me in London. Now the net is closing. Stapleton is our man—and tonight Sir Henry dines at Merripit House!'", "is_ending": false, "clues": ["Holmes working incognito on Dartmoor"], "choices": [{"id": "w_reunion_to_dinner", "text": "Coordinate the Scotland Yard ambush with Holmes outside Merripit House.", "target": "holmes_merripit_dinner", "pov_switch": "holmes", "pov_switch_name": "Sherlock Holmes"}, {"id": "w_take_vantage", "text": "Position yourself beneath the lighted dining-room window of Merripit House.", "target": "watson_climax_vigil", "pov_switch": null, "pov_switch_name": null}]}, "watson_direct_confrontation": {"id": "watson_direct_confrontation", "title": "A Premature Encounter", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "branch", "anchor_name": null, "content": "I arrived at Merripit House alone. Stapleton met me in the hall, his smile tight and strained. From an outhouse across the yard came a deep, muffled growl that vibrated through the floorboards. Stapleton's hand slipped quietly toward his heavy walking stick.\n\n'You seem agitated, Doctor,' he said softly. 'Perhaps you would care to inspect my botanical specimens?'", "is_ending": false, "clues": [], "choices": [{"id": "w_force_outhouse", "text": "Demand to inspect the locked outhouse immediately.", "target": "watson_hound_early_release", "pov_switch": null, "pov_switch_name": null}, {"id": "w_feign_retreat", "text": "Feign an excuse about an urgent message from Sir Henry and retreat to signal Holmes.", "target": "watson_climax_vigil", "pov_switch": null, "pov_switch_name": null}]}, "watson_climax_vigil": {"id": "watson_climax_vigil", "title": "Vigil in the Moor Fog", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "anchor", "anchor_name": "anchor_climax", "content": "I crouched beneath the dining room window of Merripit House. Through the parted curtains, I could see Sir Henry and Stapleton conversing over port. Stapleton checked his watch repeatedly.\n\nOutside, a creeping disaster was unfolding: a thick, white sea of fog was rolling in from the Great Grimpen Mire, swiftly burying the path that Sir Henry must take to return home. If the fog covers the path before Sir Henry passes, we cannot protect him!", "is_ending": false, "clues": ["Dense fog rolling over Grimpen Mire"], "choices": [{"id": "w_signal_holmes", "text": "Signal Holmes and Lestrade on the ridge that the fog bank threatens the trap.", "target": "climax_fog_advance", "pov_switch": null, "pov_switch_name": null}, {"id": "w_storm_house", "text": "Burst through the dining room doors to extract Sir Henry before he walks outside.", "target": "ending_watson_heroic", "pov_switch": null, "pov_switch_name": null}]}, "watson_hound_early_release": {"id": "watson_hound_early_release", "title": "The Beast Unleashed", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "branch", "anchor_name": null, "content": "Stapleton twisted the iron key. The heavy timber door flew back! Out sprang a creature from the pit: a colossal hound, black as coal, with fire licking from its gaping jaws and muzzle glowing with supernatural blue luminescence! It lunged straight at my throat!", "is_ending": false, "clues": [], "choices": [{"id": "w_stand_and_fire", "text": "Plant your boots, steady your arm, and fire every chamber into the monster's chest!", "target": "ending_watson_heroic", "pov_switch": null, "pov_switch_name": null}, {"id": "w_dodge_for_cover", "text": "Dive behind the low granite boundary wall as Holmes's rifle cracks from the ridge!", "target": "ending_canon", "pov_switch": null, "pov_switch_name": null}]}, "holmes_ch1_baker_street": {"id": "holmes_ch1_baker_street", "title": "Chapter 1: The Science of Deduction", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "anchor", "anchor_name": "anchor_chapter1", "content": "Seated with my back to Watson at the breakfast table, watching his reflection in the polished coffee-pot, I listened to his well-meant analysis of Mortimer's Penang-lawyer walking stick. Watson is a splendid conductor of light; his very errors frequently illuminate the truth.\n\nTaking the cane to the window with my lens, the facts arranged themselves with mathematical precision: the thick iron ferrule worn down with rural walking; the 'C.C.H.' standing not for a hunt club, but for Charing Cross Hospital; the five-year-old date marking the departure of a young house-surgeon to rural Devonshire; and the canine tooth-impressions across the center of the wood denoting a creature larger than a terrier, smaller than a mastiff—a curly-haired spaniel. At that very moment, the bell rang, and through the window I saw the spaniel and its owner ascending our steps.", "is_ending": false, "clues": ["Mortimer: Charing Cross Hospital house-surgeon, now rural Devonshire practitioner", "Curly-haired spaniel confirmed at Baker Street threshold"], "choices": [{"id": "h_welcome_mortimer", "text": "Welcome Dr. James Mortimer and invite him to state his grave consultation.", "target": "holmes_ch2_mortimer", "pov_switch": null, "pov_switch_name": null}, {"id": "h_examine_cranial", "text": "Allow Mortimer to marvel at your dolichocephalic skull while preparing your questions.", "target": "holmes_ch2_mortimer", "pov_switch": null, "pov_switch_name": null}]}, "holmes_ch2_mortimer": {"id": "holmes_ch2_mortimer", "title": "Chapter 2: The Problem of the Moor", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "branch", "anchor_name": null, "content": "Dr. Mortimer laid before us the ancient curse of Sir Hugo and the mysterious demise of Sir Charles. While the public inquest deemed it heart failure, Mortimer revealed the crucial reality: twenty yards from the body, in the damp earth near the wicket gate, were the fresh pawprints of an enormous hound.\n\nSir Charles had stood waiting at the gate for five to ten minutes, dropping cigar ash twice. Then he had run in terror down the yew alley, his tracks changing as he ran upon his tiptoes until his diseased heart burst.\n\nYoung Sir Henry Baskerville lands at Waterloo from Canada in one hour. Should he be permitted to enter Dartmoor?", "is_ending": false, "clues": ["Giant hound footprints at Yew Alley gate", "Sir Charles stood smoking 5-10 minutes before fleeing on tiptoes"], "choices": [{"id": "h_plan_regent_meeting", "text": "Direct Mortimer to meet Sir Henry and bring him to 221B tomorrow at ten o'clock.", "target": "holmes_ch4_regent_street", "pov_switch": null, "pov_switch_name": null}, {"id": "h_smoke_meditation", "text": "Spend the night in concentrated smoke meditation with the Ordnance Survey map of Dartmoor.", "target": "holmes_ch4_regent_street", "pov_switch": null, "pov_switch_name": null}]}, "holmes_ch4_regent_street": {"id": "holmes_ch4_regent_street", "title": "Chapter 4: The Shadow in Regent Street", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "branch", "anchor_name": null, "content": "Sir Henry arrived bearing the cut-and-paste warning letter. The print was clipped from yesterday's Times leading article with short-bladed nail scissors, smelling faintly of white jessamine. A new tan boot had also disappeared from his hotel room.\n\nWhen Sir Henry and Mortimer left, Watson and I shadowed them down Regent Street. Ahead of them crawled a hansom cab. Through its side window glared a passenger sporting a heavy black beard and spectacles! The instant he caught my gaze, he raised his hand, and the cab dashed away down Oxford Circus.", "is_ending": false, "clues": ["Jessamine-scented Times clipped warning letter", "Spy with full black beard in Cab No. 2704"], "choices": [{"id": "h_trace_cab_2704", "text": "Trace the cab registration number (No. 2704) through the Cabmen's Union registry.", "target": "holmes_ch5_broken_threads", "pov_switch": null, "pov_switch_name": null}, {"id": "h_search_hotel_boots", "text": "Proceed directly to the Northumberland Hotel to investigate the boots.", "target": "holmes_ch5_broken_threads", "pov_switch": null, "pov_switch_name": null}]}, "holmes_ch5_broken_threads": {"id": "holmes_ch5_broken_threads", "title": "Chapter 5: The Master Strategy", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "anchor", "anchor_name": "anchor_london_mission", "content": "Cabman John Clayton answered my summons: his passenger had insolently proclaimed, 'You may tell him that your passenger was Mr. Sherlock Holmes!' At the hotel, the new boot had been returned, but an old, worn black boot was stolen.\n\nThe deduction was crystal clear: an unused boot carries no scent. The adversary required an old boot saturated with Sir Henry's scent to train a live hound to hunt the baronet!\n\nThis adversary is of no mean order. If I accompany Sir Henry to Devonshire openly, the culprit will retreat into hiding. I must ostensibly remain in London on other business, while secretly slipping down to Dartmoor to establish an undercover vigil in the prehistoric stone huts, sending Watson ahead as Sir Henry's visible shield.", "is_ending": false, "clues": ["Adversary requires worn boot to train tracking hound on Sir Henry's scent", "Undercover stone hut surveillance strategy initiated"], "choices": [{"id": "h_dispatch_watson_ahead", "text": "Brief Watson on his protective duties, dispatch him to Devonshire, and prepare your undercover post.", "target": "holmes_start", "pov_switch": null, "pov_switch_name": null}, {"id": "h_instruct_cartwright_secret", "text": "Instruct young Cartwright to prepare secret rations for your moor stone hut headquarters.", "target": "holmes_start", "pov_switch": null, "pov_switch_name": null}]}, "holmes_start": {"id": "holmes_start", "title": "Chapter 6: The Detective in the Stone Hut", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "anchor", "anchor_name": "anchor_arrival", "content": "The cold granite walls of the prehistoric hut have been my headquarters for three days. Watson believes me in Baker Street. Had he known I was here, his natural loyalty would have led him to communicate with me, and our opponent would have taken alarm.\n\nCartwright, the London lad, brings me bread and clean linen from Coombe Tracey. Two stolen boots—one tan, one black—from Sir Henry's hotel room hold the key. The first boot was new and discarded; the second boot was old and impregnated with Sir Henry's personal scent. Our adversary possesses a live hound.", "is_ending": false, "clues": ["Stolen boot used for scent conditioning"], "choices": [{"id": "h_analyze_boot", "text": "Examine the scent trail and the chemical traces on the Devon moor soil.", "target": "holmes_chemical_analysis", "pov_switch": null, "pov_switch_name": null}, {"id": "h_telescope_moor", "text": "Train the pocket telescope on Baskerville Hall and Merripit House.", "target": "holmes_moor_surveillance", "pov_switch": null, "pov_switch_name": null}, {"id": "h_intercept_cartwright", "text": "Intercept young Cartwright to read Watson's daily field report.", "target": "holmes_read_reports", "pov_switch": null, "pov_switch_name": null}]}, "holmes_chemical_analysis": {"id": "holmes_chemical_analysis", "title": "The Chemical Trace", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "branch", "anchor_name": null, "content": "My pocket laboratory reveals a curious substance scraped from a reed near Grimpen Mire: a compound of phosphorus and wax, entirely odorless so as not to overpower the hound's delicate olfactory senses, yet fiercely luminescent in the dark.\n\nThe legend of the spectral hound is being given flesh and blood by an intellect of no mean order. Who on this moor possesses both deep zoological knowledge and a claim to the Baskerville fortune?", "is_ending": false, "clues": ["Odorless luminous phosphorus preparation"], "choices": [{"id": "h_research_ancestry", "text": "Examine the genealogical records of the Baskerville family branches.", "target": "holmes_ancestral_clue", "pov_switch": null, "pov_switch_name": null}, {"id": "h_scout_mire_island", "text": "Venture onto the hidden mire path under cover of twilight to locate the kennel.", "target": "holmes_mire_recon", "pov_switch": null, "pov_switch_name": null}]}, "holmes_moor_surveillance": {"id": "holmes_moor_surveillance", "title": "Field Glass on the Moor", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "branch", "anchor_name": null, "content": "Through my Zeiss glasses, the moor reveals its secrets. I see Jack Stapleton netting insects along the bog's edge. He moves with uncanny confidence across ground where any other man would sink into eternity.\n\nWatson is approaching him. Stapleton's sister hurries out to intercept Watson, gesticulating wildly. A family quarrel? No—she is warning him! The woman is an unwilling accomplice.", "is_ending": false, "clues": ["Willow wand markers across Grimpen Mire"], "choices": [{"id": "h_surveillance_to_mire", "text": "Track Stapleton's secret willow wand markers into the Great Grimpen Mire.", "target": "holmes_mire_recon", "pov_switch": null, "pov_switch_name": null}, {"id": "h_surveillance_to_reports", "text": "Return to the hut to decipher Watson's incoming intelligence.", "target": "holmes_read_reports", "pov_switch": null, "pov_switch_name": null}]}, "holmes_read_reports": {"id": "holmes_read_reports", "title": "Watson's Bulletins", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "branch", "anchor_name": null, "content": "Watson writes admirably. He details Barrymore's candle signaling and identifies the convict Selden. More importantly, he notes that Sir Charles was waiting at the Yew Alley gate for a woman with initials L.L.\n\nA visit to Coombe Tracey parish records gives me the name: Laura Lyons, daughter of the old crank Frankland. And who paid for her divorce proceedings? None other than Jack Stapleton.", "is_ending": false, "clues": ["Stapleton funded Laura Lyons"], "choices": [{"id": "h_investigate_ancestry", "text": "Investigate the portrait gallery and heritage of the Baskerville line.", "target": "holmes_ancestral_clue", "pov_switch": null, "pov_switch_name": null}, {"id": "h_observe_night_chase", "text": "Take up vantage on Black Tor as night descends for the Barrymore confrontation.", "target": "holmes_figure_on_tor", "pov_switch": null, "pov_switch_name": null}]}, "holmes_ancestral_clue": {"id": "holmes_ancestral_clue", "title": "The Face of Hugo Baskerville", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "branch", "anchor_name": null, "content": "The family portraits at Baskerville Hall held the final revelation! When I masked the cavalier hat and curls from the portrait of wicked Sir Hugo, the face looking back at me was unmistakably Jack Stapleton!\n\nHe is Rodger Baskerville's son, born in Costa Rica. He fled to England, married Beryl Garcia, and adopted the name Stapleton. With Sir Charles dead and Sir Henry murdered, he stands as the undisputed legal heir to the vast Baskerville estates!", "is_ending": false, "clues": ["Stapleton is Rodger Baskerville's son and legal heir"], "choices": [{"id": "h_summon_lestrade", "text": "Telegraph Inspector Lestrade to bring Scotland Yard warrants to Devon immediately.", "target": "holmes_merripit_dinner", "pov_switch": null, "pov_switch_name": null}, {"id": "h_reunion_with_watson", "text": "Wait inside the stone hut to reveal the entire conspiracy to Watson.", "target": "watson_hut_reunion", "pov_switch": "watson", "pov_switch_name": "Dr. John H. Watson"}]}, "holmes_figure_on_tor": {"id": "holmes_figure_on_tor", "title": "The Figure on Black Tor", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "anchor", "anchor_name": "anchor_convict", "content": "The wind howls like a banshee atop Black Tor. Down in the valley, the flash of a candle sparks at Baskerville Hall, followed by the sound of two men pursuing Selden across the rocks. Suddenly, the dreadful baying of a hound echoes across the moor!\n\nBelow me, Selden runs for his life—wearing a suit of Sir Henry's cast-off clothing given to him by Barrymore! If the hound catches his scent, it will tear him to pieces believing him to be the baronet!", "is_ending": false, "clues": [], "choices": [{"id": "h_race_to_selden", "text": "Sprint down the tor to prevent the hound from murdering the convict.", "target": "holmes_selden_crisis", "pov_switch": null, "pov_switch_name": null}, {"id": "h_slip_back_to_hut", "text": "Slip back to your stone hut to coordinate with Watson before Stapleton discovers you.", "target": "holmes_hut_interior", "pov_switch": null, "pov_switch_name": null}, {"id": "h_switch_to_stapleton", "text": "[Switch POV to Jack Stapleton orchestrating the beast]", "target": "stapleton_moor_night", "pov_switch": "stapleton", "pov_switch_name": "Jack Stapleton"}]}, "holmes_selden_crisis": {"id": "holmes_selden_crisis", "title": "Tragedy on the Crags", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "branch", "anchor_name": null, "content": "A scream of mortal terror ripped through the fog, followed by the dull thud of a falling body. I arrived at the base of the sheer granite cliff. Selden lay motionless, his skull fractured against the rocks. A few paces away in the heather, the smell of sulfur and phosphor hung thick in the damp air.\n\nA soft footstep sounded behind me. Jack Stapleton appeared out of the mist, carrying a lantern, expecting to find the corpse of Sir Henry Baskerville!", "is_ending": false, "clues": [], "choices": [{"id": "h_confront_stapleton_now", "text": "Drop the mask and accuse Stapleton of murder on the spot!", "target": "ending_holmes_master_deduction", "pov_switch": null, "pov_switch_name": null}, {"id": "h_play_the_fool", "text": "Pretend the death was a mere drunken accident and lure him into the Merripit dinner trap.", "target": "holmes_merripit_dinner", "pov_switch": null, "pov_switch_name": null}]}, "holmes_hut_interior": {"id": "holmes_hut_interior", "title": "The Detective's Lair", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "branch", "anchor_name": null, "content": "I returned to the prehistoric hut to find someone had breached the perimeter. The scent of a Bradley cigarette still lingered. A shadow moved near the granite lintel—Watson, revolver in hand!\n\nWith a friendly greeting, I disarmed his tension. Together, we reviewed every thread: the stolen boots, the phosphorescent compound, and Stapleton's ancestral claim.", "is_ending": false, "clues": [], "choices": [{"id": "h_hut_to_dinner", "text": "Prepare the Scotland Yard ambush for tomorrow night's dinner at Merripit House.", "target": "holmes_merripit_dinner", "pov_switch": null, "pov_switch_name": null}, {"id": "h_hut_to_mire_recon", "text": "Conduct a nighttime raid on Stapleton's island kennel in the Grimpen Mire.", "target": "holmes_mire_recon", "pov_switch": null, "pov_switch_name": null}]}, "holmes_moor_ambush": {"id": "holmes_moor_ambush", "title": "Ambush at the Tor", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "branch", "anchor_name": null, "content": "I caught Watson attempting to circle my stone hut from the rear. 'An admirable tactical maneuver, my dear Watson,' I called out, stepping from behind a boulder. 'Though I would advise against stepping on dry heather when stalking a consulting detective.'\n\nWatson laughed with relief and gripped my hand. The time for secrecy is over; the time for action has arrived.", "is_ending": false, "clues": [], "choices": [{"id": "h_ambush_to_dinner", "text": "Brief Watson on the final trap and mobilize for the Merripit dinner.", "target": "holmes_merripit_dinner", "pov_switch": null, "pov_switch_name": null}]}, "holmes_mire_recon": {"id": "holmes_mire_recon", "title": "The Heart of Grimpen Mire", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "branch", "anchor_name": null, "content": "Following the submerged willow stakes, I penetrated the impenetrable Great Grimpen Mire. On a solitary island of dry peat stood the ruins of an abandoned tin-miner's shack. Inside, tethered with a logging chain, snarled a monstrous creature—a cross between a bloodhound and a mastiff, gaunt, savage, and starved for blood.\n\nNear the chain lay Sir Henry's stolen black boot.", "is_ending": false, "clues": [], "choices": [{"id": "h_recon_to_dinner", "text": "Slip back silently to lay the trap at Merripit House where the crime will be committed.", "target": "holmes_merripit_dinner", "pov_switch": null, "pov_switch_name": null}, {"id": "h_recon_strike_now", "text": "Raid the island kennel immediately with Lestrade and handcuffs!", "target": "ending_holmes_master_deduction", "pov_switch": null, "pov_switch_name": null}]}, "holmes_merripit_dinner": {"id": "holmes_merripit_dinner", "title": "The Ambush at Merripit House", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "anchor", "anchor_name": "anchor_climax", "content": "Lestrade of Scotland Yard joined Watson and me behind a ridge of rocks fifty yards from Merripit House. Sir Henry had dined with Stapleton and was scheduled to walk home alone across the moor.\n\nThe front door opened. Sir Henry stepped out into the night. But from the south, a white, impenetrable sea of fog was drifting swiftly toward us, swallowing the path! In five minutes, our field of fire will be gone!", "is_ending": false, "clues": [], "choices": [{"id": "h_hold_fire", "text": "Hold position until the creature emerges through the fog bank!", "target": "climax_fog_advance", "pov_switch": null, "pov_switch_name": null}, {"id": "h_charge_forward", "text": "Advance through the fog to intercept Sir Henry before the hound reaches him!", "target": "climax_fog_advance", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_ch1_london": {"id": "stapleton_ch1_london", "title": "Chapter 4: The Stalker in London", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "anchor", "anchor_name": "anchor_chapter1", "content": "Disguised beneath a full false black beard and dark spectacles, I shadowed young Sir Henry Baskerville from the moment his ship docked from Canada to the Northumberland Hotel. Beryl, my captive wife, secretly attempted to warn him with words cut from the Times, but I caught her in time—though the meddling letter had already slipped into the mail.\n\nAt the hotel, I tipped a chambermaid half a sovereign to purloin the baronet's boot from outside his door. To my fury, the careless girl brought me a brand-new tan boot that had never touched human skin! An unworn boot carries no scent. I cast it back and ordered a boot that Sir Henry had actually walked in—an old, worn black boot.", "is_ending": false, "clues": ["Disguise: false black beard and dark spectacles", "Unworn boot rejected; worn black boot needed for scent conditioning"], "choices": [{"id": "s_demand_worn_boot", "text": "Bribe the hotel servant to steal Sir Henry's old, worn black boot from the corridor.", "target": "stapleton_ch4_cab", "pov_switch": null, "pov_switch_name": null}, {"id": "s_shadow_baker_street", "text": "Follow Sir Henry and Dr. Mortimer as they walk toward Baker Street.", "target": "stapleton_ch4_cab", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_ch4_cab": {"id": "stapleton_ch4_cab", "title": "Chapter 5: The Encounter in Cab 2704", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "branch", "anchor_name": null, "content": "I hailed hansom cab No. 2704 on Trafalgar Square and instructed driver John Clayton to tail Sir Henry to 221B Baker Street. As the baronet entered the building, a cold jolt went through me: stepping onto the pavement came Sherlock Holmes himself, his piercing gaze sweeping the street!\n\nHis eyes fixed upon my cab window! Instantly I threw up the trap-door: 'Driver, gallop for Waterloo Station! Two sovereigns if you outrun him!' At Waterloo, as I pressed the coins into Clayton's hand, I could not resist leaving a mocking parting thrust: 'If you want to know, tell your friends your passenger was Sherlock Holmes!'", "is_ending": false, "clues": ["Cab No. 2704 escape from Sherlock Holmes", "Brazen mockery of Baker Street"], "choices": [{"id": "s_take_early_express", "text": "Collect the stolen worn black boot and take the early express train back to Devonshire.", "target": "stapleton_ch5_devon_prep", "pov_switch": null, "pov_switch_name": null}, {"id": "s_vanish_in_crowd", "text": "Disappear through the Waterloo crowd to ensure no detective followed.", "target": "stapleton_ch5_devon_prep", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_ch5_devon_prep": {"id": "stapleton_ch5_devon_prep", "title": "Chapter 5: Return to Grimpen Mire", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "anchor", "anchor_name": "anchor_london_mission", "content": "With Sir Henry's old, worn black boot securely wrapped in oiled silk in my valise, I caught the early Great Western express back to Devonshire. Sir Henry and Watson will follow in two days, entirely unaware that the London detective they so admire has been left far behind.\n\nThe stage at Merripit House is set. The hound in the abandoned mire tin-mine has not eaten meat in forty-eight hours. All that remains is to bring the boot to its muzzle.", "is_ending": false, "clues": ["Scented boot secured for the hound", "Merripit House trap prepared ahead of Watson's arrival"], "choices": [{"id": "s_to_mire_kennel", "text": "Trek across the hidden mire path to begin scent-training the beast on the island.", "target": "stapleton_start", "pov_switch": null, "pov_switch_name": null}, {"id": "s_to_merripit_prep", "text": "Return to Merripit House and enforce Beryl's total obedience before the baronet arrives.", "target": "stapleton_start", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_start": {"id": "stapleton_start", "title": "Chapter 6: The Web of Merripit House", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "anchor", "anchor_name": "anchor_arrival", "content": "Sir Charles is buried, dead of heart failure at the Yew Alley gate, exactly as I designed. Now the new heir, Sir Henry, has arrived in Devon. He brought with him a bumbling military doctor named Watson, while Sherlock Holmes remains in London, blind to what transpires on Dartmoor.\n\nThe prize is within my grasp: Baskerville Hall and a fortune of a million pounds. I only need to eliminate this last heir, and the estate will fall to me under my South American alias.", "is_ending": false, "clues": ["Stapleton's claim to Baskerville inheritance"], "choices": [{"id": "s_scout_watson", "text": "Take the butterfly net and intercept Dr. Watson along the fringe of Grimpen Mire.", "target": "stapleton_moor_stroll", "pov_switch": null, "pov_switch_name": null}, {"id": "s_check_hound", "text": "Venture onto the mire island to inspect the hound and test the scent trail.", "target": "stapleton_check_hound", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_moor_stroll": {"id": "stapleton_moor_stroll", "title": "Playing the Naturalist", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "branch", "anchor_name": null, "content": "I played the gentle entomologist to perfection. To impress Watson with the lethal nature of the moor, I pointed out a pony sinking helplessly into the bog. But suddenly Beryl ran toward us across the heather! Believing Watson was Sir Henry, she began to utter frantic warnings!\n\nIf that foolish woman ruins my months of preparation, I will silence her permanently.", "is_ending": false, "clues": [], "choices": [{"id": "s_chastise_beryl", "text": "Confront Beryl in private and break her rebellious spirit.", "target": "stapleton_beryl_control", "pov_switch": null, "pov_switch_name": null}, {"id": "s_charm_watson", "text": "Laugh off Beryl's eccentricity and divert Watson with botanical talk.", "target": "stapleton_deceive_watson", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_check_hound": {"id": "stapleton_check_hound", "title": "The Hound on the Mire Island", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "branch", "anchor_name": null, "content": "I stepped carefully across the hidden tussocks of Grimpen Mire to the abandoned tin mine. In the darkness, the bloodhound-mastiff brute rattled its iron chain and snarled hungrily. I held Sir Henry's stolen worn boot beneath its nostrils until its jowls dripped with saliva.\n\nThe phosphor paste is mixed—luminous, odorless, terrifying to superstitious fools.", "is_ending": false, "clues": ["Phosphor paste prepared on hound"], "choices": [{"id": "s_apply_phosphor", "text": "Coat the hound's jaws and eyes with the luminous compound.", "target": "stapleton_phosphor_prep", "pov_switch": null, "pov_switch_name": null}, {"id": "s_plan_dinner", "text": "Return to Merripit House to invite Sir Henry to his final dinner.", "target": "stapleton_invite_henry", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_beryl_control": {"id": "stapleton_beryl_control", "title": "The Captive Wife", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "branch", "anchor_name": null, "content": "Behind the locked door of our bedchamber, Beryl wept and defied me. She refuses to play the bait for Sir Henry any longer. 'You are a monster, Jack!' she cried.\n\nNo matter. I will bind and gag her in the upstairs room before Sir Henry arrives for dinner. Her silence is easily purchased with hemp rope.", "is_ending": false, "clues": [], "choices": [{"id": "s_bind_now", "text": "Bind Beryl securely to the bedpost and proceed with the dinner trap.", "target": "stapleton_bind_beryl", "pov_switch": null, "pov_switch_name": null}, {"id": "s_patrol_tors", "text": "Inspect the surrounding tors for any uninvited observers first.", "target": "stapleton_search_tors", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_deceive_watson": {"id": "stapleton_deceive_watson", "title": "Probing the Doctor", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "branch", "anchor_name": null, "content": "Over tea at Merripit House, I probed Watson regarding Sherlock Holmes. The doctor insists Holmes is occupied with an embezzlement case in London. Yet Watson's eyes wandered toward the tors.\n\nCould someone be hiding out among the prehistoric ruins? I noticed smoke rising from a stone hut earlier this afternoon.", "is_ending": false, "clues": [], "choices": [{"id": "s_investigate_hut", "text": "Take a carbine and scout the stone huts on the tor.", "target": "stapleton_search_tors", "pov_switch": null, "pov_switch_name": null}, {"id": "s_ignore_smoke", "text": "Dismiss it as a shepherd or convict and press forward with Sir Henry's dinner.", "target": "stapleton_invite_henry", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_phosphor_prep": {"id": "stapleton_phosphor_prep", "title": "A Monster in the Dark", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "branch", "anchor_name": null, "content": "The luminous paste glistens over the beast's muzzle and brow. In the pitch black of the tin shack, it looks like a demon wrenched from the bowels of hell! No human heart could withstand its charge without freezing in terror.\n\nThe stage is set. All that remains is to bring Sir Henry out onto the moor alone at night.", "is_ending": false, "clues": [], "choices": [{"id": "s_phosphor_to_bind", "text": "Lock up the beast and secure Beryl in the upper room.", "target": "stapleton_bind_beryl", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_search_tors": {"id": "stapleton_search_tors", "title": "Smoke on the Tors", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "branch", "anchor_name": null, "content": "I climbed Black Tor with my field glass. Outside one of the stone huts, a boy was delivering supplies. Someone is living there—someone disciplined, orderly, and patient.\n\nIf it is a London detective, he must be eliminated before he joins forces with Watson.", "is_ending": false, "clues": [], "choices": [{"id": "s_hound_the_hut", "text": "Release the hound tonight toward the stone hut to eliminate the spy!", "target": "stapleton_attack_hut", "pov_switch": null, "pov_switch_name": null}, {"id": "s_proceed_with_henry", "text": "The spy poses no threat if Sir Henry dies tonight. Return to Merripit House.", "target": "stapleton_invite_henry", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_moor_night": {"id": "stapleton_moor_night", "title": "The Convict Hunt", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "anchor", "anchor_name": "anchor_convict", "content": "The moor is alive with shouts tonight. Watson and Sir Henry are hunting Selden, the escaped convict. I released the hound on Sir Henry's boot-scent to strike in the confusion!\n\nThe beast pursued its quarry up the jagged granite cliffs. A man plunged screaming to his death! I hurried forward with my lantern—only to discover Selden's corpse, dressed in Sir Henry's cast-off clothes!", "is_ending": false, "clues": [], "choices": [{"id": "s_salvage_plan", "text": "Curse the blunder, retreat before Watson arrives, and lure Sir Henry to dinner tomorrow.", "target": "stapleton_invite_henry", "pov_switch": null, "pov_switch_name": null}, {"id": "s_panic_escape", "text": "Panic! Assume the law is closing in and attempt a midnight flight across the mire.", "target": "ending_stapleton_tragedy", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_attack_hut": {"id": "stapleton_attack_hut", "title": "The Ambush at the Hut", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "branch", "anchor_name": null, "content": "I unleashed the hound toward the prehistoric hut. But as the beast leaped forward, a rifle cracked from the rocks! The bullet struck the hound's shoulder, sending it howling into the darkness. Out from the shadows stepped Sherlock Holmes, his revolver leveled at my chest!", "is_ending": false, "clues": [], "choices": [{"id": "s_run_for_mire", "text": "Turn and sprint blindly for the safety of the Great Grimpen Mire!", "target": "ending_stapleton_tragedy", "pov_switch": null, "pov_switch_name": null}, {"id": "s_surrender_holmes", "text": "Throw down your weapon and raise your hands in surrender.", "target": "ending_stapleton_arrest", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_bind_beryl": {"id": "stapleton_bind_beryl", "title": "Silencing the House", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "branch", "anchor_name": null, "content": "I dragged Beryl up the narrow stairs, tied her wrists to the brass bedpost, and gagged her with a scarf. She glared at me with pure hatred, but she can utter no sound.\n\nDownstairs, the heavy knocker sounded. Sir Henry Baskerville has arrived for dinner.", "is_ending": false, "clues": [], "choices": [{"id": "s_host_dinner", "text": "Smooth your coat, assume an air of genial hospitality, and welcome the baronet.", "target": "stapleton_dinner_trap", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_invite_henry": {"id": "stapleton_invite_henry", "title": "The Fatal Invitation", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "branch", "anchor_name": null, "content": "Sir Henry gladly accepted my invitation to dine at Merripit House. He is desperate to see Beryl again. I insisted he walk home alone across the moor, promising that the night air would clear his head.\n\nNow I must prepare the house and ensure Beryl does not whisper a single word of warning.", "is_ending": false, "clues": [], "choices": [{"id": "s_bind_beryl_now", "text": "Lock and bind Beryl in the upper bedchamber before Sir Henry arrives.", "target": "stapleton_bind_beryl", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_dinner_trap": {"id": "stapleton_dinner_trap", "title": "Dinner at Merripit House", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "anchor", "anchor_name": "anchor_climax", "content": "Dinner went flawlessly. Sir Henry drank freely of my port, saddened only by Beryl's 'sudden migraine.' At ten o'clock, he took his cane and stepped out the door to walk the lonely moor path back to Baskerville Hall.\n\nA magnificent, dense fog is rolling in across Grimpen Mire—a white wall that will smother his cries and blind any rescue. I slip quietly to the outhouse to release the flaming demon!", "is_ending": false, "clues": [], "choices": [{"id": "s_release_beast", "text": "Unlock the outhouse door and unleash the hound upon Sir Henry's trail!", "target": "climax_fog_advance", "pov_switch": null, "pov_switch_name": null}, {"id": "s_switch_to_watson", "text": "[Switch POV to Dr. Watson watching from the rocks outside]", "target": "watson_climax_vigil", "pov_switch": "watson", "pov_switch_name": "Dr. John H. Watson"}]}, "climax_fog_advance": {"id": "climax_fog_advance", "title": "The Hound of the Baskervilles", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "climax", "anchor_name": "anchor_climax", "content": "A sound came out of the rolling white fog—a patter of rapid footsteps and a low, guttural snarl. Suddenly, leaping through the curtain of vapor, came a beast that might have sprung from the nightmares of Dante! It was a hound of enormous size, coal-black, with fire bursting from its gaping mouth, its eyes glowing with smoldering blue flame, its muzzle and dewlaps outlined in flickering phosphor light!\n\nSir Henry screamed in terror and fell backward onto the turf. The monster soared through the air, its fangs aimed straight for his throat!", "is_ending": false, "clues": [], "choices": [{"id": "climax_shoot_beast", "text": "Holmes, Watson, and Lestrade unleash a simultaneous volley of revolver fire!", "target": "ending_canon", "pov_switch": null, "pov_switch_name": null}, {"id": "climax_watson_shield", "text": "Watson dives forward with his service revolver to shield Sir Henry with his own body!", "target": "ending_watson_heroic", "pov_switch": null, "pov_switch_name": null}, {"id": "climax_fog_blind", "text": "The dense white fog blinds the marksmen; the shots go wild into the night!", "target": "ending_stapleton_triumph", "pov_switch": null, "pov_switch_name": null}]}, "ending_canon": {"id": "ending_canon", "title": "Canon Triumph: The Hound Destroyed", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "ending", "anchor_name": null, "content": "Five revolver bullets slammed into the flank of the leaping beast. With a ferocious howl of agony, the monstrous hound crashed to earth, thrashing in its death throes upon the heather before lying stone dead.\n\nSir Henry was fainting, but untouched. We dashed to Merripit House, kicked down the locked bedroom door, and cut the cords that bound the bruised and weeping Beryl. She pointed toward the Great Grimpen Mire: 'He has fled to his island in the bog!'\n\nThe following morning, beneath the bright autumn sun, Holmes and I followed Stapleton's willow wands into the mire. Halfway across, on a wretched patch of slime, lay Sir Henry's stolen black boot. But of Jack Stapleton, there was no trace save for a single heel-mark sinking into the black, sucking peat.\n\nSomewhere in the heart of the Great Grimpen Mire, down in the foul slime of the bottomless quagmire, the cold, ruthless master of the hound sleeps forever.", "is_ending": true, "clues": [], "choices": []}, "ending_watson_heroic": {"id": "ending_watson_heroic", "title": "Watson's Valor: The Doctor's Triumph", "pov": "watson", "pov_name": "Dr. John H. Watson", "node_type": "ending", "anchor_name": null, "content": "Placing myself directly between Sir Henry and the leaping monster, I thrust the muzzle of my service revolver straight into the phosphorescent jaw and pulled the trigger three times! The beast dropped like a stone.\n\nCatching sight of a dark figure bolting through the fog, I gave chase with all the vigor of my Afghan campaign days. I cornered Jack Stapleton against the shear granite face of an abandoned quarry, holding him at gunpoint until Holmes and Lestrade rushed up with handcuffs.\n\n'Splendid, Watson!' cried Holmes, clapping me on the shoulder. 'A masterstroke of courage! England has many detectives, but only one John H. Watson!' The Baskerville curse is broken forever by the hand of the good doctor.", "is_ending": true, "clues": [], "choices": []}, "ending_holmes_master_deduction": {"id": "ending_holmes_master_deduction", "title": "Holmes's Masterstroke: Judicial Triumph", "pov": "holmes", "pov_name": "Sherlock Holmes", "node_type": "ending", "anchor_name": null, "content": "With the stolen boots, the phosphorus formula, and the Costa Rican birth records in my pocket, I stepped forward and presented the complete chain of evidence before Jack Stapleton could even unleash the hound.\n\nLestrade snapped the steel manacles onto Stapleton's wrists. 'Jack Stapleton—or rather, Rodger Baskerville—you are under arrest for the murder of Sir Charles Baskerville and the attempted murder of Sir Henry.'\n\nStapleton collapsed in defeat. Two months later at Exeter Assizes, the evidence was found incontestable, and the murderer met his just fate upon the scaffold. Another triumph of pure deduction.", "is_ending": true, "clues": [], "choices": []}, "ending_stapleton_triumph": {"id": "ending_stapleton_triumph", "title": "The Dark Inheritance: Stapleton's Victory", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "ending", "anchor_name": null, "content": "The rolling fog blinded the foolish London marksmen. Their bullets whistled harmlessly into the peat. By the time they reached the path, Sir Henry lay still, his heart stopped by sheer terror before the hound's flaming jaws, leaving no mark of human violence.\n\nI recalled the hound with a low whistle, washed its jaws in the mire stream, and slipped back to Merripit House. The Devon coroner once again ruled the death as heart failure caused by the ancient family curse.\n\nSix months later, residing in Paris under the name Vandeleur, I quietly stepped forward to claim the title, Baskerville Hall, and the fortune of a million pounds. The game is won.", "is_ending": true, "clues": [], "choices": []}, "ending_stapleton_tragedy": {"id": "ending_stapleton_tragedy", "title": "The Grimpen Mire Consumes Its Own", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "ending", "anchor_name": null, "content": "Panic gripped my heart. Gunfire and shouting echoed from all corners of the moor. I plunged headlong into the darkness toward my willow-marked path across the Great Grimpen Mire.\n\nIn the blinding swirl of fog, my foot plunged not onto firm reed tussock, but into foul, greasy black slime. I threw out my arms, but found only clutching quagmire. The bog seized my knees, my waist, my chest, pulling with inexorable, suffocating weight.\n\nI screamed into the mist, but only the crying of the plovers answered. The black mire bubbled once, twice, and closed forever over my head.", "is_ending": true, "clues": [], "choices": []}, "ending_stapleton_arrest": {"id": "ending_stapleton_arrest", "title": "Justice on Dartmoor", "pov": "stapleton", "pov_name": "Jack Stapleton", "node_type": "ending", "anchor_name": null, "content": "Surrounded by Holmes's revolver and Lestrade's Scotland Yard whistle, I threw down my weapons. The hound was shot, Beryl freed, and my brilliant plot shattered by the cold intellect of Baker Street.\n\nAs the carriage rattled away toward Exeter Gaol, I looked back one last time at the grim tors of Dartmoor, knowing that the gallows awaited me in the winter chill.", "is_ending": true, "clues": [], "choices": []}}}, "cn": {"title": "巴斯克维尔的猎犬：多视角互动小说", "author": "阿瑟·柯南·道尔 著（多视角改编）", "description": "改编自柯南·道尔经典侦探杰作《巴斯克维尔的猎犬》，从贝克街221B第一章启程，可从华生医生、歇洛克·福尔摩斯以及凶手斯台普吞三大视角亲历这场迷案。", "start_nodes": {"watson": "watson_ch1_baker_street", "holmes": "holmes_ch1_baker_street", "stapleton": "stapleton_ch1_london"}, "pov_roles": {"watson": {"name": "约翰·H·华生医生", "description": "实地观察、社交探访，在巴斯克维尔庄园护卫亨利爵士。"}, "holmes": {"name": "歇洛克·福尔摩斯", "description": "在荒原史前石屋隐蔽监视、化学痕迹分析与缜密司法推导。"}, "stapleton": {"name": "杰克·斯台普吞", "description": "穿行大格林盆泥潭密径、伪装昆虫学家，训育荧光猎犬夺取遗产。"}}, "nodes": {"watson_ch1_baker_street": {"id": "watson_ch1_baker_street", "title": "第一章 歇洛克·福尔摩斯先生", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "anchor", "anchor_name": "anchor_chapter1", "content": "歇洛克·福尔摩斯先生坐在贝克街221B的早餐桌旁。他除了时常彻夜不眠之外，早晨总是起得很晚的。我站在壁炉前的小地毯上，拿起了昨晚那位神秘客人遗忘在椅旁的手杖。这是一根很精致而沉重的手杖，顶端有个疙疸，由槟榔子木制成。紧挨顶端的下面是一圈近一英寸宽的银箍，上面刻着：‘送给皇家外科医学院学士杰姆士·摩梯末，C.C.H.的朋友们赠，一八八四年。’\n\n‘啊，华生，你对它的看法怎么样？’福尔摩斯背对着我，一边喝着咖啡一边发问，‘既然昨晚咱们错过了他，对他此来的目的也一无所知，这件意外的纪念品就变得更重要了。请你在仔细观察后，把这个人给我形容一番吧。’", "is_ending": false, "clues": ["刻有‘送给皇家外科医学院学士杰姆士·摩梯末，C.C.H.的朋友们赠，一八八四年’的槟榔子木手杖", "手杖中央留有卷毛长耳獚犬咬过的清晰牙印"], "choices": [{"id": "w_guess_hunt_club", "text": "推测C.C.H.代表当地某个猎人会，并指出磨损的铁包头和狗咬的牙印。", "target": "watson_ch2_mortimer", "pov_switch": null, "pov_switch_name": null}, {"id": "w_guess_hospital", "text": "根据M.R.C.S.头衔，推断C.C.H.代表查林十字医院，客人曾是一位任职医院的乡村医生。", "target": "watson_ch2_mortimer", "pov_switch": null, "pov_switch_name": null}]}, "watson_ch2_mortimer": {"id": "watson_ch2_mortimer", "title": "第二章 巴斯克维尔的灾祸", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "branch", "anchor_name": null, "content": "杰姆士·摩梯末医生走了进来——他是一个又高又瘦的人，长长的鼻子像只鸟嘴，金边眼镜后闪烁着两只敏锐的灰眼睛。他从胸前口袋里掏出一份泛黄破旧的古老手稿，年代确为一七四二年。那是巴斯克维尔家族祖传的恐怖传说：荒淫残暴的老修果·巴斯克维尔强掳少女，最终在沼地深处被一只巨大如妖魔的黑色猎犬咬断了喉咙。\n\n随后，摩梯末医生又拿出了五月十四日的《德文郡纪事报》，向我们披露了三个月前查尔兹·巴斯克维尔爵士在水松夹道栅门前的离奇暴毙。医生环视室内，声音颤抖地吐露出连验尸官都隐瞒的绝密事实：\n‘福尔摩斯先生，在距离尸体二十码外的湿软地面上……全都是一只巨大的猎犬的脚印！’", "is_ending": false, "clues": ["一七四二年修果·巴斯克维尔魔犬传说手稿", "查尔兹爵士尸体二十码外发现巨大猎犬爪印"], "choices": [{"id": "w_ask_footprint", "text": "追问摩梯末医生为何在官方验尸公听会上刻意隐瞒猎犬爪印的事实。", "target": "watson_ch4_henry", "pov_switch": null, "pov_switch_name": null}, {"id": "w_ask_heir", "text": "探询即将由加拿大抵达伦敦滑铁卢车站的合法继承人亨利·巴斯克维尔爵士的处境。", "target": "watson_ch4_henry", "pov_switch": null, "pov_switch_name": null}]}, "watson_ch4_henry": {"id": "watson_ch4_henry", "title": "第四章 亨利·巴斯克维尔爵士", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "branch", "anchor_name": null, "content": "次日早晨，新任继承人亨利·巴斯克维尔爵士亲临贝克街。他年约三十，短小精悍，生着一双黑眼睛，神情坚毅好斗。他刚在诺桑勃兰旅馆落脚，便收到了一封神秘匿名信，信封用粗糙笔迹写就，信瓤中央赫然是用短指甲剪从昨日《泰晤士报》社论上剪下贴成的警告文字：\n‘若你看重你的生命的价值或还有理性的话，远离沼地。’\n\n更离奇的是，亨利爵士昨晚放在门外等待擦拭的一双簇新浅棕色高筒靴，竟不翼而飞了一只！", "is_ending": false, "clues": ["匿名剪报警告信：‘若你看重你的生命的价值或还有理性的话，远离沼地。’", "诺桑勃兰旅馆神秘失窃的未着浅棕色新皮靴"], "choices": [{"id": "w_follow_henry_regent", "text": "跟随福尔摩斯敏捷地冲出公寓，暗中尾随亨利爵士与摩梯末步入摄政街。", "target": "watson_ch5_london_spy", "pov_switch": null, "pov_switch_name": null}, {"id": "w_examine_letter", "text": "用放大镜仔细检验警告信纸的水印、茉莉香气及剪贴刀口的特征。", "target": "watson_ch5_london_spy", "pov_switch": null, "pov_switch_name": null}]}, "watson_ch5_london_spy": {"id": "watson_ch5_london_spy", "title": "第五章 三条断了的线索", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "anchor", "anchor_name": "anchor_london_mission", "content": "我们尾随亨利爵士来到摄政街。福尔摩斯突然瞥见一辆缓缓滑行的双轮马车（车号2704号）。侧窗里探出一张留着浓密大黑胡须、戴着深色眼镜的面孔，正死死盯住亨利爵士！福尔摩斯拔步飞奔追赶，那马车夫却挥鞭狂奔，瞬间消失在牛津街的车水马龙之中。\n\n返回旅馆后，离奇的事情再次发生：失踪的浅棕色新鞋被悄悄归还，但亨利爵士一只穿过的旧黑皮靴却被偷走了！随后应召而来的车夫约翰·克雷顿更证实，那个黑胡子神秘乘客竟狂妄留言：‘你可以告诉他，你的乘客就是歇洛克·福尔摩斯！’\n\n危险已迫在眉睫。福尔摩斯神情严肃地拍着我的肩膀：‘华生，这是一汪深不可测的险水。你必须带上陆军左轮手枪，日夜寸步不离地护卫亨利爵士前往巴斯克维尔庄园，并将荒原上的一举一动详尽向我报告！’", "is_ending": false, "clues": ["乘坐2704号双轮马车、黑胡须深色眼镜并出言挑衅福尔摩斯的神秘暗探", "真正被盗、带有亨利爵士浓重体味的旧黑皮靴"], "choices": [{"id": "w_board_express", "text": "整理行装与手枪，陪同亨利爵士登上前往德文郡的大西部特快列车。", "target": "watson_start", "pov_switch": null, "pov_switch_name": null}, {"id": "w_review_clues", "text": "在前往帕丁顿车站前，与福尔摩斯再次复盘失窃皮靴与幽灵马车的线索。", "target": "watson_start", "pov_switch": null, "pov_switch_name": null}]}, "holmes_ch1_baker_street": {"id": "holmes_ch1_baker_street", "title": "第一章 演绎法的推演", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "anchor", "anchor_name": "anchor_chapter1", "content": "我背对着华生坐在早餐桌旁，通过镀银咖啡壶光亮的曲面注视着他的动作。他正在壁炉毯上煞有介事地把玩昨夜客人遗落的手杖。华生是一根极佳的光的传导者——他那些充满善意而又漏洞百出的推论，往往能精准地将真理的大门推开一条缝隙。\n\n我取过那根沉重斑驳的槟榔子木手杖，在明媚的晨光下用放大镜扫视：底端磨损剥蚀的厚铁包头，昭示着持杖者常在粗粝的乡间砾石上步行；‘C.C.H.’并非什么乡野猎人会，而是伦敦查林十字医院的缩写；一八八四年的赠礼日期，正印证了一位有前途的年轻住院外科医生在结婚自行开业时辞别都市；而木杖中央清晰交错的凹痕，其牙距比狸犬宽、比獒犬窄——一条活泼的卷毛长耳獚犬！门铃声适时响起，窗外楼阶下，这条獚犬与它的主人正叩响贝克街的门扉。", "is_ending": false, "clues": ["摩梯末：查林十字医院住院外科医生，现达特沼地乡村医生", "在贝克街门阶得到印证的卷毛长耳獚犬"], "choices": [{"id": "h_welcome_mortimer", "text": "迎接杰姆士·摩梯末医生进门，请他陈述那桩令他深感棘手的非凡疑案。", "target": "holmes_ch2_mortimer", "pov_switch": null, "pov_switch_name": null}, {"id": "h_examine_cranial", "text": "让摩梯末医生惊叹于你的长颅骨标本价值，同时冷静梳理思绪准备切入正题。", "target": "holmes_ch2_mortimer", "pov_switch": null, "pov_switch_name": null}]}, "holmes_ch2_mortimer": {"id": "holmes_ch2_mortimer", "title": "第二章 荒原上的神秘疑案", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "branch", "anchor_name": null, "content": "摩梯末医生展开了一七四二年的羊皮古卷，讲述了修果·巴斯克维尔的恶灵血仇。尽管世俗法庭将查尔兹爵士之死归结为心脏衰竭，但摩梯末披露的密情却令人玩味：水松夹道栅门前的泥土里，清晰地印着一只体型骇人的巨犬爪印！\n\n查尔兹爵士曾在夜色中的栅门前伫立了五至十分钟，烟灰两度掉落在沙砾上。随后，他仿佛遭遇了难以名状的狂恐，发足沿夹道狂奔，足迹因极度惊骇甚至化为踮足奔跑的凹痕，直至脆弱的心脏破裂。\n\n最后一位法定继承人亨利·巴斯克维尔爵士尚余一小时便将自加拿大抵英。他是否应该踏入达特沼地那片凶险之地？", "is_ending": false, "clues": ["水松夹道栅门处的巨大猎犬爪印", "查尔兹爵士曾驻足吸雪茄五至十分钟后发足狂奔"], "choices": [{"id": "h_plan_regent_meeting", "text": "叮嘱摩梯末务必在滑铁卢车站接应亨利爵士，并于明日上午十点整一同来贝克街。", "target": "holmes_ch4_regent_street", "pov_switch": null, "pov_switch_name": null}, {"id": "h_smoke_meditation", "text": "在浓密的烟草冥想中展开达特沼地军用地图，彻夜推演水松夹道的地势与逃生路线。", "target": "holmes_ch4_regent_street", "pov_switch": null, "pov_switch_name": null}]}, "holmes_ch4_regent_street": {"id": "holmes_ch4_regent_street", "title": "第四章 摄政街的幽灵马车", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "branch", "anchor_name": null, "content": "年轻的亨利爵士如约而至，带来了那封散发着白茉莉清香的警告信。文字是从昨日《泰晤士报》社论上用短刃剪刀剪下的铅印字体，而他在诺桑勃兰旅馆的一只崭新浅棕色皮靴已离奇被窃。\n\n当客人离去后，我同华生紧紧缀在他们百码之后走入摄政街。街道对面，一辆车牌2704号的双轮出租马车正悄无声息地尾随追踪。隔着车窗，一个蓄着浓密黑髯、戴着遮光眼镜的暗探赫然在目！当我与之目光交汇的刹那，对手骤然喝令车夫扬鞭，马车疾驰没入车流。", "is_ending": false, "clues": ["带有茉莉香气、《泰晤士报》剪贴而成的警告信", "2704号双轮马车里浓密黑须、戴眼镜的跟踪者"], "choices": [{"id": "h_trace_cab_2704", "text": "通过出租马车登记处追查2704号车夫约翰·克雷顿，传唤其至贝克街对质。", "target": "holmes_ch5_broken_threads", "pov_switch": null, "pov_switch_name": null}, {"id": "h_search_hotel_boots", "text": "亲赴诺桑勃兰旅馆盘问侍者，追查皮靴失窃的内部接应。", "target": "holmes_ch5_broken_threads", "pov_switch": null, "pov_switch_name": null}]}, "holmes_ch5_broken_threads": {"id": "holmes_ch5_broken_threads", "title": "第五章 布局达特沼地", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "anchor", "anchor_name": "anchor_london_mission", "content": "车夫约翰·克雷顿向我证实：他的神秘乘客下车时竟狂傲地自称是‘歇洛克·福尔摩斯先生’！与此同时，旅馆传讯称：未穿过的新棕靴被退回，但亨利爵士一只饱含个人体味的旧黑皮靴却被偷换了。\n\n脉络瞬间洞若观火：新靴无气味，偷窃旧靴是为了让一头真正的猎兽熟悉并锁定亨利爵士的体味追踪扑杀！这是一位心思缜密、极度凶残的旗鼓相当的对手。若我大张旗鼓护送亨利爵士前往德文郡，狡狐必将遁入阴影。唯有伪装留守伦敦，让华生作为明盾护卫爵士，而我暗中潜入达特荒原史前石棚营地隐匿布控，方能引蛇出洞一网打尽！", "is_ending": false, "clues": ["对手盗窃旧黑皮靴系为训练实体恶犬嗅觉追踪", "启动达特沼地石棚营地绝密潜伏计划"], "choices": [{"id": "h_dispatch_watson_ahead", "text": "向华生交代保卫守则，派其护卫亨利爵士先行奔赴德文郡，同时暗度陈仓。", "target": "holmes_start", "pov_switch": null, "pov_switch_name": null}, {"id": "h_instruct_cartwright_secret", "text": "密令机敏少年卡特莱购置干粮装备，暗中运送至荒原史前石棚营地作为秘密指挥所。", "target": "holmes_start", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_ch1_london": {"id": "stapleton_ch1_london", "title": "第四章 潜伏伦敦的密谋", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "anchor", "anchor_name": "anchor_chapter1", "content": "戴着精心粘合的浓密假黑胡子和深色平光眼镜，我从南安普敦一路盯梢亨利·巴斯克维尔至伦敦诺桑勃兰旅馆。我那个心慈手软的妻子贝瑟尔妄图用剪自《泰晤士报》的字条向他预警，被我当场察觉并施以惩戒，可惜信件已先行落入邮筒。\n\n在旅馆走廊里，我用半枚金币买通了一个蠢笨的杂役，命他从爵士门外偷出一只皮靴。可那个蠢货竟偷来了一只从未着地的全新浅棕色高筒靴！未穿过的皮革毫无活人体味，如何能用以激发猛兽狂暴的嗅觉追踪？我必须退还废靴，命他换偷一只亨利实际穿过、浸透气味的旧黑皮靴。", "is_ending": false, "clues": ["化名与伪装：浓密假黑须与深色遮光眼镜", "未穿过的棕靴无气味被弃，锁定带有体味的旧黑皮靴"], "choices": [{"id": "s_demand_worn_boot", "text": "威逼利诱旅馆仆役，必须趁乱偷出亨利爵士穿过的那双旧黑皮靴。", "target": "stapleton_ch4_cab", "pov_switch": null, "pov_switch_name": null}, {"id": "s_shadow_baker_street", "text": "雇佣双轮马车，暗中监视亨利爵士与摩梯末医生前往贝克街求援的行踪。", "target": "stapleton_ch4_cab", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_ch4_cab": {"id": "stapleton_ch4_cab", "title": "第五章 2704号马车的较量", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "branch", "anchor_name": null, "content": "我雇下了特拉法尔加广场的2704号双轮马车，命车夫约翰·克雷顿尾随亨利前往贝克街221B。但当那个短小精悍的爵士踏入大门时，一个高瘦、生着鹰钩鼻的敏锐身影赫然步入街面——歇洛克·福尔摩斯！在摄政街的橱窗前，那双令全欧洲罪犯胆寒的灰眼睛猛地刺穿了马车的侧窗玻璃！\n\n我霍地顶开车顶望孔：‘车夫，拼命跑！去滑铁卢车站！甩掉他们我赏你两个金币！’在滑铁卢车站喧嚣的站台，接过浸透雨水的金币时，我忍不住对目瞪口呆的车夫报以狂妄的戏谑：‘回去告诉你所有的朋友，你刚才拉的乘客就是歇洛克·福尔摩斯！’", "is_ending": false, "clues": ["乘坐2704号马车成功从福尔摩斯眼皮底下脱身", "狂妄假报福尔摩斯之名羞辱贝克街名侦探"], "choices": [{"id": "s_take_early_express", "text": "收好取回的沾满气味的旧黑皮靴，搭乘早班大西部特快潜回德文郡大荒原。", "target": "stapleton_ch5_devon_prep", "pov_switch": null, "pov_switch_name": null}, {"id": "s_vanish_in_crowd", "text": "在滑铁卢人潮中曲折回旋，彻底切断贝克街眼线的任何追踪可能。", "target": "stapleton_ch5_devon_prep", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_ch5_devon_prep": {"id": "stapleton_ch5_devon_prep", "title": "第五章 返回大格林盆泥潭", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "anchor", "anchor_name": "anchor_london_mission", "content": "亨利·巴斯克维尔那只穿过的旧黑皮靴，已被我用涂油丝绸妥帖裹好藏在手提箱底。我登上了返回德文郡的特快列车。亨利与那位迟钝的军医华生将在两天后抵达，他们满以为那位伦敦大侦探会在此案中护佑左右，殊不知贝克街已经被我远远甩在了身后。\n\n梅利琵宅邸的戏台已经搭好。大格林盆泥潭深处废弃锡矿棚里的那头混血恶兽，已经整整绝食了两天。只待将这只散发着猎物浓郁气息的旧皮靴送到它涎水淋漓的巨吻之下。", "is_ending": false, "clues": ["已取得沾染亨利爵士体味的旧皮靴供猎犬嗅闻", "梅利琵宅邸陷阱已备，静候华生与爵士到来"], "choices": [{"id": "s_to_mire_kennel", "text": "踏上隐秘的沼泽栈道，前往泥潭孤岛展开恶犬的气味嗜血训练。", "target": "stapleton_start", "pov_switch": null, "pov_switch_name": null}, {"id": "s_to_merripit_prep", "text": "返回梅利琵宅邸彻底威慑贝瑟尔，为年轻爵士的踏入布设致命鸿门宴。", "target": "stapleton_start", "pov_switch": null, "pov_switch_name": null}]}, "watson_start": {"id": "watson_start", "title": "第六章 抵达达特沼地", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "anchor", "anchor_name": "anchor_arrival", "content": "列车在德文郡达特沼地的小站颤抖着停了下来。十月的寒风夹杂着凄清与荒凉，从高耸黝黑的花岗石山岗上呼啸吹来。亨利·巴斯克维尔爵士踏上了石子月台，端正了一下粗花呢猎帽。持枪的骑警在铁道两侧来回巡逻——臭名昭著的逃犯塞尔登刚刚从王子镇大监狱脱逃。\n\n歇洛克·福尔摩斯先生将亨利爵士的安危托付于我。当我们乘坐的双轮敞篷马车向着暮色中阴森对峙的巴斯克维尔双塔疾驰而去时，那片辽阔苍茫的大沼地在眼前伸展开来，宛如一片凝固而沉寂的波涛巨浪。", "is_ending": false, "clues": ["沼地上搜捕逃犯塞尔登的武装卫兵"], "choices": [{"id": "w_to_hall", "text": "直接前往巴斯克维尔庄园，向神色慌乱的总管白瑞摩探询内情。", "target": "watson_baskerville_hall", "pov_switch": null, "pov_switch_name": null}, {"id": "w_to_alley", "text": "先勘察查尔兹爵士猝死的水松夹道与通往沼地的栅门边缘。", "target": "watson_yew_alley", "pov_switch": null, "pov_switch_name": null}, {"id": "w_to_stapleton", "text": "沿着荒原边缘独自行走，前往附近的梅利琵宅邸拜访邻里。", "target": "watson_meet_stapleton", "pov_switch": null, "pov_switch_name": null}]}, "watson_baskerville_hall": {"id": "watson_baskerville_hall", "title": "巴斯克维尔庄园的阴影", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "branch", "anchor_name": null, "content": "巴斯克维尔庄园是一座被常春藤遮蔽的古老花岗石宅邸，到处弥漫着阴暗与霉烂的气息。总管白瑞摩虽以深沉周到的礼数接待了我们，但他那双黑眼睛却闪烁着难以掩饰的局促与心神不宁。午夜时分，长廊深处竟隐隐传来白瑞摩太太压抑而凄凉的抽泣声。\n\n我必须查明白瑞摩夫妇究竟在隐瞒什么，还是应当按照福尔摩斯的叮嘱，前往考姆·特雷西调查查尔兹爵士生前通信的另一端。", "is_ending": false, "clues": ["白瑞摩惊慌失措的神情", "深夜宅邸长廊中的女人哭泣声"], "choices": [{"id": "w_watch_barrymore", "text": "在深夜走廊中设下伏击暗哨，暗中监视白瑞摩鬼祟的夜行举动。", "target": "watson_night_watch", "pov_switch": null, "pov_switch_name": null}, {"id": "w_visit_lyons", "text": "雇佣轻便双轮车前往考姆·特雷西，当面质询那位神秘的劳拉·里昂斯夫人。", "target": "watson_laura_lyons", "pov_switch": null, "pov_switch_name": null}]}, "watson_yew_alley": {"id": "watson_yew_alley", "title": "水松夹道与通往沼地的栅门", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "branch", "anchor_name": null, "content": "水松夹道是一条被十二英尺高茂密水松树篱紧紧围拢的长道，幽深如隧道。在长道的尽头处，一道简陋的小栅门直通那片浩瀚无垠的达特沼地。数月前的深夜，查尔兹爵士曾在此站立良久，弹落了两次雪茄烟灰，随后便陷入狂乱奔逃骤然猝死。\n\n摩梯末医生那令人胆寒的耳语仍在我耳际回响：‘福尔摩斯先生，那地上分明是一只极大的猎狗的爪印！’栅门之外，几丛石楠植物在秋风中瑟瑟发抖，荒原小径蜿蜒伸向致命的大格林盆泥潭深处。", "is_ending": false, "clues": ["栅门处的雪茄烟灰残余", "伸向荒原深处的野草折痕"], "choices": [{"id": "w_alley_to_mire", "text": "穿过水松夹道栅门，顺着荒地小径探向远方的梅利琵宅邸。", "target": "watson_meet_stapleton", "pov_switch": null, "pov_switch_name": null}, {"id": "w_alley_to_hall", "text": "返回庄园主楼，与亨利爵士汇合并筹备今夜的长廊守夜。", "target": "watson_night_watch", "pov_switch": null, "pov_switch_name": null}]}, "watson_meet_stapleton": {"id": "watson_meet_stapleton", "title": "大格林盆泥潭的博物学家", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "branch", "anchor_name": null, "content": "一个身形干练、手持捕蝶网和铁皮标本盒的男子在泥沼旁向我招手。他自称杰克·斯台普吞，梅利琵宅邸的博物学家。正当交谈间，一匹误入沼地的矮种马踏上了那片鲜绿的草皮，仅仅数秒间，沼泥便狂暴地吞噬了马匹的四蹄与脊背，在一阵凄惨的悲鸣中彻底沉没无踪！\n\n‘一步之差便是灭顶之灾，’斯台普吞微笑着说。片刻后，他的胞妹贝瑟尔·斯台普吞小姐仓皇赶来。在浓雾中，她误将我当成了亨利爵士，紧紧抓住我的衣袖，急迫而凄厉地颤声道：‘快回伦敦去！今晚就走，永远别再回来！’", "is_ending": false, "clues": ["大格林盆泥潭吞噬活物的绝险沼径", "贝瑟尔绝望而迫切的警告"], "choices": [{"id": "w_interrogate_beryl", "text": "将斯台普吞小姐拉至岩石旁，追问她这绝望预警的背后缘由。", "target": "watson_beryl_warning", "pov_switch": null, "pov_switch_name": null}, {"id": "w_return_with_caution", "text": "保持警惕，不当着杰克·斯台普吞的面打草惊蛇，折返庄园报告。", "target": "watson_night_watch", "pov_switch": null, "pov_switch_name": null}]}, "watson_beryl_warning": {"id": "watson_beryl_warning", "title": "凄切的低语警告", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "branch", "anchor_name": null, "content": "当斯台普吞小姐得知我是华生医生而非巴斯克维尔继承人时，面色惨白如纸。‘忘掉我刚才说的话吧！’她颤声哀求，眼眸中却翻涌着极度的恐惧，‘我哥哥绝不能知道我同你交谈过。但是危险正在这片沼地上的每一块岩石后潜伏！倘若你在乎亨利爵士的性命，立刻带他逃离此地！’\n\n暮色沉沉降临。我回眸远眺，只见在黑色岩岗那高耸入云的荒凉峰顶上，月华如水，一个孤单高大的黑影正如雕像般迎风屹立，冷冷注视着整座原野。", "is_ending": false, "clues": ["屹立在黑色岩岗顶端的神秘黑影", "贝瑟尔对兄长斯台普吞的极度畏惧"], "choices": [{"id": "w_beryl_to_watch", "text": "火速赶回巴斯克维尔庄园，寸步不离贴身保护亨利爵士。", "target": "watson_night_watch", "pov_switch": null, "pov_switch_name": null}, {"id": "w_scout_the_tor", "text": "攀登乱石嶙峋的花岗石孤峰，查探那位神秘的岩岗窥探者。", "target": "watson_stalk_figure", "pov_switch": null, "pov_switch_name": null}]}, "watson_night_watch": {"id": "watson_night_watch", "title": "西窗上的烛光", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "anchor", "anchor_name": "anchor_convict", "content": "凌晨两点，我和亨利爵士悄无声息地潜行在漆黑的回廊中。总管白瑞摩手持蜡烛伫立在西窗前，向着漆黑一片的荒原打出忽明忽暗的火光信号！在我们严厉逼问下，他痛哭承认：逃犯塞尔登正是白瑞摩太太的亲生胞弟！\n\n就在此刻，夜风中陡然自死寂的沼地深处腾起一声漫长、凄绝、撕心裂肺的狂暴狂吠！那声音在夜空中回荡震颤，不似寻常狼犬，而是充满了地狱恶魔般的狞恶杀气，令听者血凝心悸！", "is_ending": false, "clues": ["白瑞摩利用烛光向逃犯塞尔登报信", "深夜原野上那声毛骨悚然的狂吠"], "choices": [{"id": "w_pursue_moor", "text": "拔出左轮手枪，同亨利爵士冲入黑夜沼地，循着烛火信号追踪逃犯。", "target": "watson_moor_pursuit", "pov_switch": null, "pov_switch_name": null}, {"id": "w_track_watcher", "text": "将逃犯留待警方搜捕，集中精力暗查岩岗顶峰那位行踪莫测的监视者。", "target": "watson_stalk_figure", "pov_switch": null, "pov_switch_name": null}]}, "watson_moor_pursuit": {"id": "watson_moor_pursuit", "title": "荒原石丘上的追击", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "branch", "anchor_name": null, "content": "冰冷的雨丝刺痛了我和亨利爵士的脸颊。在忽明忽灭的闪电与微弱月光下，我们窥见了逃犯塞尔登那犹如野兽般粗犷凶狞的面孔。亨利爵士举枪射击，子弹在花岗岩上迸出火花，逃犯敏捷如猿猴般没入了犬牙交错的巨石阵中。\n\n我猛然抬头望向穿破云层的皓月——在不远处的尖耸石岗之巅，赫然伫立着另一个神秘人！那人身形消瘦修长，披着深色斗篷，双手抱臂，以君临大地般冷静深邃的目光俯瞰着这场惊心动魄的夜猎。", "is_ending": false, "clues": ["石岗顶峰那黑影身姿颀长，神态镇定从容"], "choices": [{"id": "w_follow_second_man", "text": "攀上陡峭的山岩，顺着脚印搜查那黑影落脚的史前石屋巢穴。", "target": "watson_stalk_figure", "pov_switch": null, "pov_switch_name": null}, {"id": "w_switch_to_holmes", "text": "【转换视角：切换至歇洛克·福尔摩斯在荒原石屋中的行动】", "target": "holmes_hut_interior", "pov_switch": "holmes", "pov_switch_name": "歇洛克·福尔摩斯"}]}, "watson_stalk_figure": {"id": "watson_stalk_figure", "title": "史前石屋中的窥探", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "branch", "anchor_name": null, "content": "我小心翼翼地攀上远古不列颠人遗留下的圆形石屋。屋内避风处铺着粗呢毯子，摆放着面包与牛舌肉罐头。在一块平整的花岗石板上，赫然躺着一枚抽剩的香烟蒂——上面清晰印着‘牛津街布莱德雷商店’字样！旁边还有一张铅笔草签：‘华生医生已前往考姆·特雷西。’\n\n门口光线陡然暗了下来。一具高挑的身影投射在石壁之上，一只手静静搭在石门框边。", "is_ending": false, "clues": ["布莱德雷商店的精制烟头", "记录着华生行踪的侦查便条"], "choices": [{"id": "w_wait_gun_drawn", "text": "扳开左轮手枪机头，厉声喝令来者举起双手投降！", "target": "watson_hut_reunion", "pov_switch": null, "pov_switch_name": null}, {"id": "w_flank_hut", "text": "侧身滑出石屋死角，自乱石背侧包抄伏击来客！", "target": "holmes_moor_ambush", "pov_switch": null, "pov_switch_name": null}]}, "watson_laura_lyons": {"id": "watson_laura_lyons", "title": "劳拉·里昂斯夫人的秘密", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "branch", "anchor_name": null, "content": "在考姆·特雷西，神色凄楚的劳拉·里昂斯夫人在我严词追问下掩面痛哭：‘是杰克·斯台普吞！是他指使我给查尔兹爵士写信，约他深夜在水松夹道栅门相会资助我的离婚官司！可到了最后一刻，他却严厉勒令我绝不可赴约，声称他自己会妥善料理一切……’\n\n真相犹如霹雳般在我脑海中炸裂！查尔兹爵士是在斯台普吞蓄意诱导的约会中，迎面遭遇了那头恶魔巨兽！", "is_ending": false, "clues": ["斯台普吞指使诱骗查尔兹爵士夜赴死地的铁证"], "choices": [{"id": "w_lyons_to_hut", "text": "火速折回原野寻找那位神秘隐士，合力揭发斯台普吞的弑亲毒计。", "target": "watson_hut_reunion", "pov_switch": null, "pov_switch_name": null}, {"id": "w_lyons_confront_stapleton", "text": "直接赶往梅利琵宅邸，赶在斯台普吞再次行凶前当面撕下其伪善假面！", "target": "watson_direct_confrontation", "pov_switch": null, "pov_switch_name": null}]}, "watson_hut_reunion": {"id": "watson_hut_reunion", "title": "荒原石屋的重逢", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "branch", "anchor_name": null, "content": "门外传来一个平静、亲切而带着戏谑的声音：‘多么美好的傍晚啊，我亲爱的华生！你真的不该坐在离洞口这么近的地方，你的影子早在五十码外就出卖了你。’\n\n我目瞪口呆地垂下手枪。走进石屋的竟是歇洛克·福尔摩斯先生！他目光如炬，清瘦从容，嘴角挂着熟悉的微笑。‘华生，我潜伏在沼地，正是为了让斯台普吞误以为我远在伦敦！法网已经收紧，今晚亨利爵士将赴梅利琵宅邸赴宴，决战时刻到了！’", "is_ending": false, "clues": ["歇洛克·福尔摩斯早已亲临达特沼地实地指挥"], "choices": [{"id": "w_reunion_to_dinner", "text": "与苏格兰场警官雷斯垂德汇合，在梅利琵宅邸外设下包围圈。", "target": "holmes_merripit_dinner", "pov_switch": "holmes", "pov_switch_name": "歇洛克·福尔摩斯"}, {"id": "w_take_vantage", "text": "潜伏至梅利琵宅邸餐厅窗外的花岗岩石块后，严密监视室内动静。", "target": "watson_climax_vigil", "pov_switch": null, "pov_switch_name": null}]}, "watson_direct_confrontation": {"id": "watson_direct_confrontation", "title": "梅利琵宅邸的不期而遇", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "branch", "anchor_name": null, "content": "我孤身一人赶至梅利琵宅邸。斯台普吞迎入客厅，脸上的假笑紧绷而抽搐。院落后方一间废弃的外屋中，陡然传来一声低沉雄浑、令人骨髓发冷的闷雷般犬吠，连地板都微微震颤。斯台普吞的手指缓缓滑向了身旁那柄沉重的手杖。\n\n‘华生医生，您似乎心神不宁，’他柔声细语，‘不如随我去后院观赏一下新采集的飞蛾标本？’", "is_ending": false, "clues": [], "choices": [{"id": "w_force_outhouse", "text": "拔出手枪，强行勒令斯台普吞交出后院锁闭外屋的钥匙！", "target": "watson_hound_early_release", "pov_switch": null, "pov_switch_name": null}, {"id": "w_feign_retreat", "text": "托辞亨利爵士有紧急传话，假装告退，迅速向外围的福尔摩斯报信。", "target": "watson_climax_vigil", "pov_switch": null, "pov_switch_name": null}]}, "watson_climax_vigil": {"id": "watson_climax_vigil", "title": "沼地白雾中的警戒", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "anchor", "anchor_name": "anchor_climax", "content": "我屏息蹲伏在梅利琵宅邸餐厅窗外的石块后。透过微启的窗帘，我看到亨利爵士与斯台普吞正相对对饮，斯台普吞频频查看着金表。\n\n然而屋外正发生着一场致命的灾难：一堵浓重冰凉的惨白色雾墙，正自大格林盆泥潭方向汹涌滚滚翻腾而来！不出五分钟，整个回返庄园的小径就会被浓雾彻底吞没。倘若视线完全受阻，我们便根本无法拦截即将来袭的凶兽！", "is_ending": false, "clues": ["自大格林盆泥潭吞没道路的浓烈地表死雾"], "choices": [{"id": "w_signal_holmes", "text": "立即向岩岗后的福尔摩斯与雷斯垂德发出紧急射击预警信号！", "target": "climax_fog_advance", "pov_switch": null, "pov_switch_name": null}, {"id": "w_storm_house", "text": "踢破餐厅大门，赶在亨利爵士踏出房门之前将他当场救出！", "target": "ending_watson_heroic", "pov_switch": null, "pov_switch_name": null}]}, "watson_hound_early_release": {"id": "watson_hound_early_release", "title": "恶犬破笼而出", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "branch", "anchor_name": null, "content": "斯台普吞狞笑着扭转了铁锁！厚重的木门轰然弹开！一头宛如来自地狱最深处的恐怖造物狂跃而出——一头体型极其庞大的黑犬，全身上下烈焰蒸腾，嘴角淌着幽蓝的荧光，张开血盆大口直扑我的喉咙！", "is_ending": false, "clues": [], "choices": [{"id": "w_stand_and_fire", "text": "扎稳马步，瞄准那燃烧着荧光的胸膛连扣扳机！", "target": "ending_watson_heroic", "pov_switch": null, "pov_switch_name": null}, {"id": "w_dodge_for_cover", "text": "扑倒在花岗石矮墙背后，等待山梁上福尔摩斯精准致命的步枪支援！", "target": "ending_canon", "pov_switch": null, "pov_switch_name": null}]}, "holmes_start": {"id": "holmes_start", "title": "石屋中的侦探", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "anchor", "anchor_name": "anchor_arrival", "content": "冰冷粗粝的史前石屋已做为我的秘密指挥所整整三天。华生以为我仍在伦敦贝克街。若他得知我的行踪，以他忠厚热忱的天性必会频繁与我联络，那狡猾的对手势必闻风遁形。\n\n小车夫卡特莱特悄然从考姆·特雷西为我运来面包与衣物。在诺桑勃兰旅馆被窃的两只鞋子是全案的枢纽——第一只全新的黄皮鞋因毫无气味而被弃；第二只旧黑皮鞋饱含亨利爵士的个人体味被窃贼盗走。凶手饲养着一头活生生的嗜血猎犬，且正在用气味对它进行严苛训练。", "is_ending": false, "clues": ["利用被盗旧皮鞋进行猎犬气味追踪训练的严密阴谋"], "choices": [{"id": "h_analyze_boot", "text": "在显微镜下化验泥潭芦苇刮下的荧光化学涂料残渍。", "target": "holmes_chemical_analysis", "pov_switch": null, "pov_switch_name": null}, {"id": "h_telescope_moor", "text": "用袖珍蔡司望远镜监视巴斯克维尔庄园与梅利琵宅邸的动静。", "target": "holmes_moor_surveillance", "pov_switch": null, "pov_switch_name": null}, {"id": "h_intercept_cartwright", "text": "接见小报童卡特莱特，详阅华生医生每日送达的侦查手记。", "target": "holmes_read_reports", "pov_switch": null, "pov_switch_name": null}]}, "holmes_chemical_analysis": {"id": "holmes_chemical_analysis", "title": "荧光化学试剂的分析", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "branch", "anchor_name": null, "content": "在我的便携化学试验包中，从格林盆泥潭枯草上取下的涂料成分昭然若揭：这是一种经由特殊石蜡调和的无味磷光制剂！由于完全隔绝了异味，它既不会干扰猎犬敏锐的嗅觉，又能在漆黑的深夜中发出令人魂飞魄散的耀眼蓝白荧火！\n\n将古老诅咒赋予血肉实体的，是一位智力绝顶、精通动物学的非凡凶徒。在这片荒原之上，究竟何人既懂科学，又对巴斯克维尔庞大遗产虎视眈眈？", "is_ending": false, "clues": ["不伤及猎犬嗅觉的特殊调配无味磷光化合物"], "choices": [{"id": "h_research_ancestry", "text": "追查巴斯克维尔家族族谱中流亡美洲的分支血脉。", "target": "holmes_ancestral_clue", "pov_switch": null, "pov_switch_name": null}, {"id": "h_scout_mire_island", "text": "趁着暮色苍茫，沿着泥潭暗桩摸入泥沼中央孤岛侦察犬舍。", "target": "holmes_mire_recon", "pov_switch": null, "pov_switch_name": null}]}, "holmes_moor_surveillance": {"id": "holmes_moor_surveillance", "title": "望远镜下的沼地", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "branch", "anchor_name": null, "content": "高倍望远镜将原野上的纤毫毕现展现在我眼前。斯台普吞手持捕蝶网穿行在大格林盆泥潭边缘，其落足步伐异乎寻常地精准——常人陷足立毙的泥泞，他竟如履平地。\n\n华生正在接近他。那位所谓的胞妹贝瑟尔急促奔出，神情激愤，手势极其决绝。那不是寻常的兄妹口角——她在警告华生！这个女人是被胁迫的从犯，心怀良知与绝望。", "is_ending": false, "clues": ["隐匿于大格林盆泥潭中的柳木寻路暗桩"], "choices": [{"id": "h_surveillance_to_mire", "text": "勘测斯台普吞插在泥潭死地中的秘密柳木标记残桩。", "target": "holmes_mire_recon", "pov_switch": null, "pov_switch_name": null}, {"id": "h_surveillance_to_reports", "text": "返回石屋基地，批阅华生自庄园送达的第一手调查文报。", "target": "holmes_read_reports", "pov_switch": null, "pov_switch_name": null}]}, "holmes_read_reports": {"id": "holmes_read_reports", "title": "华生医生的情报信件", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "branch", "anchor_name": null, "content": "华生展现了出色的观察力。他记录了白瑞摩的烛火暗号并锁定了越狱犯塞尔登。更为关键的是，他查出查尔兹爵士临死当夜约见的女子缩写为‘L.L.’。\n\n经我调取教区档案，此人正是考姆·特雷西的劳拉·里昂斯夫人！而全额出资为她聘请律师办理离婚手续的幕后善人，正是这位看似甘于清贫的斯台普吞！", "is_ending": false, "clues": ["斯台普吞暗中掌控劳拉·里昂斯的资金流水"], "choices": [{"id": "h_investigate_ancestry", "text": "前往庄园长廊深研巴斯克维尔历代祖先画像的骨骼面相。", "target": "holmes_ancestral_clue", "pov_switch": null, "pov_switch_name": null}, {"id": "h_observe_night_chase", "text": "夜幕低垂时登临黑色岩岗，暗中俯瞰围捕塞尔登的战局。", "target": "holmes_figure_on_tor", "pov_switch": null, "pov_switch_name": null}]}, "holmes_ancestral_clue": {"id": "holmes_ancestral_clue", "title": "雨果·巴斯克维尔的画像", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "branch", "anchor_name": null, "content": "巴斯克维尔庄园餐厅墙上的古老画像解开了一切谜团！当我用手掌遮掩住凶暴的雨果爵士头上的卷发与宽檐帽，画中那副阴险、贪婪而冷酷的面孔，竟然与杰克·斯台普吞分毫不差！\n\n他正是查尔兹爵士亡故的三弟罗杰·巴斯克维尔在南美洲所生的私生子！他化名凡德勒潜回英国，只要查尔兹与亨利相继暴亡，他就是这百万镑豪门家产毫无争议的法定第一继承人！", "is_ending": false, "clues": ["斯台普吞正是罗杰·巴斯克维尔的亲子与合法继承人"], "choices": [{"id": "h_summon_lestrade", "text": "火速电召苏格兰场雷斯垂德警官携正式拘捕令赶赴德文郡！", "target": "holmes_merripit_dinner", "pov_switch": null, "pov_switch_name": null}, {"id": "h_reunion_with_watson", "text": "在荒原石屋等候华生归来，向他彻底揭开全盘阴谋。", "target": "watson_hut_reunion", "pov_switch": "watson", "pov_switch_name": "约翰·H·华生医生"}]}, "holmes_figure_on_tor": {"id": "holmes_figure_on_tor", "title": "黑色岩岗上的身影", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "anchor", "anchor_name": "anchor_convict", "content": "黑色岩岗之上，狂风如长号哀鸣。山谷深处，巴斯克维尔庄园的窗前闪过一豆烛火，随后传来两人围堵塞尔登的枪声。刹那间，那声令人血液冻结的恐怖咆哮骤然在死寂的沼地上空炸响！\n\n在我脚下的乱石岗中，亡命狂奔的塞尔登身上，竟然穿着白瑞摩赠予他的亨利爵士旧粗呢猎装！那头习惯以气味辨认目标的恶犬一旦捕获气味，定会将他当成亨利爵士生生撕碎！", "is_ending": false, "clues": [], "choices": [{"id": "h_race_to_selden", "text": "飞身跃下石崖，赶在巨犬撕咬前拦截凶案发生！", "target": "holmes_selden_crisis", "pov_switch": null, "pov_switch_name": null}, {"id": "h_slip_back_to_hut", "text": "悄然潜回石屋基地，在行踪彻底暴露前同华生汇合。", "target": "holmes_hut_interior", "pov_switch": null, "pov_switch_name": null}, {"id": "h_switch_to_stapleton", "text": "【转换视角：切换至杰克·斯台普吞操控恶犬的暗夜现场】", "target": "stapleton_moor_night", "pov_switch": "stapleton", "pov_switch_name": "杰克·斯台普吞"}]}, "holmes_selden_crisis": {"id": "holmes_selden_crisis", "title": "绝壁下的惨剧", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "branch", "anchor_name": null, "content": "一声惨绝人寰的尖叫撕裂了夜空，伴随着骨骼撞击坚硬岩石的沉闷钝响。我飞奔至峭壁下方，塞尔登横尸于乱石丛中，颅骨粉碎。石楠草丛间还弥漫着浓烈的硫磺与磷化物气味。\n\n一阵轻微脚步声自雾中传来，斯台普吞手提马灯急匆匆拨开草丛——他满怀期待，以为倒在血泊中的正是亨利爵士！", "is_ending": false, "clues": [], "choices": [{"id": "h_confront_stapleton_now", "text": "当场撕下伪装，当面对质指控其杀人罪行！", "target": "ending_holmes_master_deduction", "pov_switch": null, "pov_switch_name": null}, {"id": "h_play_the_fool", "text": "假称这只是一场越狱犯失足坠崖的醉汉意外，将他诱入梅利琵晚宴法网。", "target": "holmes_merripit_dinner", "pov_switch": null, "pov_switch_name": null}]}, "holmes_hut_interior": {"id": "holmes_hut_interior", "title": "侦探的荒原庇护所", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "branch", "anchor_name": null, "content": "我踏入史前石屋，立刻察觉到了外人留下的痕迹。布莱德雷香烟的余温尚未散尽，门前横石后潜伏着一个紧握左轮的熟悉身影——正是我的老朋友华生！\n\n我以愉快的招呼化解了他的戒备。我们彻夜梳理了全盘案情：被盗的鞋子、磷光制剂以及斯台普吞血统的最终证据。", "is_ending": false, "clues": [], "choices": [{"id": "h_hut_to_dinner", "text": "为明晚梅利琵宅邸晚宴布下苏格兰场致命杀局！", "target": "holmes_merripit_dinner", "pov_switch": null, "pov_switch_name": null}, {"id": "h_hut_to_mire_recon", "text": "连夜潜行，对大格林盆泥潭中的凶手密窟实施特种侦察。", "target": "holmes_mire_recon", "pov_switch": null, "pov_switch_name": null}]}, "holmes_moor_ambush": {"id": "holmes_moor_ambush", "title": "石屋外的机警识破", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "branch", "anchor_name": null, "content": "我在乱石之后微笑着截住了试图绕后包抄的华生。‘相当出色的战术迂回，我的好华生，’我走出阴影笑道，‘不过在盯梢一名咨询侦探时，最好别踩碎脚下的枯石楠。’\n\n华生欣喜若狂地紧紧握住我的双手。潜伏帷幕就此拉开，反击的号角已经吹响。", "is_ending": false, "clues": [], "choices": [{"id": "h_ambush_to_dinner", "text": "向华生部署决战方案，集结警力赶往梅利琵宅邸外围布控。", "target": "holmes_merripit_dinner", "pov_switch": null, "pov_switch_name": null}]}, "holmes_mire_recon": {"id": "holmes_mire_recon", "title": "泥潭孤岛上的犬舍", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "branch", "anchor_name": null, "content": "循着隐没在污泥中的柳木细枝，我涉足深不可测的大格林盆泥潭。在一座长满芦苇的荒凉泥炭孤岛上，残存着一座废弃锡矿工棚。在锈迹斑斑的铁链束缚下，一头混杂着寻血猎犬与马士提夫獒犬血统的庞然巨兽正呲牙低吼，凶残饥渴！\n\n在它的锁链旁，赫然扔着亨利爵士失窃的那只黑色旧皮鞋。", "is_ending": false, "clues": [], "choices": [{"id": "h_recon_to_dinner", "text": "悄然撤出，在行凶预定现场梅利琵宅邸外设网全歼！", "target": "holmes_merripit_dinner", "pov_switch": null, "pov_switch_name": null}, {"id": "h_recon_strike_now", "text": "不等凶手行动，即刻率领警力突击泥潭孤岛人赃并获！", "target": "ending_holmes_master_deduction", "pov_switch": null, "pov_switch_name": null}]}, "holmes_merripit_dinner": {"id": "holmes_merripit_dinner", "title": "梅利琵宅邸外的伏击", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "anchor", "anchor_name": "anchor_climax", "content": "苏格兰场的雷斯垂德警官已与华生和我并肩埋伏在距梅利琵宅邸五十码的花岗石低脊后。亨利爵士已与斯台普吞用罢晚膳，正孤身步入漆黑的荒原小径准备返程。\n\n然而自南面泥潭深处，一堵遮天蔽日的厚重白雾正如决堤般滚滚袭来，迅猛抹平了眼前的整条归途！再过五分钟，我们的射界将荡然无存！", "is_ending": false, "clues": [], "choices": [{"id": "h_hold_fire", "text": "原地隐蔽固守，屏息等待那头恶兽撞入近距有效火网！", "target": "climax_fog_advance", "pov_switch": null, "pov_switch_name": null}, {"id": "h_charge_forward", "text": "果断前插冲入浓雾，赶在恶犬扑咬前切入亨利爵士身前！", "target": "climax_fog_advance", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_start": {"id": "stapleton_start", "title": "梅利琵宅邸的毒网", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "anchor", "anchor_name": "anchor_arrival", "content": "查尔兹爵士已长眠地下，正如我精密设计的那样，被猎犬的狂吠活活吓死在水松夹道栅门前。如今新继承人亨利爵士来到了德文郡。他只带了一个平庸迟钝的退役军医华生，而大名鼎鼎的福尔摩斯却在伦敦作茧自缚。\n\n一百万镑巨额遗产与巴斯克维尔庄园的古老荣耀近在咫尺。只要解决掉亨利，我便能以南美洲侨民凡德勒的身份，合法认领这片富庶的祖产！", "is_ending": false, "clues": ["斯台普吞对巴斯克维尔百万遗产的法定继承主张"], "choices": [{"id": "s_scout_watson", "text": "手提捕蝶网，在格林盆泥潭边缘‘偶遇’初来乍到的华生医生。", "target": "stapleton_moor_stroll", "pov_switch": null, "pov_switch_name": null}, {"id": "s_check_hound", "text": "涉险潜入泥潭荒岛，检查恶犬的饥饿状态与气味记忆。", "target": "stapleton_check_hound", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_moor_stroll": {"id": "stapleton_moor_stroll", "title": "伪装温和的博物学家", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "branch", "anchor_name": null, "content": "我将谦逊和蔼的昆虫学者扮演得惟妙惟肖。为了让华生亲眼见识泥潭的恐怖，我冷漠地指着一匹泥足深陷的马驹在绝望嘶鸣中沉没。可就在此时，贝瑟尔竟如疯癫般从石楠中冲出！她误将华生当做亨利爵士，歇斯底里地发出预警！\n\n这愚蠢而叛逆的女人若敢毁掉我数年心血，我决不吝惜彻底剥夺她的自由。", "is_ending": false, "clues": [], "choices": [{"id": "s_chastise_beryl", "text": "闭门严惩贝瑟尔，彻底击垮她的反抗意图。", "target": "stapleton_beryl_control", "pov_switch": null, "pov_switch_name": null}, {"id": "s_charm_watson", "text": "对贝瑟尔的反常举动巧言掩饰，用沼泽植被学说引开华生注意力。", "target": "stapleton_deceive_watson", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_check_hound": {"id": "stapleton_check_hound", "title": "泥潭锡矿里的巨兽", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "branch", "anchor_name": null, "content": "我轻车熟路地踩着隐秘草甸来到废弃锡矿棚。铁链哗哗作响，嗜血巨兽喉中翻滚着嗜杀的闷雷。我将亨利爵士那只带有浓重足部汗渍的黑色旧皮鞋死死按在它的鼻孔前，直到涎水湿透它的獠牙。\n\n石蜡磷光糊已经熬制完毕——无色无味，在黑夜中能释放出令迷信懦夫神智崩塌的幽蓝烈焰。", "is_ending": false, "clues": ["已完成气味锁定与荧光涂饰的恶魔猎犬"], "choices": [{"id": "s_apply_phosphor", "text": "将发光磷糊浓墨重彩地涂抹在巨犬的吻部与眼窝四周。", "target": "stapleton_phosphor_prep", "pov_switch": null, "pov_switch_name": null}, {"id": "s_plan_dinner", "text": "返回梅利琵宅邸，亲赴庄园邀请亨利爵士参加最后的鸿门宴。", "target": "stapleton_invite_henry", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_beryl_control": {"id": "stapleton_beryl_control", "title": "囚禁叛逆的妻子", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "branch", "anchor_name": null, "content": "在锁死的寝室中，贝瑟尔泪流满面却目光坚定。她断然拒绝继续扮演胞妹替我诱惑亨利。‘杰克，你是一个地狱里爬出来的恶魔！’她尖叫道。\n\n那又何妨？一束结实的麻绳与一块毛巾足以买下整个夜晚的绝对安宁。在她吐露只字片语之前，一切都将尘埃落定。", "is_ending": false, "clues": [], "choices": [{"id": "s_bind_now", "text": "将贝瑟尔牢牢绑死在黄铜床柱上并堵住嘴唇，专心布置晚宴。", "target": "stapleton_bind_beryl", "pov_switch": null, "pov_switch_name": null}, {"id": "s_patrol_tors", "text": "在晚宴前巡视荒原花岗石岗，清除任何潜藏的不安定因素。", "target": "stapleton_search_tors", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_deceive_watson": {"id": "stapleton_deceive_watson", "title": "试探华生医生的虚实", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "branch", "anchor_name": null, "content": "在梅利琵宅邸的午茶桌上，我试探性地打听福尔摩斯的近况。华生坚称大侦探正忙于伦敦的一桩公款侵吞大案。但他游移不定的眼神却屡次瞟向黑色岩岗方向。\n\n难道那些史前石屋中潜伏着来自伦敦的不速之客？午后我确曾注意到石堆中升起了一缕淡淡的青烟。", "is_ending": false, "clues": [], "choices": [{"id": "s_investigate_hut", "text": "携带卡宾枪登上山岗，清查史前石屋深处的秘密。", "target": "stapleton_search_tors", "pov_switch": null, "pov_switch_name": null}, {"id": "s_ignore_smoke", "text": "将其视作寻常放牧者或逃犯，毫不动摇地推进亨利爵士的晚宴刺杀计划。", "target": "stapleton_invite_henry", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_phosphor_prep": {"id": "stapleton_phosphor_prep", "title": "地狱般的发光巨犬", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "branch", "anchor_name": null, "content": "发光膏料在黑暗中散发出幽绿而冰冷的光辉。在这废弃的泥潭矿棚里，这头猛兽犹如直接脱胎于但丁神曲中的幽冥守卫！没有任何凡人的心脏能经受得住这等魔怪迎面扑咬而不当场骤停！\n\n大局已定。只待亨利爵士踏入这片夜黑风高的无情原野。", "is_ending": false, "clues": [], "choices": [{"id": "s_phosphor_to_bind", "text": "锁闭矿棚，折回宅邸将贝瑟尔五花大绑彻底封口。", "target": "stapleton_bind_beryl", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_search_tors": {"id": "stapleton_search_tors", "title": "岩岗上的一缕青烟", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "branch", "anchor_name": null, "content": "我举起野战双筒镜远眺黑色岩岗。在圆形石屋门前，一个小信使正在卸下新鲜面包与罐头。屋里住着一个极其冷酷、作息规律、纪律森严的人！\n\n倘若是伦敦来的暗探，就必须在今夜与华生合流之前彻底灭口！", "is_ending": false, "clues": [], "choices": [{"id": "s_hound_the_hut", "text": "夜间将恶犬引向石屋方向，率先拔除这颗致命钉子！", "target": "stapleton_attack_hut", "pov_switch": null, "pov_switch_name": null}, {"id": "s_proceed_with_henry", "text": "亨利爵士才是真正的遗产关键，不必节外生枝，按时赴宴！", "target": "stapleton_invite_henry", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_moor_night": {"id": "stapleton_moor_night", "title": "追捕逃犯的黑夜", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "anchor", "anchor_name": "anchor_convict", "content": "今夜原野上呼喊四起，华生与亨利正在山野围堵逃犯。我抓住这天赐良机，循着亨利皮鞋的气味放出了猎犬！\n\n巨兽在狰狞的花岗岩悬崖上将猎物逼上绝路，伴随着一声撕心裂肺的惊呼，一个人影坠落悬崖！我欣喜若狂地提着马灯上前验尸——然而横陈在泥泞中的，竟然是穿着亨利旧衣服的越狱犯塞尔登！", "is_ending": false, "clues": [], "choices": [{"id": "s_salvage_plan", "text": "痛斥失误，迅速遁入黑暗，赶在华生抵达前邀请亨利明晚赴宴弥补战机！", "target": "stapleton_invite_henry", "pov_switch": null, "pov_switch_name": null}, {"id": "s_panic_escape", "text": "恐惧暴露！带上金条潜入大格林盆泥潭密径仓皇出逃！", "target": "ending_stapleton_tragedy", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_attack_hut": {"id": "stapleton_attack_hut", "title": "突袭石屋的伏击", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "branch", "anchor_name": null, "content": "我驱使发光恶犬扑向史前石屋。然而就在巨犬腾空的刹那，乱石堆中轰然爆出一声枪响！子弹贯穿恶犬前肩，怪物痛嗥着窜入荒原。而在浓烟散去之处，歇洛克·福尔摩斯手持左轮冷峻走出！", "is_ending": false, "clues": [], "choices": [{"id": "s_run_for_mire", "text": "掉头拼死狂奔，逃向大格林盆泥潭深处的绝命泥炭孤岛！", "target": "ending_stapleton_tragedy", "pov_switch": null, "pov_switch_name": null}, {"id": "s_surrender_holmes", "text": "弃械跪地，举手向神探福尔摩斯投降以求免死审判。", "target": "ending_stapleton_arrest", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_bind_beryl": {"id": "stapleton_bind_beryl", "title": "紧锁门扉的晚宴准备", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "branch", "anchor_name": null, "content": "我强行将贝瑟尔拖上二楼阁楼，绳索深嵌进她的手腕，丝巾死死堵住了她的嘴。她眼眸中燃烧着刻骨仇恨，却再也吐不出半句预警之词。\n\n楼下沉重的门环响起，亨利·巴斯克维尔爵士已欣然踏入这致命的温床。", "is_ending": false, "clues": [], "choices": [{"id": "s_host_dinner", "text": "整理西服领结，挂上无比亲切温厚的笑容下楼迎接尊客。", "target": "stapleton_dinner_trap", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_invite_henry": {"id": "stapleton_invite_henry", "title": "致命的晚宴邀请", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "branch", "anchor_name": null, "content": "亨利爵士欣喜若狂地接受了我前往梅利琵宅邸共进晚餐的邀请。他渴望见到贝瑟尔。我热情地劝说他在餐后独自步行穿过荒原返回庄园，‘德文郡干冽的夜风最能舒缓神经’。\n\n现在我必须赶在开席前彻底封死贝瑟尔的喉舌。", "is_ending": false, "clues": [], "choices": [{"id": "s_bind_beryl_now", "text": "立刻上楼将贝瑟尔结结实实捆绑封喉锁入阁楼！", "target": "stapleton_bind_beryl", "pov_switch": null, "pov_switch_name": null}]}, "stapleton_dinner_trap": {"id": "stapleton_dinner_trap", "title": "梅利琵宅邸的最后晚餐", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "anchor", "anchor_name": "anchor_climax", "content": "晚餐顺利得无懈可击。亨利大口啜饮着波尔多红酒，仅仅对我托称贝瑟尔‘偏头痛发作’流露出一丝遗憾。夜里十点，他提起手杖告辞，独自踏入了漆黑空旷的原野。\n\n大格林盆泥潭正配合地吐出一片铺天盖地的惨白色浓雾——这道雾墙将窒息他的一切惨叫，并致盲任何可能的救援！我悄无声息地溜向后院，拔出了外屋的铁插销！", "is_ending": false, "clues": [], "choices": [{"id": "s_release_beast", "text": "推开厚重木门，放出全身烈焰滚滚的地狱巨犬追踪撕咬！", "target": "climax_fog_advance", "pov_switch": null, "pov_switch_name": null}, {"id": "s_switch_to_watson", "text": "【转换视角：切换至窗外岩石后隐蔽监视的华生医生】", "target": "watson_climax_vigil", "pov_switch": "watson", "pov_switch_name": "约翰·H·华生医生"}]}, "climax_fog_advance": {"id": "climax_fog_advance", "title": "巴斯克维尔的猎犬现身", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "climax", "anchor_name": "anchor_climax", "content": "自那翻腾咆哮的白雾深处，传来了急促刺耳的爪甲踏地声与低沉欲裂的嗜血咆哮！突然间，跃破白雾帐幔的，竟是一头只能在但丁神曲最深噩梦中出现的恐怖巨兽！一头巨大如牛犊的纯黑猛犬，张开的大口吞吐着熊熊烈火，双眼跳动着诡异的蓝白磷火，整个吻部与额顶都勾勒在灼热的发光雾霭之中！\n\n亨利爵士发出绝望惨叫，仰面跌翻在草甸之上，巨兽凌空跃起，獠牙直指他的喉管！", "is_ending": false, "clues": [], "choices": [{"id": "climax_shoot_beast", "text": "福尔摩斯、华生与雷斯垂德同时扣动扳机，爆发出雷鸣般的轮番齐射！", "target": "ending_canon", "pov_switch": null, "pov_switch_name": null}, {"id": "climax_watson_shield", "text": "华生挺身飞扑而出，用自己的血肉之躯在恶犬身下护住亨利爵士！", "target": "ending_watson_heroic", "pov_switch": null, "pov_switch_name": null}, {"id": "climax_fog_blind", "text": "惨白的地表死雾瞬间遮蔽了准星，子弹全部盲目地擦空射入泥浆！", "target": "ending_stapleton_triumph", "pov_switch": null, "pov_switch_name": null}]}, "ending_canon": {"id": "ending_canon", "title": "正典结局：恶犬伏诛，泥潭吞没主谋", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "ending", "anchor_name": null, "content": "五颗左轮子弹如雷霆般尽数灌入了恶犬的胸腔与侧腹。在凄厉欲绝的濒死长嗥中，那头磷光怪物轰然栽倒在地，抽搐数下后彻底毙命。\n\n亨利爵士虽惊魂未定，却毫发无伤。我们踹开梅利琵宅邸顶楼的密门，解救了伤痕累累的贝瑟尔。她指着外面的绝地哭喊道：‘他逃向大格林盆泥潭深处的孤岛了！’\n\n翌日清晨，在达特沼地的秋阳下，我和华生循着残存的柳桩搜寻至泥潭中央。在散发着恶臭的黑浆之上，仅有一只亨利爵士失窃的旧黑鞋浮在水面。而杰克·斯台普吞留在世间的最后痕迹，仅仅是一个深深滑入冰冷油腻污泥中的鞋跟印。\n\n在那不见天日的大格林盆泥潭最深处，恶魔巨犬的主谋永远长眠于永恒的恶臭黑沼之下。", "is_ending": true, "clues": [], "choices": []}, "ending_watson_heroic": {"id": "ending_watson_heroic", "title": "华生英勇制敌：医生的荣耀时刻", "pov": "watson", "pov_name": "约翰·H·华生医生", "node_type": "ending", "anchor_name": null, "content": "在这生死攸关的千钧一发之际，我以当年阿富汗战场的豪勇挺身而出，将左轮枪管死死顶入巨犬满是磷火的咽喉，连开三枪将其当场击毙！\n\n瞥见浓雾中一道黑影狂窜，我飞身穷追不舍，在废弃采石场的悬崖死角，用枪口将两手空空的斯台普吞逼入绝境，直到气喘吁吁的福尔摩斯与雷斯垂德携手铐飞奔赶来！\n\n‘干得漂亮，华生！’福尔摩斯紧紧拍着我的肩膀，眼中闪烁着无上赞许，‘这不仅是勇气的杰作，更是大不列颠军医的至高荣誉！’巴斯克维尔的百年诅咒，就此在华生医生的枪火中化为尘埃！", "is_ending": true, "clues": [], "choices": []}, "ending_holmes_master_deduction": {"id": "ending_holmes_master_deduction", "title": "福尔摩斯缜密推演：法网难逃", "pov": "holmes", "pov_name": "歇洛克·福尔摩斯", "node_type": "ending", "anchor_name": null, "content": "怀揣着被窃的旧皮鞋、化验出的磷光毒物配方以及南美领事馆调出的血缘证明，我在斯台普吞尚未及放出恶犬之前，便以无可辩驳的证据链当场剥夺了他的一切侥幸。\n\n雷斯垂德警官将冰冷的钢手铐狠狠铐在了斯台普吞的双腕之上。‘杰克·斯台普吞——或者说罗杰·巴斯克维尔，你因谋害查尔兹爵士及企图谋杀亨利爵士被捕了。’\n\n斯台普吞瘫倒在泥泞之中。两个月后的埃克塞特巡回审判庭上，如山铁证令全陪审团一致裁定绞刑。纯粹演绎推导的又一场完胜。", "is_ending": true, "clues": [], "choices": []}, "ending_stapleton_triumph": {"id": "ending_stapleton_triumph", "title": "黑暗继承：斯台普吞的阴谋得逞", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "ending", "anchor_name": null, "content": "汹涌的沼泽死雾彻底致盲了那群愚蠢的伦敦警察。他们的枪声在雾海中徒劳呼啸，子弹尽数没入泥潭草丛。当他们摸索至小径时，亨利爵士早已被恶犬撕心裂肺的烈焰幻象当场吓断了心脉，身上未留半分暴力伤痕。\n\n我吹出密哨召回巨犬，用泥浆洗净磷光，从容折回宅邸。德文郡验尸官再次作出了‘巴斯克维尔诅咒引发心力衰竭’的结论。\n\n半年之后，在巴黎繁华的林荫大道上，我以‘凡德勒先生’的身份，合法、完整地继承了巴斯克维尔庄园与一百万英镑巨款。这场博弈，我是最终赢家。", "is_ending": true, "clues": [], "choices": []}, "ending_stapleton_tragedy": {"id": "ending_stapleton_tragedy", "title": "大格林盆泥潭吞噬一切", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "ending", "anchor_name": null, "content": "极度的惊恐彻底击垮了我的理智。四周的枪声与警笛宛如鬼影重重，我不管不顾地扎入了浓雾翻滚的大格林盆泥潭。\n\n在白茫茫的雾幕中，我的右脚猛然踏空——没有踩中坚韧的草甸柳枝，而是深深陷进了冰冷、腐烂、深不见底的黑沼死泥！我拼死挣扎，却被那股沉重冰冷的巨大吸力拖向深渊。泥浆漫过了脚踝、膝盖、胸膛、最后是咽喉……\n\n我竭力向浓雾绝望惨呼，唯有荒原鸥鸟发出凄凉嘲弄的哀啼。恶臭的黑泥咕嘟冒出两串浊泡，大地复归死寂。", "is_ending": true, "clues": [], "choices": []}, "ending_stapleton_arrest": {"id": "ending_stapleton_arrest", "title": "达特沼地的正义伸张", "pov": "stapleton", "pov_name": "杰克·斯台普吞", "node_type": "ending", "anchor_name": null, "content": "在福尔摩斯冰冷的枪口与雷斯垂德清脆的警笛包围下，我彻底失去了拔枪的勇气，瘫软地弃械投降。恶犬中弹逃逸，贝瑟尔获救，我那自以为天衣无缝的宏大构想，在贝克街冰冷深邃的理智光芒下化作碎屑。\n\n囚车颠簸着开向埃克塞特重犯监狱。我最后一次回望达特沼地那灰黑色的险峻岩岗，等待着我的，将是漫漫寒冬尽头那座冰冷的绞刑台。", "is_ending": true, "clues": [], "choices": []}}}};
+
+    // State
+    const state = {
+      lang: "en",               // "en" or "cn"
+      currentView: "home",      // "home" or "scene"
+      currentNodeId: null,
+      currentPOV: null,
+      history: [],
+      cluesDiscovered: new Set(),
+      fontScale: 1.0,
+      isDark: false
+    };
+
+    // DOM Elements
+    const root = document.getElementById("app-root");
+    const heading = document.getElementById("app-heading");
+    const langBtn = document.getElementById("btn-lang");
+
+    function getStory() {
+      return STORY_DATA[state.lang];
+    }
+
+    function setLanguage(newLang) {
+      state.lang = newLang;
+      langBtn.textContent = state.lang === "en" ? "中文版" : "English";
+
+      // Update header download links to current language
+      const azw3Link = document.getElementById("link-azw3");
+      const epubLink = document.getElementById("link-epub");
+      const mobiLink = document.getElementById("link-mobi");
+      if (azw3Link) azw3Link.href = `hound_of_the_baskervilles_${state.lang}.azw3`;
+      if (epubLink) epubLink.href = `hound_of_the_baskervilles_${state.lang}.epub`;
+      if (mobiLink) mobiLink.href = `hound_of_the_baskervilles_${state.lang}.mobi`;
+
+      if (state.currentView === "home") {
+        renderHome();
+      } else if (state.currentView === "scene" && state.currentNodeId) {
+        const node = getStory().nodes[state.currentNodeId];
+        if (node) {
+          renderScene(node);
+        } else {
+          renderHome();
+        }
+      }
+    }
+
+    // Header Event Listeners
+    langBtn.addEventListener("click", () => {
+      setLanguage(state.lang === "en" ? "cn" : "en");
+    });
+
+    document.getElementById("btn-font-up").addEventListener("click", () => {
+      if (state.fontScale < 1.6) {
+        state.fontScale += 0.15;
+        document.documentElement.style.setProperty("--font-scale", state.fontScale.toFixed(2));
+      }
+    });
+
+    document.getElementById("btn-font-down").addEventListener("click", () => {
+      if (state.fontScale > 0.75) {
+        state.fontScale -= 0.15;
+        document.documentElement.style.setProperty("--font-scale", state.fontScale.toFixed(2));
+      }
+    });
+
+    document.getElementById("btn-contrast").addEventListener("click", () => {
+      state.isDark = !state.isDark;
+      document.body.classList.toggle("dark-mode", state.isDark);
+    });
+
+    // Rendering
+    function renderHome() {
+      state.currentView = "home";
+      const story = getStory();
+      const isCn = state.lang === "cn";
+
+      heading.textContent = isCn ? "巴斯克维尔的猎犬" : "Baskerville CYOA";
+
+      const langBannerHtml = `
+        <div class="lang-banner">
+          <strong>Language / 语言选择:</strong>
+          <div class="lang-btn-group">
+            <button class="${state.lang === 'en' ? 'selected' : ''}" onclick="setLanguage('en')">English</button>
+            <button class="${state.lang === 'cn' ? 'selected' : ''}" onclick="setLanguage('cn')">中文版</button>
+          </div>
+        </div>
+      `;
+
+      const einkNoteHtml = isCn
+        ? `
+          <div style="border: 2px solid var(--text); padding: 12px; margin-bottom: 20px; background-color: var(--card-bg);">
+            <strong>Kindle 墨水屏阅读模式已就绪：</strong>
+            <p style="margin: 6px 0 0 0; font-size: 0.9em;">
+              专为 Kindle 原生浏览器调优：高对比度黑白排版、零延迟无动画渲染、超大触控按键。
+              您可直接在线选择视角开始探案，或通过下方下载离线电子书（支持 AZW3 / EPUB / MOBI）。
+            </p>
+          </div>
+          <h2 style="text-align: center; margin-top: 10px;">选择你的人物视角</h2>
+        `
+        : `
+          <div style="border: 2px solid var(--text); padding: 12px; margin-bottom: 20px; background-color: var(--card-bg);">
+            <strong>Kindle E-Reader Mode Active:</strong>
+            <p style="margin: 6px 0 0 0; font-size: 0.9em;">
+              Optimized for e-ink web browsers with zero motion lag, large tap targets, and high contrast.
+              Select a perspective below to read online, or download offline Kindle e-books (AZW3 / EPUB / MOBI).
+            </p>
+          </div>
+          <h2 style="text-align: center; margin-top: 10px;">Select Your Point of View</h2>
+        `;
+
+      const povRoles = story.pov_roles;
+      const povCardsHtml = `
+        <div class="pov-picker">
+          <div class="pov-card" onclick="startStory('watson')">
+            <h3>${escapeHtml(povRoles.watson.name)}</h3>
+            <p>${escapeHtml(povRoles.watson.description)}</p>
+          </div>
+          <div class="pov-card" onclick="startStory('holmes')">
+            <h3>${escapeHtml(povRoles.holmes.name)}</h3>
+            <p>${escapeHtml(povRoles.holmes.description)}</p>
+          </div>
+          <div class="pov-card" onclick="startStory('stapleton')">
+            <h3>${escapeHtml(povRoles.stapleton.name)}</h3>
+            <p>${escapeHtml(povRoles.stapleton.description)}</p>
+          </div>
+        </div>
+      `;
+
+      const downloadsHtml = isCn
+        ? `
+          <div class="download-section">
+            <h3>离线电子书文件下载（三种格式）：</h3>
+            <div class="download-grid">
+              <div class="download-card">
+                <span class="format-badge">AZW3 (KF8)</span>
+                <strong>现代 Kindle USB 数据线直传（最推荐）</strong>
+                <p>支持现代衬线字体、宋体/黑体排版与无缝超链接选择跳转。连接电脑后直接拷贝至 Kindle 的 <code>documents</code> 文件夹即可阅读。</p>
+                <div class="btn-group">
+                  <a href="hound_of_the_baskervilles_cn.azw3" class="btn" download>&#8595; 下载中文版 AZW3</a>
+                  <a href="hound_of_the_baskervilles_en.azw3" class="btn" download>&#8595; Download English AZW3</a>
+                </div>
+              </div>
+              <div class="download-card">
+                <span class="format-badge">EPUB 3</span>
+                <strong>Send-to-Kindle 邮件与网页推送（官方推荐）</strong>
+                <p>亚马逊官方无线推送标准格式。通过 amazon.com/sendtokindle 上传或直接发送邮件至 @kindle.com，亚马逊将自动同步至设备。同时兼容 Apple Books、Kobo 等。</p>
+                <div class="btn-group">
+                  <a href="hound_of_the_baskervilles_cn.epub" class="btn" download>&#8595; 下载中文版 EPUB</a>
+                  <a href="hound_of_the_baskervilles_en.epub" class="btn" download>&#8595; Download English EPUB</a>
+                </div>
+              </div>
+              <div class="download-card">
+                <span class="format-badge">MOBI</span>
+                <strong>早期旧款 Kindle 专用格式</strong>
+                <p>针对 Kindle 1-3 代、Kindle Keyboard、Kindle DX 等老旧机型兼容设计，可通过 USB 导入。</p>
+                <div class="btn-group">
+                  <a href="hound_of_the_baskervilles_cn.mobi" class="btn" download>&#8595; 下载中文版 MOBI</a>
+                  <a href="hound_of_the_baskervilles_en.mobi" class="btn" download>&#8595; Download English MOBI</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+        : `
+          <div class="download-section">
+            <h3>Offline E-Book Downloads (Three Formats Available):</h3>
+            <div class="download-grid">
+              <div class="download-card">
+                <span class="format-badge">AZW3 (KF8)</span>
+                <strong>Best for Modern Kindle USB Sideload (Recommended)</strong>
+                <p>Modern Kindle Format 8 with high-resolution typography, Bookerly serif font, and interactive choice links. Copy directly to your Kindle's <code>documents</code> folder via USB.</p>
+                <div class="btn-group">
+                  <a href="hound_of_the_baskervilles_en.azw3" class="btn" download>&#8595; Download English AZW3</a>
+                  <a href="hound_of_the_baskervilles_cn.azw3" class="btn" download>&#8595; 下载中文版 AZW3</a>
+                </div>
+              </div>
+              <div class="download-card">
+                <span class="format-badge">EPUB 3</span>
+                <strong>Best for Send-to-Kindle (Wireless / Email)</strong>
+                <p>Amazon's official format for wireless sync. Upload via amazon.com/sendtokindle or email to your @kindle.com address. Also compatible with Apple Books and Kobo.</p>
+                <div class="btn-group">
+                  <a href="hound_of_the_baskervilles_en.epub" class="btn" download>&#8595; Download English EPUB</a>
+                  <a href="hound_of_the_baskervilles_cn.epub" class="btn" download>&#8595; 下载中文版 EPUB</a>
+                </div>
+              </div>
+              <div class="download-card">
+                <span class="format-badge">MOBI</span>
+                <strong>For Legacy Older Kindle Models</strong>
+                <p>Compatible with vintage Kindle models (Kindle 1-3, Keyboard, DX) using direct USB file transfer.</p>
+                <div class="btn-group">
+                  <a href="hound_of_the_baskervilles_en.mobi" class="btn" download>&#8595; Download English MOBI</a>
+                  <a href="hound_of_the_baskervilles_cn.mobi" class="btn" download>&#8595; 下载中文版 MOBI</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+      root.innerHTML = `
+        ${langBannerHtml}
+        <h1 class="story-title">${escapeHtml(story.title)}</h1>
+        <p class="story-subtitle">${escapeHtml(story.author)}</p>
+        <p style="text-align: center; margin-bottom: 24px;">${escapeHtml(story.description)}</p>
+        ${einkNoteHtml}
+        ${povCardsHtml}
+        ${downloadsHtml}
+      `;
+      window.scrollTo(0, 0);
+    }
+
+    function startStory(pov) {
+      state.currentPOV = pov;
+      state.history = [];
+      state.cluesDiscovered.clear();
+      const startNodeId = getStory().start_nodes[pov];
+      goToNode(startNodeId);
+    }
+
+    function goToNode(nodeId, isBack = false) {
+      const story = getStory();
+      const node = story.nodes[nodeId];
+      if (!node) {
+        console.error("Node not found:", nodeId);
+        return;
+      }
+
+      if (!isBack && state.currentNodeId) {
+        state.history.push(state.currentNodeId);
+      }
+
+      state.currentNodeId = nodeId;
+      state.currentPOV = node.pov;
+      state.currentView = "scene";
+
+      if (node.clues && node.clues.length > 0) {
+        node.clues.forEach(c => state.cluesDiscovered.add(c));
+      }
+
+      renderScene(node);
+      window.scrollTo(0, 0);
+    }
+
+    function goBack() {
+      if (state.history.length > 0) {
+        const prevId = state.history.pop();
+        goToNode(prevId, true);
+      } else {
+        renderHome();
+      }
+    }
+
+    function renderScene(node) {
+      const isCn = state.lang === "cn";
+      heading.textContent = isCn ? `当前视角：${node.pov_name}` : `POV: ${node.pov_name}`;
+
+      const paragraphs = node.content.split("\n\n")
+        .map(p => `<p>${escapeHtml(p.trim())}</p>`)
+        .join("");
+
+      let cluesHtml = "";
+      if (state.cluesDiscovered.size > 0) {
+        const cluesList = Array.from(state.cluesDiscovered)
+          .map(c => `<li>${escapeHtml(c)}</li>`)
+          .join("");
+        const cluesTitle = isCn
+          ? `案件侦查线索 (${state.cluesDiscovered.size}):`
+          : `Case Notes &amp; Clues Discovered (${state.cluesDiscovered.size}):`;
+        cluesHtml = `
+          <div class="clues-panel">
+            <strong>${cluesTitle}</strong>
+            <ul>${cluesList}</ul>
+          </div>
+        `;
+      }
+
+      let choicesHtml = "";
+      if (node.is_ending) {
+        const endingTitle = isCn ? "~ 案情终局 ~" : "~ Chronicle Concluded ~";
+        const endingDesc = isCn
+          ? "你已在当前线索分支中达成了案情结局。"
+          : "You have reached a resolution in this investigation.";
+        const replayText = isCn ? "&larr; 换一个视角重新探索" : "&larr; Choose Another Perspective / Replay";
+        choicesHtml = `
+          <div class="ending-card">
+            <h3>${endingTitle}</h3>
+            <p style="margin-bottom: 18px;">${endingDesc}</p>
+            <button class="choice-card" onclick="renderHome()" style="text-align: center; font-weight: bold;">
+              ${replayText}
+            </button>
+          </div>
+        `;
+      } else {
+        const choiceCards = node.choices.map((c, index) => {
+          let switchTag = "";
+          if (c.pov_switch_name) {
+            switchTag = isCn
+              ? `<div class="pov-switch-notice">&xrarr; 视角即将切换至：${escapeHtml(c.pov_switch_name)}</div>`
+              : `<div class="pov-switch-notice">&xrarr; Perspective shifts to ${escapeHtml(c.pov_switch_name)}</div>`;
+          }
+          return `
+            <button class="choice-card" onclick="goToNode('${c.target}')">
+              <strong>${index + 1}.</strong> ${escapeHtml(c.text)}
+              ${switchTag}
+            </button>
+          `;
+        }).join("");
+
+        const choiceHeader = isCn ? "决定你的下一步行动：" : "Decide Your Next Action:";
+        choicesHtml = `
+          <div class="choices-section">
+            <div class="choices-header">${choiceHeader}</div>
+            ${choiceCards}
+          </div>
+        `;
+      }
+
+      const anchorText = isCn ? "正典主线关键节点" : "Canon Milestone";
+      const anchorBadge = node.anchor_name
+        ? `<span class="anchor-tag">${anchorText}</span>`
+        : "";
+
+      const povLabel = isCn ? "视角" : "Perspective";
+      const backText = isCn ? "&larr; 返回上一节" : "&larr; Previous Scene";
+      const tocText = isCn ? "返回主目录" : "Table of Contents";
+
+      root.innerHTML = `
+        <div class="pov-indicator">
+          <span><strong>${povLabel}:</strong> ${escapeHtml(node.pov_name)}</span>
+          ${anchorBadge}
+        </div>
+
+        <h2 class="scene-title">${escapeHtml(node.title)}</h2>
+
+        <div class="prose">
+          ${paragraphs}
+        </div>
+
+        ${cluesHtml}
+        ${choicesHtml}
+
+        <div class="bottom-nav">
+          <button onclick="goBack()">${backText}</button>
+          <button onclick="renderHome()">${tocText}</button>
+        </div>
+      `;
+    }
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // Initialize in English by default
+    renderHome();
+  </script>
+</body>
+</html>
