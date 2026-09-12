@@ -1,9 +1,18 @@
-"""Builder script to generate hound_story_en.py and hound_story_cn.py with 15 canonical chapters.
-Each chapter has at most 2 nodes with substantial original prose.
+"""Comprehensive generator for 15-Chapter Multi-POV Edition of 'The Hound of the Baskervilles'.
+Generates src/content/hound_story_en.py and src/content/hound_story_cn.py.
+Features:
+- Watson Track: Full canonical 15 chapters with at most 2 nodes per chapter and extensive authentic prose from book_en.txt / book_cn.txt.
+- Holmes Track: 15 playable nodes from Sherlock Holmes's perspective (POV: Sherlock Holmes / 歇洛克·福尔摩斯).
+- Stapleton Track: 15 playable nodes from Jack Stapleton's antagonist perspective (POV: Jack Stapleton / 杰克·斯台普吞).
+- start_nodes:
+    POV.WATSON: ch01_part1_stick
+    POV.HOLMES: holmes_ch1_baker_street
+    POV.STAPLETON: stapleton_ch1_london
 """
 import json
 import re
 import sys
+import subprocess
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding='utf-8')
@@ -53,8 +62,8 @@ split_indices = {
     13: (40, 42),  # Ch 14
 }
 
-# Node definitions configuration
-NODES_CONFIG = [
+# 1. WATSON'S 15-CHAPTER CANONICAL NODES (29 nodes)
+WATSON_NODES = [
     # Chapter 1
     {
         "id": "ch01_part1_stick",
@@ -134,7 +143,7 @@ NODES_CONFIG = [
         "pov": "watson", "type": "branch", "anchor": None,
         "clues_en": [
             "Coroner verdict: Sir Charles died of heart failure at the Yew Alley gate",
-            "Altered tiptoe footsteps indicating Sir Charles was waiting or fleeing in terror",
+            "Altered tiptoe footprints indicating Sir Charles was waiting or fleeing in terror",
             "The secret withheld from the coroner: Footprints of a gigantic hound!",
         ],
         "clues_cn": [
@@ -278,10 +287,14 @@ NODES_CONFIG = [
         "choices_en": [
             {"id": "ch6_p1_c1", "text": "Retire to the bedchamber with loaded revolver, remaining alert to the night.", "target": "ch06_part2_night_sob"},
             {"id": "ch6_p1_c2", "text": "Inspect the gloomy dining hall and corridors before turning in.", "target": "ch06_part2_night_sob"},
+            {"id": "ch6_p1_c3", "text": "[Switch POV to Sherlock Holmes] View Holmes's covert headquarters in the stone hut on Black Tor.", "target": "holmes_ch06_part2_hut_surveillance", "pov_switch": "holmes"},
+            {"id": "ch6_p1_c4", "text": "[Switch POV to Jack Stapleton] Observe the arrival from Merripit House and the deadly Grimpen Mire.", "target": "stapleton_ch06_part1_arrival_watch", "pov_switch": "stapleton"},
         ],
         "choices_cn": [
             {"id": "ch6_p1_c1", "text": "持枪就寝，在庄园卧室中警惕倾听深夜的风吹草动。", "target": "ch06_part2_night_sob"},
             {"id": "ch6_p1_c2", "text": "就寝前环视阴暗的大厅与历代祖先画像，感受古宅气氛。", "target": "ch06_part2_night_sob"},
+            {"id": "ch6_p1_c3", "text": "【视角切换：歇洛克·福尔摩斯】查看福尔摩斯在黑色岩岗史前石屋的隐蔽指挥所。", "target": "holmes_ch06_part2_hut_surveillance", "pov_switch": "holmes"},
+            {"id": "ch6_p1_c4", "text": "【视角切换：杰克·斯台普吞】自梅利琵宅邸与大格林盆泥潭监视庄园动静。", "target": "stapleton_ch06_part1_arrival_watch", "pov_switch": "stapleton"},
         ],
     },
     {
@@ -508,10 +521,14 @@ NODES_CONFIG = [
         "choices_en": [
             {"id": "ch11_p2_c1", "text": "Demand Holmes explain his secret presence on Dartmoor and compare notes.", "target": "ch12_part1_revelations"},
             {"id": "ch11_p2_c2", "text": "Share the findings of the Laura Lyons interrogation with Holmes.", "target": "ch12_part1_revelations"},
+            {"id": "ch11_p2_c3", "text": "[Switch POV to Sherlock Holmes] Experience Holmes's secret analysis of the moor and the portrait.", "target": "holmes_ch13_portrait", "pov_switch": "holmes"},
+            {"id": "ch11_p2_c4", "text": "[Switch POV to Sherlock Holmes] Catch the stranger from the blind side of the stones.", "target": "holmes_ch11_part2_stone_hut", "pov_switch": "holmes"},
         ],
         "choices_cn": [
             {"id": "ch11_p2_c1", "text": "要求福尔摩斯彻底阐明其秘密潜伏荒原的意图并交换侦查情报。", "target": "ch12_part1_revelations"},
             {"id": "ch11_p2_c2", "text": "将刚刚在库姆·特雷西问询劳拉·里昂斯夫人所获全盘告知福尔摩斯。", "target": "ch12_part1_revelations"},
+            {"id": "ch11_p2_c3", "text": "【视角切换：歇洛克·福尔摩斯】以福尔摩斯第一人称检视雨果画像与绝密线索。", "target": "holmes_ch13_portrait", "pov_switch": "holmes"},
+            {"id": "ch11_p2_c4", "text": "【视角切换：歇洛克·福尔摩斯】潜出石屋，从巨石盲区反向包抄设伏神秘来客。", "target": "holmes_ch11_part2_stone_hut", "pov_switch": "holmes"},
         ],
     },
     # Chapter 12
@@ -587,10 +604,12 @@ NODES_CONFIG = [
         "choices_en": [
             {"id": "ch13_c1", "text": "Deploy the ambush on the moor path near Merripit House in the dark.", "target": "ch14_part1_fog_ambush"},
             {"id": "ch13_c2", "text": "Verify Lestrade's Scotland Yard warrants and position the party near the mire path.", "target": "ch14_part1_fog_ambush"},
+            {"id": "ch13_c3", "text": "[Switch POV to Jack Stapleton] View Stapleton setting the fatal dinner trap at Merripit House.", "target": "stapleton_ch13_fatal_dinner", "pov_switch": "stapleton"},
         ],
         "choices_cn": [
             {"id": "ch13_c1", "text": "在梅利琵宅邸外的小径乱石堆后设伏，静候终局较量。", "target": "ch14_part1_fog_ambush"},
             {"id": "ch13_c2", "text": "检视雷斯垂德的苏格兰场拘捕令，在格林盆泥潭边缘卡死伏击据点。", "target": "ch14_part1_fog_ambush"},
+            {"id": "ch13_c3", "text": "【视角切换：杰克·斯台普吞】窥探斯台普吞在梅利琵宅邸筹备致命晚餐的险恶心机。", "target": "stapleton_ch13_fatal_dinner", "pov_switch": "stapleton"},
         ],
     },
     # Chapter 14
@@ -678,7 +697,7 @@ NODES_CONFIG = [
         "ch_idx": 14, "part": 0,
         "title_en": "Chapter 15: A Retrospection (Ending: Holmes's Master Deduction)",
         "title_cn": "第十五章 回顾（终局：福尔摩斯之理性大捷）",
-        "pov": "watson", "type": "ending", "anchor": None,
+        "pov": "holmes", "type": "ending", "anchor": None,
         "clues_en": ["Supreme triumph of scientific deduction and cold logic dispelling gothic terror and superstition forever"],
         "clues_cn": ["科学理性与严谨逻辑的崇高胜利，将几个世纪以来笼罩达特沼地的哥特迷信阴霾彻底扫荡"],
         "choices_en": [],
@@ -700,7 +719,7 @@ NODES_CONFIG = [
         "ch_idx": 14, "part": 0,
         "title_en": "Chapter 15: A Retrospection (Ending: Swallowed by Grimpen Mire)",
         "title_cn": "第十五章 回顾（终局：葬身格林盆泥潭深渊）",
-        "pov": "watson", "type": "ending", "anchor": None,
+        "pov": "stapleton", "type": "ending", "anchor": None,
         "clues_en": ["Stapleton swallowed forever by the foul green slime of the Great Grimpen Mire, leaving only Sir Henry's boot"],
         "clues_cn": ["大格林盆泥潭永远吞噬了罪大恶极的凶犯，绿色的泥浆之上，只留下了亨利爵士那只旧皮靴"],
         "choices_en": [],
@@ -711,7 +730,7 @@ NODES_CONFIG = [
         "ch_idx": 14, "part": 0,
         "title_en": "Chapter 15: A Retrospection (Ending: Justice at the Old Bailey)",
         "title_cn": "第十五章 回顾（终局：老贝利法庭的最终审判）",
-        "pov": "watson", "type": "ending", "anchor": None,
+        "pov": "stapleton", "type": "ending", "anchor": None,
         "clues_en": ["Jack Stapleton captured at dawn, convicted at the Old Bailey on Mrs. Stapleton's testimony, and sentenced to the gallows"],
         "clues_cn": ["杰克·斯台普吞在黎明合围中束手就擒，在老贝利法庭由夫人出庭指证罪状，终伏国法判处绞刑"],
         "choices_en": [],
@@ -719,13 +738,12 @@ NODES_CONFIG = [
     },
 ]
 
-def get_node_text(cfg, lang):
+def get_watson_node_text(cfg, lang):
     ch_idx = cfg["ch_idx"]
     part = cfg["part"]
     paras = en_chapters[ch_idx] if lang == "en" else cn_chapters[ch_idx]
 
     if part == 0:
-        # full chapter
         selected_paras = paras
     elif part == 1:
         split_pt = split_indices[ch_idx][0 if lang == "en" else 1]
@@ -734,7 +752,6 @@ def get_node_text(cfg, lang):
         split_pt = split_indices[ch_idx][0 if lang == "en" else 1]
         selected_paras = paras[split_pt:]
 
-    # For alternative endings in chapter 15, prepend a tailored concluding paragraph
     node_id = cfg["id"]
     if node_id == "ch15_watson":
         prefix = (
@@ -789,28 +806,36 @@ def get_node_text(cfg, lang):
 
     return "\n\n".join(selected_paras)
 
-print("Writing hound_story_en.py...")
-en_nodes_code = []
-for cfg in NODES_CONFIG:
-    content = get_node_text(cfg, "en")
-    node_type = f"NodeType.{cfg['type'].upper()}"
-    anchor_str = f'"{cfg["anchor"]}"' if cfg["anchor"] else "None"
-    clues_str = json.dumps(cfg["clues_en"], ensure_ascii=False)
-    choices_code = []
-    for c in cfg["choices_en"]:
-        choices_code.append(
-            f'            Choice(id="{c["id"]}", text={json.dumps(c["text"], ensure_ascii=False)}, target_node_id="{c["target"]}"),'
-        )
-    choices_block = "\n".join(choices_code)
-    if choices_block:
-        choices_block = f"[\n{choices_block}\n        ]"
-    else:
-        choices_block = "[]"
+# 2. HOLMES & STAPLETON 15-CHAPTER TRACKS
+from holmes_data import HOLMES_NODES
+from stapleton_data import STAPLETON_NODES
 
-    code = f'''    nodes["{cfg['id']}"] = PassageNode(
+def render_watson_nodes_code(lang):
+    code_blocks = []
+    for cfg in WATSON_NODES:
+        content = get_watson_node_text(cfg, lang)
+        node_type = f"NodeType.{cfg['type'].upper()}"
+        anchor_str = f'"{cfg["anchor"]}"' if cfg["anchor"] else "None"
+        clues_str = json.dumps(cfg["clues_en" if lang == "en" else "clues_cn"], ensure_ascii=False)
+        pov_enum = f"POV.{cfg['pov'].upper()}"
+        choices = cfg["choices_en" if lang == "en" else "choices_cn"]
+        choices_code = []
+        for c in choices:
+            sw = f', pov_switch=POV.{c["pov_switch"].upper()}' if "pov_switch" in c else ""
+            choices_code.append(
+                f'            Choice(id="{c["id"]}", text={json.dumps(c["text"], ensure_ascii=False)}, target_node_id="{c["target"]}"{sw}),'
+            )
+        choices_block = "\n".join(choices_code)
+        if choices_block:
+            choices_block = f"[\n{choices_block}\n        ]"
+        else:
+            choices_block = "[]"
+
+        title_str = json.dumps(cfg["title_en" if lang == "en" else "title_cn"], ensure_ascii=False)
+        code_block = f'''    nodes["{cfg['id']}"] = PassageNode(
         id="{cfg['id']}",
-        title={json.dumps(cfg['title_en'], ensure_ascii=False)},
-        pov=POV.WATSON,
+        title={title_str},
+        pov={pov_enum},
         node_type={node_type},
         anchor_name={anchor_str},
         content={json.dumps(content, ensure_ascii=False)},
@@ -818,103 +843,144 @@ for cfg in NODES_CONFIG:
         clues_discovered={clues_str},
     )
 '''
-    en_nodes_code.append(code)
+        code_blocks.append(code_block)
+    return "".join(code_blocks)
 
-en_file_content = f'''"""English narrative content adapting 'The Hound of the Baskervilles' by Sir Arthur Conan Doyle.
-Canonical 15 Chapters structure with at most 2 nodes per chapter.
-Source: book_en.txt
+def render_track_nodes_code(track_list, lang):
+    code_blocks = []
+    for cfg in track_list:
+        content = cfg["content_en"] if lang == "en" else cfg["content_cn"]
+        node_type = f"NodeType.{cfg['type'].upper()}"
+        anchor_str = f'"{cfg["anchor"]}"' if cfg.get("anchor") else "None"
+        clues_str = json.dumps(cfg["clues_en" if lang == "en" else "clues_cn"], ensure_ascii=False)
+        pov_enum = f"POV.{cfg['pov'].upper()}"
+        choices = cfg["choices_en" if lang == "en" else "choices_cn"]
+        choices_code = []
+        for c in choices:
+            sw = f', pov_switch=POV.{c["pov_switch"].upper()}' if "pov_switch" in c else ""
+            choices_code.append(
+                f'            Choice(id="{c["id"]}", text={json.dumps(c["text"], ensure_ascii=False)}, target_node_id="{c["target"]}"{sw}),'
+            )
+        choices_block = "\n".join(choices_code)
+        if choices_block:
+            choices_block = f"[\n{choices_block}\n        ]"
+        else:
+            choices_block = "[]"
+
+        title_str = json.dumps(cfg["title_en" if lang == "en" else "title_cn"], ensure_ascii=False)
+        code_block = f'''    nodes["{cfg['id']}"] = PassageNode(
+        id="{cfg['id']}",
+        title={title_str},
+        pov={pov_enum},
+        node_type={node_type},
+        anchor_name={anchor_str},
+        content={json.dumps(content, ensure_ascii=False)},
+        choices={choices_block},
+        clues_discovered={clues_str},
+    )
+'''
+        code_blocks.append(code_block)
+    return "".join(code_blocks)
+
+print("Writing hound_story_en.py...")
+en_code = f'''"""English narrative content adapting 'The Hound of the Baskervilles' by Sir Arthur Conan Doyle.
+Multi-POV Canonical 15-Chapter Edition:
+- Dr. John H. Watson: 15 Canonical Chapters with extensive authentic prose (book_en.txt)
+- Sherlock Holmes: 15 Canonical Chapters with extensive first-person deductive prose
+- Jack Stapleton: 15 Canonical Chapters with chilling antagonist first-person prose
 """
 
 from src.models import Choice, NodeType, POV, PassageNode, StoryGraph
 
 
 def build_story_en() -> StoryGraph:
-    """Constructs the English StoryGraph across all 15 canonical chapters."""
+    """Constructs the English StoryGraph with all three playable perspectives."""
     nodes: dict[str, PassageNode] = {{}}
 
-{''.join(en_nodes_code)}
+    # =========================================================================
+    # 1. WATSON CANONICAL TRACK (15 Chapters, extensive text)
+    # =========================================================================
+{render_watson_nodes_code("en")}
+
+    # =========================================================================
+    # 2. SHERLOCK HOLMES TRACK (15 Chapters, extensive text)
+    # =========================================================================
+{render_track_nodes_code(HOLMES_NODES, "en")}
+
+    # =========================================================================
+    # 3. JACK STAPLETON TRACK (15 Chapters, extensive text)
+    # =========================================================================
+{render_track_nodes_code(STAPLETON_NODES, "en")}
+
     return StoryGraph(
         language="en",
-        title="The Hound of the Baskervilles: Interactive Edition",
+        title="The Hound of the Baskervilles: Multi-POV Interactive Edition",
         author="Sir Arthur Conan Doyle",
         description=(
-            "The complete canonical 15 chapters of The Hound of the Baskervilles in an interactive edition. "
-            "Read extensive unabridged prose from Baker Street to Dartmoor with crucial decision points."
+            "Experience The Hound of the Baskervilles across three playable perspectives across all 15 canonical chapters: "
+            "Dr. John H. Watson (authentic full-length investigation), Sherlock Holmes (covert moor surveillance and deduction), "
+            "and Jack Stapleton (the antagonist mastermind of Grimpen Mire)."
         ),
         start_nodes={{
             POV.WATSON: "ch01_part1_stick",
-            POV.HOLMES: "ch01_part1_stick",
-            POV.STAPLETON: "ch01_part1_stick",
+            POV.HOLMES: "holmes_ch01_part1_observation",
+            POV.STAPLETON: "stapleton_ch01_part1_heritage",
         }},
         nodes=nodes,
     )
 '''
 
 with open(ROOT / 'src/content/hound_story_en.py', 'w', encoding='utf-8') as f:
-    f.write(en_file_content)
-print(f"Generated hound_story_en.py ({len(en_file_content)} bytes)")
+    f.write(en_code)
+print(f"Generated hound_story_en.py ({len(en_code)} bytes)")
 
 print("Writing hound_story_cn.py...")
-cn_nodes_code = []
-for cfg in NODES_CONFIG:
-    content = get_node_text(cfg, "cn")
-    node_type = f"NodeType.{cfg['type'].upper()}"
-    anchor_str = f'"{cfg["anchor"]}"' if cfg["anchor"] else "None"
-    clues_str = json.dumps(cfg["clues_cn"], ensure_ascii=False)
-    choices_code = []
-    for c in cfg["choices_cn"]:
-        choices_code.append(
-            f'            Choice(id="{c["id"]}", text={json.dumps(c["text"], ensure_ascii=False)}, target_node_id="{c["target"]}"),'
-        )
-    choices_block = "\n".join(choices_code)
-    if choices_block:
-        choices_block = f"[\n{choices_block}\n        ]"
-    else:
-        choices_block = "[]"
-
-    code = f'''    nodes["{cfg['id']}"] = PassageNode(
-        id="{cfg['id']}",
-        title={json.dumps(cfg['title_cn'], ensure_ascii=False)},
-        pov=POV.WATSON,
-        node_type={node_type},
-        anchor_name={anchor_str},
-        content={json.dumps(content, ensure_ascii=False)},
-        choices={choices_block},
-        clues_discovered={clues_str},
-    )
-'''
-    cn_nodes_code.append(code)
-
-cn_file_content = f'''"""中文原著互动版《巴斯克维尔的猎犬》（阿瑟·柯南·道尔著）。
-严格遵循原著经典全15章架构，每章保留数千字原著详尽篇幅，最多设置2个决策节点。
-底本出处：book_cn.txt
+cn_code = f'''"""中文原著互动版《巴斯克维尔的猎犬》（阿瑟·柯南·道尔著）。
+多视角全十五章节原著典藏版：
+- 约翰·H·华生医生：完整15章原著宏篇长篇纪实（book_cn.txt），保留原著详尽篇幅。
+- 歇洛克·福尔摩斯：完整15章名侦探第一人称深度探案、荒原石屋隐蔽暗察与严密逻辑推理。
+- 杰克·斯台普吞：完整15章幕后主使第一人称暗黑密谋、训育荧光猎犬夺取遗产的反派主线。
 """
 
 from src.models import Choice, NodeType, POV, PassageNode, StoryGraph
 
 
 def build_story_cn() -> StoryGraph:
-    """构建涵盖原著完整15个章节的中文互动故事图谱。"""
+    """构建涵盖三重视角与原著完整15章节的中文互动故事图谱。"""
     nodes: dict[str, PassageNode] = {{}}
 
-{''.join(cn_nodes_code)}
+    # =========================================================================
+    # 1. 华生正典主线（全15章原著宏篇长文）
+    # =========================================================================
+{render_watson_nodes_code("cn")}
+
+    # =========================================================================
+    # 2. 福尔摩斯正典主线（全15章第一人称宏篇长文）
+    # =========================================================================
+{render_track_nodes_code(HOLMES_NODES, "cn")}
+
+    # =========================================================================
+    # 3. 斯台普吞正典主线（全15章第一人称宏篇长文）
+    # =========================================================================
+{render_track_nodes_code(STAPLETON_NODES, "cn")}
+
     return StoryGraph(
         language="cn",
-        title="巴斯克维尔的猎犬：深度原著互动典藏版",
+        title="巴斯克维尔的猎犬：多视角原著互动典藏版",
         author="阿瑟·柯南·道尔",
         description=(
-            "完整重现阿瑟·柯南·道尔原著十五个章节的宏篇巨著。从贝克街221B到德文郡达特沼地，"
-            "在阅读原汁原味的长篇探案纪实的同时，身临其境做出关键抉择。"
+            "完整重现阿瑟·柯南·道尔原著十五个章节的宏篇巨著。三大人物视角全篇15章完整覆盖："
+            "华生医生（全15章原汁原味长篇探案纪实）、福尔摩斯（全15章神探第一人称破案纪实）与斯台普吞（全15章反派罪枭第一人称沉浸密谋）。"
         ),
         start_nodes={{
             POV.WATSON: "ch01_part1_stick",
-            POV.HOLMES: "ch01_part1_stick",
-            POV.STAPLETON: "ch01_part1_stick",
+            POV.HOLMES: "holmes_ch01_part1_observation",
+            POV.STAPLETON: "stapleton_ch01_part1_heritage",
         }},
         nodes=nodes,
     )
 '''
 
 with open(ROOT / 'src/content/hound_story_cn.py', 'w', encoding='utf-8') as f:
-    f.write(cn_file_content)
-print(f"Generated hound_story_cn.py ({len(cn_file_content)} bytes)")
+    f.write(cn_code)
+print(f"Generated hound_story_cn.py ({len(cn_code)} bytes)")

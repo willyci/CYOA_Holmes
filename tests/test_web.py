@@ -48,15 +48,19 @@ def test_bilingual_kindle_web_generation():
 
         assert "en" in data
         assert "cn" in data
-        assert len(data["en"]["nodes"]) == 29
-        assert len(data["cn"]["nodes"]) == 29
+        assert len(data["en"]["nodes"]) == 75
+        assert len(data["cn"]["nodes"]) == 75
 
         # Verify Chinese names and English names
         assert data["en"]["start_nodes"]["watson"] == "ch01_part1_stick"
         assert data["cn"]["start_nodes"]["watson"] == "ch01_part1_stick"
-        assert data["en"]["start_nodes"]["holmes"] == "ch01_part1_stick"
-        assert data["cn"]["start_nodes"]["holmes"] == "ch01_part1_stick"
-        assert data["en"]["start_nodes"]["stapleton"] == "ch01_part1_stick"
-        assert data["cn"]["start_nodes"]["stapleton"] == "ch01_part1_stick"
+        assert data["en"]["start_nodes"]["holmes"] == "holmes_ch01_part1_observation"
+        assert data["cn"]["start_nodes"]["holmes"] == "holmes_ch01_part1_observation"
+        assert data["en"]["start_nodes"]["stapleton"] == "stapleton_ch01_part1_heritage"
+        assert data["cn"]["start_nodes"]["stapleton"] == "stapleton_ch01_part1_heritage"
         assert data["cn"]["pov_roles"]["watson"]["name"] == "约翰·H·华生医生"
         assert data["en"]["pov_roles"]["watson"]["name"] == "Dr. John H. Watson"
+        assert data["cn"]["pov_roles"]["holmes"]["name"] == "歇洛克·福尔摩斯"
+        assert data["en"]["pov_roles"]["holmes"]["name"] == "Sherlock Holmes"
+        assert data["cn"]["pov_roles"]["stapleton"]["name"] == "杰克·斯台普吞"
+        assert data["en"]["pov_roles"]["stapleton"]["name"] == "Jack Stapleton"

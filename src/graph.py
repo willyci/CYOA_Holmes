@@ -1,6 +1,6 @@
 """NetworkX graph construction, traversal, and structural safety validation."""
 
-from typing import Any, List, Set, Tuple
+from typing import Any, Dict, List, Optional, Set, Tuple
 import networkx as nx
 
 from src.models import StoryGraph, PassageNode, NodeType, POV
@@ -117,8 +117,8 @@ class StoryGraphManager:
         }
         return stats
 
-    def get_paths_to_endings(self, start_id: str) -> List[List[str]]:
-        """Finds all simple paths from a start node to all reachable ending nodes."""
+    def get_paths_to_endings(self, start_id: str, max_paths: Optional[int] = None) -> List[List[str]]:
+        """Finds simple paths from a start node to all reachable ending nodes with optional path limit."""
         endings = [
             node_id for node_id, node in self.story.nodes.items()
             if node.is_ending
@@ -126,6 +126,14 @@ class StoryGraphManager:
         all_paths = []
         for ending in endings:
             if nx.has_path(self.nx_graph, start_id, ending):
-                paths = list(nx.all_simple_paths(self.nx_graph, source=start_id, target=ending, cutoff=35))
-                all_paths.extend(paths)
+                if max_paths is not None:
+                    count = 0
+                    for path in nx.all_simple_paths(self.nx_graph, source=start_id, target=ending, cutoff=35):
+                        all_paths.append(path)
+                        count += 1
+                        if count >= max_paths:
+                            break
+                else:
+                    paths = list(nx.all_simple_paths(self.nx_graph, source=start_id, target=ending, cutoff=35))
+                    all_paths.extend(paths)
         return all_paths

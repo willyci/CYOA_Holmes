@@ -1,5 +1,5 @@
 :: StoryTitle
-The Hound of the Baskervilles: Interactive Edition
+The Hound of the Baskervilles: Multi-POV Interactive Edition
 :: StoryData
 {
   "ifid": "C7D3882B-B1C8-42FE-9332-86BDEE76A7FC",
@@ -8,15 +8,15 @@ The Hound of the Baskervilles: Interactive Edition
   "start": "Start"
 }
 :: Start [start]
-''The Hound of the Baskervilles: Interactive Edition''
+''The Hound of the Baskervilles: Multi-POV Interactive Edition''
 //Adapted from Sir Arthur Conan Doyle//
 
-The complete canonical 15 chapters of The Hound of the Baskervilles in an interactive edition. Read extensive unabridged prose from Baker Street to Dartmoor with crucial decision points.
+Experience The Hound of the Baskervilles across three playable perspectives across all 15 canonical chapters: Dr. John H. Watson (authentic full-length investigation), Sherlock Holmes (covert moor surveillance and deduction), and Jack Stapleton (the antagonist mastermind of Grimpen Mire).
 
 Select your perspective:
 * [[Dr. John H. Watson|ch01_part1_stick]]
-* [[Sherlock Holmes|ch01_part1_stick]]
-* [[Jack Stapleton|ch01_part1_stick]]
+* [[Sherlock Holmes|holmes_ch01_part1_observation]]
+* [[Jack Stapleton|stapleton_ch01_part1_heritage]]
 
 :: ch01_part1_stick [watson anchor anchor_chapter1]
 ''Chapter 1: Mr. Sherlock Holmes (Part I: The Walking Stick)'' (POV: Dr. John H. Watson)
@@ -266,7 +266,7 @@ Dr. Mortimer looked strangely at us for an instant, and his voice sank almost to
 
 “Mr. Holmes, they were the footprints of a gigantic hound!”
 
-''Clues:'' Coroner verdict: Sir Charles died of heart failure at the Yew Alley gate, Altered tiptoe footsteps indicating Sir Charles was waiting or fleeing in terror, The secret withheld from the coroner: Footprints of a gigantic hound!
+''Clues:'' Coroner verdict: Sir Charles died of heart failure at the Yew Alley gate, Altered tiptoe footprints indicating Sir Charles was waiting or fleeing in terror, The secret withheld from the coroner: Footprints of a gigantic hound!
 
 ''Choices:''
 * [[Proceed to analyze the problem in Baker Street with Holmes.|ch03_problem]]
@@ -1228,6 +1228,8 @@ The avenue opened into a broad expanse of turf, and the house lay before us. In 
 ''Choices:''
 * [[Retire to the bedchamber with loaded revolver, remaining alert to the night.|ch06_part2_night_sob]]
 * [[Inspect the gloomy dining hall and corridors before turning in.|ch06_part2_night_sob]]
+* [[[Switch POV to Sherlock Holmes] View Holmes's covert headquarters in the stone hut on Black Tor.|holmes_ch06_part2_hut_surveillance]]
+* [[[Switch POV to Jack Stapleton] Observe the arrival from Merripit House and the deadly Grimpen Mire.|stapleton_ch06_part1_arrival_watch]]
 
 :: ch06_part2_night_sob [watson branch]
 ''Chapter 6: Baskerville Hall (Part II: The Midnight Sob)'' (POV: Dr. John H. Watson)
@@ -2343,6 +2345,8 @@ And then at last I heard him. Far away came the sharp clink of a boot striking u
 ''Choices:''
 * [[Demand Holmes explain his secret presence on Dartmoor and compare notes.|ch12_part1_revelations]]
 * [[Share the findings of the Laura Lyons interrogation with Holmes.|ch12_part1_revelations]]
+* [[[Switch POV to Sherlock Holmes] Experience Holmes's secret analysis of the moor and the portrait.|holmes_ch13_portrait]]
+* [[[Switch POV to Sherlock Holmes] Catch the stranger from the blind side of the stones.|holmes_ch11_part2_stone_hut]]
 
 :: ch12_part1_revelations [watson anchor anchor_revelation]
 ''Chapter 12: Death on the Moor (Part I: Holmes's Revelations)'' (POV: Dr. John H. Watson)
@@ -2924,6 +2928,7 @@ The London express came roaring into the station, and a small, wiry bulldog of a
 ''Choices:''
 * [[Deploy the ambush on the moor path near Merripit House in the dark.|ch14_part1_fog_ambush]]
 * [[Verify Lestrade's Scotland Yard warrants and position the party near the mire path.|ch14_part1_fog_ambush]]
+* [[[Switch POV to Jack Stapleton] View Stapleton setting the fatal dinner trap at Merripit House.|stapleton_ch13_fatal_dinner]]
 
 :: ch14_part1_fog_ambush [watson climax anchor_climax]
 ''Chapter 14: The Hound of the Baskervilles (Part I: The Ambush in the Fog)'' (POV: Dr. John H. Watson)
@@ -3248,8 +3253,8 @@ THE END
 
 [[Return to Start|Start]]
 
-:: ch15_holmes [watson ending]
-''Chapter 15: A Retrospection (Ending: Holmes's Master Deduction)'' (POV: Dr. John H. Watson)
+:: ch15_holmes [holmes ending]
+''Chapter 15: A Retrospection (Ending: Holmes's Master Deduction)'' (POV: Sherlock Holmes)
 
 Holmes leaned back against his cushions, blowing delicate smoke-rings into the winter twilight. 'A pure problem of reason, Watson,' he murmured with quiet satisfaction. 'From the moment Mortimer brought that 1742 manuscript, it was a battle between gothic superstition and cold, analytical science. By measuring the physical bounds of the bog, the timing of the fog, and the trajectory of the hound, science has triumphed utterly over darkness.'
 
@@ -3386,8 +3391,8 @@ THE END
 
 [[Return to Start|Start]]
 
-:: ch15_mire [watson ending]
-''Chapter 15: A Retrospection (Ending: Swallowed by Grimpen Mire)'' (POV: Dr. John H. Watson)
+:: ch15_mire [stapleton ending]
+''Chapter 15: A Retrospection (Ending: Swallowed by Grimpen Mire)'' (POV: Jack Stapleton)
 
 Holmes paused, gazing into the amber embers of the hearth. 'Somewhere in the heart of the Great Grimpen Mire, down in the foul slime of the huge morass which had sucked him in, that cold and cruel heart is sleeping forever,' said he. 'No trace of Jack Stapleton will ever emerge to stand before an earthly judge. The ancient mire which sheltered his crime became his tomb.'
 
@@ -3455,8 +3460,8 @@ THE END
 
 [[Return to Start|Start]]
 
-:: ch15_arrest [watson ending]
-''Chapter 15: A Retrospection (Ending: Justice at the Old Bailey)'' (POV: Dr. John H. Watson)
+:: ch15_arrest [stapleton ending]
+''Chapter 15: A Retrospection (Ending: Justice at the Old Bailey)'' (POV: Jack Stapleton)
 
 The morning newspapers lay scattered across our table, their headlines blazing with the sensational trial at the Old Bailey. Stapleton, cornered upon the edges of the mire by Lestrade and the county police, had stood in the dock facing the damning testimony of his wife. 'A complete victory for justice, Watson,' said Holmes, tapping the Times. 'The gallows of Exeter await him, and the law has proved that no cunning can escape the net of retribution.'
 
@@ -3523,4 +3528,1408 @@ THE END
 ''~ The End ~''
 
 [[Return to Start|Start]]
+
+:: holmes_ch01_part1_observation [holmes anchor anchor_chapter1_holmes]
+''Chapter 1: Mr. Sherlock Holmes (Part I: The Science of Deduction)'' (POV: Sherlock Holmes)
+
+I sat at the breakfast-table in 221B Baker Street, my back turned toward the hearth-rug, watching the curved reflection of Dr. Watson in the well-polished silver coffee-pot. He had been turning Dr. Mortimer's forgotten walking stick in his fingers for the past ten minutes, his brow furrowed with earnest academic concentration.
+
+'Well, Watson,' said I, 'what do you make of it?'
+
+'How did you know what I was doing?' he gasped, glancing round with that ingenuous astonishment which never fails to delight me. 'I believe you have eyes in the back of your head!'
+
+'I have, at least, a very well-polished silver-plated coffee-pot in front of me,' I answered, smiling. 'Come, Watson, tell me what you deduce from the stick. Let me hear you reconstruct the man by an examination of it.'
+
+With immense gravity, Watson delivered his diagnosis: an elderly, venerable country doctor, esteemed by the local hunt, who had received this sturdy Penang-lawyer from grateful rural patients. It was a charming hypothesis, conceived with all of Watson's generous enthusiasm, but utterly innocent of the severe laws of observation.
+
+'Really, Watson, you excel yourself,' I remarked, turning to face him. 'In noting your fallacies, one is guided toward the truth. You are not yourself luminous, but you are a conductor of light!'
+
+I took the stick from his hands and examined it under my pocket lens. The facts were written across the wood with the clarity of print. The thick iron ferrule was worn down to half its original length, indicating extensive walking across rough gravel roads. The initials 'C.C.H.' stood not for a hunt club, but for Charing Cross Hospital. The date, 1884, five years past, marked the moment when a promising young house-surgeon, rather than a venerable practitioner, had resigned his post to establish a modest practice in rural Devonshire. And finally, running across the middle of the stick, were unmistakable indented marks—the tooth-impressions of a dog. The spaniel's jaw was distinctly outlined: teeth too broad for a terrier, too narrow for a mastiff. A curly-haired spaniel, which was even now trotting behind its master up our front steps!
+
+The hall bell rang below. Through the window, I caught sight of a gaunt gentleman and a small, panting dog waiting upon the pavement.
+
+''Clues:'' Mortimer walking stick worn iron ferrule indicates rural gravel walking, C.C.H. 1884 inscription resolves to Charing Cross Hospital house-surgeon, Tooth impressions identify a curly-haired spaniel retriever
+
+''Choices:''
+* [[Greet Dr. James Mortimer and invite him to explain his extraordinary visit.|holmes_ch01_part2_consultation]]
+* [[[Switch POV to Dr. Watson] View Mortimer from Watson's sympathetic gaze.|ch01_part2_mortimer]]
+
+:: holmes_ch01_part2_consultation [holmes branch]
+''Chapter 1: Mr. Sherlock Holmes (Part II: The 1742 Manuscript)'' (POV: Sherlock Holmes)
+
+The door opened, and Dr. James Mortimer stepped into the room. He was very tall, very thin, with a long nose like a beak, which jutted out between two keen, grey eyes, set closely together and sparkling brightly behind a pair of gold-rimmed glasses. He was clad in a professional but rather slovenly fashion, for his frock-coat was dingy and his trousers frayed. Though young, his long back was already bowed, and he walked with a forward thrust of his head and a general air of peering benevolence.
+
+'I had hardly hoped,' he said, bowing with awkward courtliness, 'to find you in. Mr. Sherlock Holmes, I presume? And Dr. Watson. Ah, Mr. Holmes, you interest me extremely. I had hardly expected so dolichocephalic a skull or such well-marked supra-orbital development! Would you have any objection to my running my finger along your parietal fissure? A cast of your skull, sir, until the original is available, would be an ornament to any anthropological museum.'
+
+I waved him to an armchair, mildly amused by his enthusiastic craniology. 'You are an enthusiast in your line of thought, sir, as I am in mine. But I observe from your forefinger that you make your own cigarettes. Pray do not hesitate to light up.'
+
+He drew a paper from his breast-pocket with nervous fingers. 'The truth is, Mr. Holmes, I have come upon a matter of the most singular and grave importance. In your special line of research, you stand second only to Monsieur Bertillon of Paris.'
+
+'Indeed, sir! Then perhaps Monsieur Bertillon would be the proper person to consult.'
+
+'In pure precision of anthropometry, perhaps,' he corrected quickly. 'Yet as a practical man of affairs, as an unraveller of dark and tangled skeins, you are without a rival in Europe. The matter which brings me to you relates to the family of the Baskervilles. I hold in my pocket an ancient manuscript, dating from the year 1742, placed in my trust by the late Sir Charles Baskerville, whose sudden and tragic death three months ago cast a pall of horror across the whole of Dartmoor.'
+
+He smoothed the yellowed parchment across his knee, his eyes dark with an emotion that transcended mere academic curiosity.
+
+''Clues:'' Mortimer identifies Holmes as second-highest expert in Europe behind Bertillon, Ancient manuscript dated 1742 preserved from Baskerville Hall
+
+''Choices:''
+* [[Invite Mortimer to read the manuscript of the Baskerville curse.|holmes_ch02_part1_legend]]
+* [[Question Mortimer directly regarding the sudden demise of Sir Charles Baskerville.|holmes_ch02_part2_footprints]]
+
+:: holmes_ch02_part1_legend [holmes anchor anchor_curse_holmes]
+''Chapter 2: The Curse of the Baskervilles (Part I: The Legend of Hugo)'' (POV: Sherlock Holmes)
+
+Mortimer pushed his spectacles up onto his high forehead and began to read from the 1742 manuscript with a high, cracked voice. It was written in the quaint, legalistic English of the early eighteenth century, warning the heirs of Baskerville against the ancestral curse that had haunted the line since the Great Rebellion.
+
+The tale was familiar enough in the annals of rural folklore: Hugo Baskerville, a wild, profane, God-forsaken roisterer, had conceived a ruthless passion for the maiden daughter of a yeoman near Widecombe. One Michaelmas night, with five of his dissolute companions, he carried the girl off to the Hall and locked her in an upper chamber. While the revellers bellowed obscene songs below, the terrified girl lowered herself by the ivy and fled across the moonlit moor toward her father's farm, nine miles distant.
+
+When Hugo discovered her escape, he swore a hideous oath, giving his body and soul to the powers of evil if he might overtake her, and unleashed his pack of hounds into the dark. His companions mounted their horses and galloped after him. In a deep granite gorge upon the moor, they came upon Hugo's black mare, riderless and lathered in white foam. Pushing their horses down into the ravine, they found the maiden lying dead upon the heather, slain by fear and fatigue. But beyond her, crouched over the prostrate body of Hugo Baskerville, was a foul thing—a great, black beast, shaped like a hound yet larger than any hound that ever mortal eye had rested upon, tearing at his throat. As they watched in frozen terror, the monster turned its blazing eyes and dripping jaws upon them, and the horsemen shrieked and fled for their lives.
+
+I leaned back in my chair, stifling a yawn, and pressed my fingertips together.
+
+'Well, Mr. Holmes?' asked Mortimer, looking up over his glasses. 'Does the narrative interest you?'
+
+'To a collector of fairy tales, perhaps,' said I coolly. 'It has the picturesque extravagance of an eighteenth-century melodrama. But surely, Dr. Mortimer, you have not brought me this Gothic nursery-rhyme to solve in the year of our Lord 1889?'
+
+''Clues:'' 1742 manuscript recounts Hugo Baskerville's profane revels and death upon the moor, Legend warns the sons of Baskerville never to cross the moor in the dark hours
+
+''Choices:''
+* [[Listen to the modern facts of Sir Charles's death and the physical footprints.|holmes_ch02_part2_footprints]]
+* [[Dismiss the romantic fairy tale and demand tangible, modern evidence.|holmes_ch02_part2_footprints]]
+
+:: holmes_ch02_part2_footprints [holmes branch]
+''Chapter 2: The Curse of the Baskervilles (Part II: Footprints of a Gigantic Hound)'' (POV: Sherlock Holmes)
+
+'The legend is old, Mr. Holmes,' Mortimer replied, his voice dropping to a whisper, 'but what I have now to read to you is of today.'
+
+He drew a folded copy of the Devon County Chronicle from his pocket and read the coroner's verdict on the sudden death of Sir Charles Baskerville. Sir Charles, having made a vast fortune in South African speculation, had returned to restore his ancestral seat. He was beloved for his benevolence, but suffered from chronic heart disease and nervous dread. On the night of May 4th, he took his customary evening stroll down the famous yew alley of Baskerville Hall. He never returned. At midnight, his butler, Barrymore, found the old baronet lying dead at the far end of the alley, near the wicker gate opening onto the moor. The autopsy revealed no trace of violence, and the verdict was death from cardiac exhaustion.
+
+Mortimer refolded the paper. 'That is the official account, Mr. Holmes. It was the account given to the coroner's jury. But I have withheld the real facts, because as a doctor and a trustee of the estate, I feared to depopulate the district by exciting panic.'
+
+My attention sharpened instantly. 'You investigated the ground yourself?'
+
+'I did. The yew alley is bounded on either side by impenetrable twelve-foot hedges. Down the center is a strip of turf eight feet broad, with gravel paths on either side. Sir Charles had walked down the path, stopped at the wicker gate that opens onto the moor, and stood there smoking for at least twenty minutes, as proved by the two cigar ashes dropped on the ground. When he turned to leave the gate, his footprints changed! He had not walked back—he had run, run desperately for his life, running on his tiptoes until his heart burst and he pitched forward upon his face.'
+
+'And what of the marks upon the earth?' I demanded.
+
+Mortimer leaned forward until his pale face was within six inches of mine. His pupils were dilated with sheer horror.
+
+'Mr. Holmes, there were no marks upon his body. But twenty yards beyond where he lay, upon the soft, damp peat outside the wicker gate, where no sheep or cattle could have trodden—I saw them distinctly, freshly pressed into the mire!'
+
+'Footprints?'
+
+'Footprints.'
+
+'A man's or a woman's?'
+
+Dr. Mortimer looked at us in a whisper that made the window-panes seem to rattle:
+
+'Mr. Holmes, they were the footprints of a gigantic hound!'
+
+''Clues:'' Sir Charles stood smoking for 20 minutes at the moor gate before his death, Footprints changed to tiptoes, indicating flight from a terrifying pursuer, Twenty yards from the body lay the fresh, distinct footprints of a gigantic hound
+
+''Choices:''
+* [[Commit to investigating the modern problem and order a complete survey map of Dartmoor.|holmes_ch03_problem]]
+* [[Interrogate Mortimer closely concerning the precise physical ground and barriers around the gate.|holmes_ch03_problem]]
+
+:: holmes_ch03_problem [holmes branch]
+''Chapter 3: The Problem (Dartmoor Topography and the Lone Vigil)'' (POV: Sherlock Holmes)
+
+The moment Mortimer took his departure, I sent Watson out for the day, advising him to seek fresh air. For my own part, I had no desire for movement. I had a problem of the first magnitude to digest.
+
+I took down my mouse-coloured dressing-gown, filled a cherry-wood pipe with the strongest, foulest shag tobacco from the toe of my Persian slipper, and locked myself in the sitting-room. By noon, the air was dense with an impenetrable blue haze. Upon the table lay spread a six-inch Ordnance Survey map of Dartmoor.
+
+Here, within this five-mile perimeter of wild Devonshire bog and granite, lay the arena of our duel. I traced every contour line with a dry pen. Baskerville Hall stood encircled by dense plantations, facing south toward the vast, treeless wilderness. Four miles to the north-east lay the Great Grimpen Mire, marked with sinister marsh-crosses—a quagmire capable of swallowing an ox whole. Isolated within its fringes sat Merripit House, occupied, so Mortimer told me, by a naturalist named Stapleton and his sister. Further south lay Coombe Tracey and the estate of old Frankland.
+
+The financial calculus was inescapable. Sir Charles had died intestate, and the entire estate—securities, land, timber, and liquid funds amounting to upwards of £740,000—passed by law to his nephew, Sir Henry Baskerville, a young farmer from Canada who was even now landing at Waterloo station.
+
+If the superstition of the hound was an engine devised by human cunning, who stood to profit? If Sir Henry fell, who was the next heir? Mortimer had spoken of a distant cousin, James Desmond, an elderly clergyman in Westmorland. But behind the screen of wilderness, what other hands moved the pawns? The hound was physical—its footprints in the peat settled that beyond dispute. If it was flesh and blood, it required feeding, sheltering, and directing.
+
+I knocked the gray ashes from my third pipe as twilight fell over London. A worthy adversary had thrown down the gage of battle. Tomorrow morning, at ten o'clock, Sir Henry Baskerville would arrive at 221B Baker Street. We should see whether human intellect could unravel what provincial terror had consecrated to the devil.
+
+''Clues:'' Sir Henry Baskerville is arriving from Canada at Waterloo Station, Ordnance Survey maps reveal Grimpen Mire, Merripit House, and isolated tors, Total estate valued at £740,000 creates monumental financial motive
+
+''Choices:''
+* [[Prepare to receive Sir Henry Baskerville and Dr. Mortimer at Baker Street tomorrow.|holmes_ch04_part1_warning]]
+* [[[Switch POV to Dr. Watson] See Watson returning to find 221B choked with shag tobacco.|ch03_problem]]
+
+:: holmes_ch04_part1_warning [holmes anchor anchor_london_mission_holmes]
+''Chapter 4: Sir Henry Baskerville (Part I: The Cut Times and the Missing Boot)'' (POV: Sherlock Holmes)
+
+At precisely ten o'clock, Sir Henry Baskerville was ushered into our sitting-room by Dr. Mortimer. He was a small, alert, dark-eyed man about thirty years of age, very sturdily built, with thick black eyebrows and a strong, pugnacious face. He wore a ruddy-tinted tweed suit and had the weather-beaten complexion of one who has spent most of his life in the open air.
+
+He wasted no time in civilities. 'Mr. Holmes,' said he, tossing an envelope upon the table, 'I have received this extraordinary letter this morning at the Northumberland Hotel. Perhaps you can tell me what the devil it means!'
+
+The envelope was of rough, cheap paper, addressed in crude, printed characters to 'Sir Henry Baskerville, Northumberland Hotel.' Inside lay a single sheet of folio paper, upon which was pasted a sentence composed of printed words cut out from a newspaper:
+
+'As you value your life or your reason keep away from the moor.'
+
+The word 'moor' alone was written in ink.
+
+I took out my lens and examined the slip with intense interest. 'A charming specimen!' I murmured. 'Watson, observe the type. It is Bourgeois, leaded, exactly five points. These words were cut from yesterday's Times—specifically, the leading article on the tariff question. The scissors used were short-bladed nail-scissors, for the cuts are curved and ragged. And notice the faint, delicate odor that clings to the paper—white jessamine, the perfume of an educated woman.'
+
+'Good heavens!' cried Mortimer. 'An educated woman?'
+
+'And that is not all,' Sir Henry broke in, his temper flaring. 'Somebody has played a senseless prank upon me at my hotel! Last night I put out a brand-new pair of tan boots on the corridor mat to be varnished. This morning, one of the boots has vanished into thin air! The hall-porter and the boot-boy have searched every corner of the hotel in vain.'
+
+'A new tan boot?' I asked, my brows knitting. 'A boot that had never been worn?'
+
+'Never! I bought them only yesterday in the Strand, and had never yet had them on my feet.'
+
+I leaned back, my pulse quickening. An enemy was shadowing Sir Henry in London with terrifying audacity. But why steal an unworn boot?
+
+''Clues:'' Anonymous warning letter composed from words cut from yesterday's Times lead article, Cut with short-bladed nail scissors, pasted with gum, faintly scented with white jessamine, Sir Henry's brand new tan boot stolen from Northumberland Hotel
+
+''Choices:''
+* [[Shadow Sir Henry and Mortimer down Regent Street to flush out any watcher.|holmes_ch04_part2_cab_chase]]
+* [[[Switch POV to Jack Stapleton] See the stalker tracking Sir Henry with a false beard.|stapleton_ch04_part1_hotel_shadow]]
+
+:: holmes_ch04_part2_cab_chase [holmes branch]
+''Chapter 4: Sir Henry Baskerville (Part II: The Shadow in Regent Street)'' (POV: Sherlock Holmes)
+
+The moment Sir Henry and Mortimer left Baker Street to walk toward their hotel, I sprang to my feet.
+
+'Quick, Watson! Your hat and boots! Not a second to lose!'
+
+We slipped down into the street and shadowed them at two hundred yards. They turned into Oxford Street and down Regent Street. Ahead of them, keeping pace on the opposite side of the road, crawled a hansom cab. Inside the cab, dimly visible through the glass, sat a passenger leaning forward with sharp, watchful eyes.
+
+I quickened my pace. Suddenly, the passenger's eyes met mine. He recognized me in a flash! A hand was thrust through the trap-door in the roof, the cabby whipped his horse, and in an instant the hansom went tearing down Regent Street toward Waterloo Place.
+
+'No. 2704!' I shouted, memorizing the white numerals upon the vehicle's rear. 'A bushy black beard and piercing black eyes! He was an adversary worthy of our steel, Watson.'
+
+We walked straight to the District Messenger Office, where I engaged my sharp young aide, Cartwright. I sent him with five sovereigns to visit all twenty-three hotels in the Charing Cross district, with instructions to examine the waste-paper baskets for the mutilated copy of yesterday's Times.
+
+At two o'clock, we called upon Sir Henry at the Northumberland Hotel. We found the baronet purple with fury.
+
+'Look here, Mr. Holmes!' he roared, pointing to the wardrobe. 'The madman has been at it again! That missing tan boot of mine has turned up under the wicker chair in the corner. But now—by all the devils in hell—one of my old black boots, a worn pair that I brought with me from Canada, has been stolen from outside my door!'
+
+My heart gave a fierce leap. The pieces of the puzzle slammed together in my mind with blinding clarity.
+
+'An old black boot!' I exclaimed. 'A boot that you had actually walked in?'
+
+'Yes, covered with mud from yesterday's walk!'
+
+'Ah!' I whispered to Watson. 'An unworn boot carries no scent. But a worn boot carries the unmistakable scent of living flesh!'
+
+''Clues:'' Hansom cab No. 2704 was shadowing Sir Henry down Regent Street, Spy inside cab had piercing black eyes and a full, bushy black beard, The tan boot reappeared at the hotel, but an old, worn black boot was stolen in its place
+
+''Choices:''
+* [[Dispatch Cartwright to 23 hotels and summon cabman No. 2704 to Baker Street.|holmes_ch05_threads]]
+* [[Confront the Northumberland Hotel manager regarding the boot substitutions.|holmes_ch05_threads]]
+
+:: holmes_ch05_threads [holmes anchor anchor_arrival_holmes]
+''Chapter 5: Three Broken Threads (The Insolent Cabman & The Secret Expedition)'' (POV: Sherlock Holmes)
+
+By evening, the three threads of our London inquiry had snapped like rotten twine.
+
+First, Cartwright returned, dust-stained and exhausted, to report that in all twenty-three hotels, not a scrap of cut newspaper could be found. The cunning author of the warning letter had burned the mutilated Times or cast it down a sewer grating.
+
+Second, the test telegram I had wired to the butler, Barrymore, at Baskerville Hall had been delivered into his own hands by the postmaster's boy, proving that the man with the black beard in London was unlikely to be the butler away from his post.
+
+And third, cabman John Clayton, driver of hansom No. 2704, arrived at Baker Street in response to our police enquiry. He was a hearty, honest fellow who told his story without hesitation.
+
+'The gentleman hailed me in Trafalgar Square,' Clayton said. 'He was a gent with a thick black beard and dark glasses, dressed like a toff. He bade me follow that brown-clad Canadian gentleman all morning down Regent Street and Waterloo Place. And when you came running after us, sir, he told me to drive like the devil to Waterloo station.'
+
+'And what did he say his name was when he paid you?' I asked.
+
+Clayton grinned. 'Well, sir, you'll hardly believe it, but when he gave me two sovereigns at the station, he looked me in the eye and said: 'My name is Sherlock Holmes, and don't you forget it!''
+
+I laughed aloud, though an icy thrill of combative fury surged through my veins. The rascal had brazenly flung my own name back into my face!
+
+'A master stroke, Watson!' said I, pacing the hearth-rug. 'He knows my methods, he anticipated my inquiry, and he has slipped through our fingers with Sir Henry's old boot in his pocket. Sir Henry departs for Devonshire tomorrow. You must accompany him, Watson. You must be his shield, his eyes, and his constant companion. Report every fact to me without speculation.'
+
+Watson accepted the perilous commission with characteristic fidelity. But as the door closed behind him, my plan was already formed. I could not remain in London while my friend walked into the wolf's mouth. I would follow him to Dartmoor in secret, establish a hidden command upon the open moor, and strike the monster from the darkness.
+
+''Clues:'' Cartwright finds no mutilated Times in 23 hotel wastebaskets, Telegram confirms Barrymore is at Baskerville Hall, Cabman John Clayton states passenger brazenly declared: 'My name is Sherlock Holmes'
+
+''Choices:''
+* [[Dispatch Watson to Devon with Sir Henry while secretly preparing your own covert moor deployment.|holmes_ch06_part1_secret_departure]]
+* [[[Switch POV to Jack Stapleton] View the villain retreating to Dartmoor with the stolen black boot.|stapleton_ch05_black_boot]]
+
+:: holmes_ch06_part1_secret_departure [holmes anchor anchor_arrival_moor_holmes]
+''Chapter 6: Baskerville Hall (Part I: The Covert Deployment to Dartmoor)'' (POV: Sherlock Holmes)
+
+The deception was complete. To Watson, to Sir Henry, and to the watchful eyes that shadowed 221B Baker Street, Sherlock Holmes was safely detained in London, immersed in the tangled blackmail cases of the Duke of Devonshire.
+
+Under cover of darkness, disguised as an elderly, eccentric botanist with a worn knapsack and a tin specimen box, I boarded an unadvertised milk-train westward. I avoided Exeter and Newton Abbot, stepping down at a lonely wayside halt miles north of the moor.
+
+My preparations had been executed with military precision. I had summoned young Cartwright down from London and billeted him in the quiet market town of Coombe Tracey, six miles east of the Hall. His duty was perilous but simple: he was to act as my secret quartermaster. Twice a week, he would purchase bread, cold meat, clean water, and my essential shag tobacco, slip into the moor along the sheep-tracks, and deposit the supplies within my chosen retreat. Most crucially, he was instructed to collect Watson's letters from the local post office and convey them to me without Watson's knowledge.
+
+My lair was already chosen. High upon the jagged ridge of Black Tor, commanding an unhindered panorama of Baskerville Hall, the treacherous expanse of Grimpen Mire, and the stone track to Merripit House, lay a cluster of prehistoric circular stone huts, abandoned by the ancient Britons three thousand years ago.
+
+One of these huts had preserved its conical slate roof and dry granite walls intact. I cleared the floor, lined it with dry, springy heather, laid out my waterproof ulster, and established the covert headquarters of the defense. Through the narrow door, the granite peaks rose like dark sentinels against the swirling gray mist.
+
+''Clues:'' Holmes travels secretly to Devon under cover of night avoiding rail terminals, Cartwright stationed at Coombe Tracey as secret logistic courier, Neolithic stone hut upon Black Tor secured as covert operations base
+
+''Choices:''
+* [[Occupy the Black Tor stone hut and sweep the moor with your field glasses.|holmes_ch06_part2_hut_surveillance]]
+* [[[Switch POV to Dr. Watson] View Watson's arrival at the grim gates of Baskerville Hall.|ch06_part1_arrival]]
+
+:: holmes_ch06_part2_hut_surveillance [holmes branch]
+''Chapter 6: Baskerville Hall (Part II: The Telescope on Black Tor)'' (POV: Sherlock Holmes)
+
+Late in the afternoon of October 15th, the deep silence of the moor was broken by the clatter of hoofs. I crouched behind a cleft in the granite rampart, bringing my powerful naval field-glass to bear upon the white ribbon of road that wound from Bovey Tracey.
+
+The sight was dramatic. A wagonette drawn by two steaming bays rolled briskly across the heath. Upon the box sat Sir Henry Baskerville and Dr. Watson, wrapped in heavy ulsters, flanked by armed county constables. A few miles back, at the junction of the moor road, two mounted soldiers with carbines rested upon their thighs stood motionless against the sky.
+
+The explanation had already reached me: Selden, the ferocious Notting Hill murderer, had broken from Dartmoor Prison at Princetown three days ago and was lurking somewhere in the vast granite labyrinth. A dangerous complication! A starving convict roaming the crags would inject an element of chaotic violence into a situation already poised upon a razor's edge.
+
+I swung my glass toward Baskerville Hall. The ancient mansion emerged from its dense cordon of dying trees like a sinister phantom. The twin crenellated towers, black against the dull autumn sky, looked grim and forbidding. As the carriage passed beneath the ruined arch of the gateway, the great iron gates clanged shut. Watson and Sir Henry had entered the web.
+
+A mile to the east, across the shimmering, deceptive green of Grimpen Mire, another chimney was smoking. Merripit House! There, within that lonely cottage, sat the brain that had devised the terror. I adjusted the focus, settling down for a long, cold, merciless vigil.
+
+''Clues:'' Mounted guards patrol moor searching for escaped Notting Hill murderer Selden, Through field glasses, Holmes observes Watson and Sir Henry entering the gloomy Hall
+
+''Choices:''
+* [[Turn your telescope toward the treacherous paths of Grimpen Mire and Merripit House.|holmes_ch07_part1_naturalist]]
+* [[[Switch POV to Jack Stapleton] View the villain watching the arrivals from Merripit House.|stapleton_ch06_part1_arrival_watch]]
+
+:: holmes_ch07_part1_naturalist [holmes anchor anchor_naturalist_holmes]
+''Chapter 7: The Stapletons of Merripit House (Part I: The Man with the Net)'' (POV: Sherlock Holmes)
+
+The morning sun of October 16th burned through the drifting mist, revealing the full treachery of the Great Grimpen Mire. Through my lens, the vast morass looked like an immense, undulating emerald carpet, broken here and there by dark pits of bubbling slime and jagged islets of granite.
+
+Presently, a small figure appeared upon the mire track, moving with extraordinary agility. It was a slender, dapper man of middle height, with straw-coloured hair and a sharp, clean-shaven face. He carried a green butterfly net in one hand and a botanist's tin box slung across his shoulder.
+
+Jack Stapleton!
+
+I studied his movements with intense scientific admiration. Where any ordinary man would have plunged into the bottomless bog within three paces, this fellow sprang lightly from tussock to tussock, following an invisible zigzag trail known only to himself. Suddenly, he halted, raised his net, and sprinted with wild leaps across the quagmire in pursuit of an elusive cyclopides butterfly.
+
+A few hundred yards away, Dr. Watson was walking down the moor path from the Hall. Stapleton spotted him, turned, and hastened to meet him with open arms and the easy, bubbling geniality of a harmless savant.
+
+As they stood conversing by the edge of the mire, a terrifying scream rent the air. A tragic spectacle unfolded: a wild moorland pony, venturing too close to the false green crust, had broken through into the mire! Through my glass, I watched the wretched creature's frantic thrashing. Its neck stretched in agony, its wild eyes rolled, and within two minutes, the sucking black mud closed over its nostrils. Not a ripple remained.
+
+Stapleton pointed toward the spot, smiling pleasantly at Watson as though demonstrating a textbook specimen in a lecture hall. A cold, cruel demon, wearing the mask of an eccentric scholar!
+
+''Clues:'' Stapleton demonstrates unnatural familiarity traversing lethal Grimpen Mire, A wild Dartmoor pony swallowed alive in the mire proves the bog's absolute lethality
+
+''Choices:''
+* [[Track Watson's meeting with Beryl Stapleton through your high-powered lens.|holmes_ch07_part2_beryl_warning]]
+* [[[Switch POV to Jack Stapleton] View Stapleton playing the eccentric naturalist with his butterfly net.|stapleton_ch07_part1_naturalist_act]]
+
+:: holmes_ch07_part2_beryl_warning [holmes branch]
+''Chapter 7: The Stapletons of Merripit House (Part II: The Desperate Warning)'' (POV: Sherlock Holmes)
+
+Stapleton suddenly darted off across the heather in pursuit of another moth, leaving Watson alone upon the track. At that exact moment, a tall, striking woman stepped from the bushes into Watson's path.
+
+Beryl Stapleton!
+
+She was of a beauty as rare as it was un-English: dark-eyed, olive-skinned, with a proud, exquisite profile and a figure of extraordinary grace. But her face was pale as marble, and her dark eyes were dilated with acute, desperate terror.
+
+Through my field glass, I could read the pantomime of their encounter with utter clarity. She had evidently mistaken Watson for Sir Henry Baskerville! She seized Watson by the arm, speaking with frantic, breathless rapidity. Her hands gestured passionately toward the southern road, imploring him—commanding him—to pack his trunks and return instantly to London before night fell!
+
+Watson, taken aback by this sudden apparition, tried to calm her. When he revealed his true identity as Dr. Watson, the woman's reaction was singular: a look of mingled relief and doubled terror flashed across her features.
+
+At that moment, Stapleton reappeared over the crest of the hill, his net swinging by his side. The transformation in the woman was instantaneous: she stiffened, her face froze into an emotionless mask, and she stepped back as though she had been struck across the mouth.
+
+Stapleton greeted his sister with a smile that failed to reach his small, cold eyes. A master of dissimulation! Yet beneath that polished domestic exterior, I sensed the brutal tension of a tyrant and his prisoner. This woman was no willing accomplice—she was an unwilling captive held under the lash of fear!
+
+I lowered the glass, my mind racing. The pieces were shifting. In London, the warning letter had been composed by an educated hand and scented with white jessamine. Here on the moor, this exotic 'sister' risked her life to warn the baronet. The battle lines were drawn.
+
+''Clues:'' Beryl Stapleton frantically warns Watson mistaking him for Sir Henry, Deep domestic terror and unnatural tension observed between the supposed siblings
+
+''Choices:''
+* [[Prepare to receive and decode Watson's first written dispatch from the Hall.|holmes_ch08_watson_report]]
+* [[Direct your spy glass to intercept Cartwright's rendezvous point at the crags.|holmes_ch08_watson_report]]
+
+:: holmes_ch08_watson_report [holmes branch]
+''Chapter 8: First Report of Dr. Watson (Dispatches Deciphered in the Hut)'' (POV: Sherlock Holmes)
+
+On the evening of October 18th, Cartwright scrambled into the stone hut, his breath coming in hoarse gasps. From his greasy canvas satchel, he drew a packet of cold roast beef, two loaves of bread, a pouch of my beloved Latakia shag, and a thick, sealed envelope addressed to Baker Street in Watson's neat, upright handwriting.
+
+I struck a match, lit my tallow candle, and unfolded my friend's first report.
+
+Watson had done magnificent work. With the painstaking precision of an army surgeon, he had documented the life of the Hall. He described the oppressive gloom of the great oak-panelled corridors, the ancestral portraits, and the nervous agitation of the staff.
+
+Three crucial points leaped from his pages:
+
+First, Barrymore the butler had been caught creeping down the west corridor at two in the morning, holding a candle to a window that commanded the moor, waiting in rigid concentration as though signaling someone in the dark.
+
+Second, Mrs. Barrymore had been observed in tears, her eyes swollen and red. What secret bond tied the respectable butler to the perils of the moor? My mind flew to Selden, the escaped convict. A woman's tears, a butler's midnight vigils—could the convict be a relative, shielded by family blood?
+
+And third, Sir Henry had met Beryl Stapleton and had fallen violently in love with her at first sight. Stapleton, far from encouraging a match that would elevate his sister to a ladyship, had intervened with furious, hysterical jealousy, forbidding Sir Henry from addressing her!
+
+I blew a long stream of smoke against the stone roof. Why should a penniless naturalist fly into a rage when a wealthy baronet courts his sister?
+
+There was only one rational answer in the whole lexicon of crime: because she was not his sister at all! She was his wife! A wife employed as a decoy, yet protected by the jealous fury of a possessive tyrant! The master deduction fell into place. I rolled myself in my ulster, my revolver loaded beneath my head, ready for the midnight watch.
+
+''Clues:'' Watson reports Barrymore's midnight prowling with a candle in the west tower, Mrs. Barrymore's weeping eyes confirm hidden domestic grief, Sir Henry falling deeply in love with Beryl Stapleton
+
+''Choices:''
+* [[Focus your telescope on the west tower of Baskerville Hall for the midnight candle signal.|holmes_ch09_part1_midnight_watch]]
+* [[[Switch POV to Dr. Watson] Read Watson's original diary dispatch sent from Baskerville Hall.|ch08_watson_report]]
+
+:: holmes_ch09_part1_midnight_watch [holmes anchor anchor_convict_holmes]
+''Chapter 9: The Light upon the Moor (Part I: The Candle and the Signal)'' (POV: Sherlock Holmes)
+
+At two in the morning of October 20th, the moor lay submerged beneath an ocean of silver moonlight. The air was crisp with frost. I stood upon the granite ledge outside my hut, the night-glass pressed to my eye.
+
+Precisely as Watson had reported, a yellow pinprick of flame flared in the high, narrow window of the Hall's western tower. For five minutes it shone steadily. Then it waved twice to and fro.
+
+I swept my glass across the silent crags. A mile away, perched high upon an isolated pinnacle of rock, an answering spark appeared! A tiny, trembling spark of light, glowing like a glow-worm among the ancient boulders.
+
+The secret was laid bare: the Barrymores were feeding the escaped convict Selden! Mrs. Barrymore was his sister; the family ties had proved stronger than the fear of the gallows.
+
+Suddenly, two dark figures broke from the shadows of the Hall and sprinted across the heather toward the beacon. Watson and Sir Henry! They had laid an ambush for the butler, forced his confession, and were now galloping across the moonlit granite to capture the murderer themselves!
+
+Bravo, Watson! The loyal fellow was risking neck and limb upon the treacherous rocks. Through my glass, I watched the wild drama unfold: the convict, a shaggy, ape-like creature in prison rags, spotted them, hurled a boulder down the ravine, and went bounding across the moor like a mountain goat, Watson's revolver cracking behind him.
+
+The pursuit drew near the base of my very ridge. It was time to show them that a guardian angel walked the moor.
+
+''Clues:'' A yellow candle flares in the west window of Baskerville Hall at 2 AM, A tiny answering flame flickers upon the granite crags of Black Tor, Selden is hiding among prehistoric huts, receiving food from the Barrymores
+
+''Choices:''
+* [[Step onto the moonlit summit of Black Tor to observe Watson and Henry hunting the convict.|holmes_ch09_part2_figure_on_the_tor]]
+* [[[Switch POV to Dr. Watson] Experience the midnight chase across the granite crags.|ch09_part2_moor_chase]]
+
+:: holmes_ch09_part2_figure_on_the_tor [holmes branch]
+''Chapter 9: The Light upon the Moor (Part II: The Figure upon the Tor)'' (POV: Sherlock Holmes)
+
+I climbed to the very apex of Black Tor, stepping out upon the highest granite boulder where the full silver moon threw my shadow across the plateau. I stood motionless, my arms folded across my chest, looking down into the valley.
+
+Below, panting upon the heather, Watson and Sir Henry had halted their fruitless pursuit. Suddenly, Watson raised his eyes. Through the crystal night air, his gaze locked upon me!
+
+I saw him start violently and grip Sir Henry's shoulder, pointing his revolver up toward my silhouette. He saw a tall, thin man, motionless as a statue of bronze, standing high above the world upon the crest of the tor.
+
+At that supreme moment of drama, an appalling sound shattered the silence of Dartmoor.
+
+A low, deep-toned moan rolled across the heath. It swelled into a wild, mournful bay, a hideous crescendo of savage fury that made the granite boulders seem to vibrate. It was the bay of a gigantic hound! The cry of blood, rising from the black depths of Grimpen Mire!
+
+I saw Watson and Sir Henry freeze in their tracks, their faces turned upward, drained of every drop of blood. Sir Henry stumbled against a rock, crossing himself in superstitious dread. Even Watson, seasoned soldier of Maiwand, lowered his pistol with a trembling hand.
+
+The beast was alive. Stapleton was preparing for the kill!
+
+Before Watson could rally his spirits and scramble up the rocks toward me, I slipped backward into the shadow of the cleft, melted into the darkness of the prehistoric huts, and vanished without a footprint.
+
+''Clues:'' Watson catches sight of the tall, thin silhouette on the summit of Black Tor, A blood-chilling hound howl rolls across the moor, freezing Watson and Henry in terror
+
+''Choices:''
+* [[Slip back into the stone hut and await Watson's diary dispatch regarding Laura Lyons.|holmes_ch10_diary_and_laura]]
+* [[[Switch POV to Jack Stapleton] View Stapleton stirring the hound in the mire at midnight.|stapleton_ch09_part1_feeding_the_hound]]
+
+:: holmes_ch10_diary_and_laura [holmes branch]
+''Chapter 10: Extract from the Diary of Dr. Watson (The Secret of L.L.)'' (POV: Sherlock Holmes)
+
+Watson's second dispatch arrived via Cartwright on the morning of October 23rd. It contained the missing link that connected the London conspiracies with the death of Sir Charles Baskerville.
+
+Barrymore, in gratitude to Sir Henry for not prosecuting his convict brother-in-law, had made a clean breast of a secret that had tortured his conscience for months.
+
+On the morning of Sir Charles's death, the old baronet had received a letter from the postman, postmarked Coombe Tracey. Later that night, while cleaning the study fireplace, Mrs. Barrymore had found the charred ashes of this letter. All was consumed save the very postscript at the bottom of the page, written in a delicate feminine hand:
+
+'Please, please, as you are a gentleman, burn this letter, and be at the gate by ten o'clock.'
+
+The initials below the plea were 'L.L.'!
+
+I leaped to my feet, my heart pounding against my ribs. 'L.L.'!
+
+Who in this isolated district bore those initials? My mental catalogue of Dartmoor residents revolved in a flash. Laura Lyons! The beautiful, unfortunate daughter of old Frankland of Cranmer Hall! She had made an imprudent marriage with a runaway artist named Lyons, who had abandoned her in penury. Disowned by her litigious father, she had established a modest typewriting business in Coombe Tracey, supported by the quiet charity of Sir Charles Baskerville—and of Jack Stapleton!
+
+The fatal mechanism stood naked before my eyes. Sir Charles was a recluse who refused to leave his grounds after dark. How could he be lured to the lonely wicker gate at ten o'clock at night?
+
+Only by an urgent appeal to his chivalry! A desperate woman pleading for a secret interview to save her honor or secure her freedom! And behind that appeal, whispering the words into her ear, dictating the very letter—stood Jack Stapleton!
+
+I strapped my revolver beneath my coat. It was time to pay a morning call upon Mrs. Laura Lyons.
+
+''Clues:'' Barrymore confesses Sir Charles went to the gate to meet a woman signing 'L.L.', L.L. identified as Laura Lyons, daughter of Frankland, residing in Coombe Tracey, The burnt fragment pleaded: 'If you are a gentleman, burn this letter and be at the gate at ten'
+
+''Choices:''
+* [[Descend to Coombe Tracey in disguise to interrogate Mrs. Laura Lyons directly.|holmes_ch11_part1_lyons]]
+* [[Instruct Cartwright to shadow Laura Lyons and obtain her financial records.|holmes_ch11_part1_lyons]]
+
+:: holmes_ch11_part1_lyons [holmes anchor anchor_tor_holmes]
+''Chapter 11: The Man on the Tor (Part I: The Inquest of Laura Lyons)'' (POV: Sherlock Holmes)
+
+I found Mrs. Laura Lyons at her modest apartment in Coombe Tracey. She was an extraordinarily handsome woman, with rich hazel hair and hazel eyes, but her mouth had that hardened, bitter downturn which comes from prolonged social humiliation and desperate poverty.
+
+At first, she met my inquiries with haughty evasion, denying that she had ever corresponded with Sir Charles on the day of his death.
+
+'Mrs. Lyons,' said I, leaning forward and fixing her with my keenest gaze, 'the matter is far too grave for falsehood. We are investigating a murder. The letter you sent was burned, but the postscript in your hand was rescued from the grate: 'Please, please, as you are a gentleman, burn this letter, and be at the gate by ten o'clock.' If you refuse to speak, you stand in the shadow of the gallows as an accessory to murder!'
+
+The blood fled from her cheeks, leaving her white as chalk. She covered her face with her hands, trembling violently.
+
+'I did not know!' she sobbed. 'As God is my judge, I swore it was for my salvation! Mr. Stapleton told me that if I could obtain two thousand pounds to secure my legal divorce, he would make me his lawful wife! He dictated the letter. He told me that Sir Charles was proud and sensitive, and that an interview in the garden was the only way to touch his heart!'
+
+'And why did you not keep the appointment?'
+
+'Because Mr. Stapleton came to me that very afternoon!' she cried. 'He told me that his own pride could not endure that another man should pay for my freedom. He swore that he would provide every guinea himself, and commanded me—on my love for him—never to go near Baskerville Hall that night! And next morning, I read that Sir Charles was dead!'
+
+The devilish scheme was complete in every detail. Stapleton had used this unhappy woman to draw Sir Charles to the gate, kept her away, and brought his glowing hell-hound to the appointment!
+
+Leaving her weeping in remorse, I struck out across the heath at a rapid pace. The shadows were lengthening, and I knew that Watson was searching for the tenant of the hut.
+
+''Clues:'' Laura Lyons admits writing the appointment letter to Sir Charles at 10 PM, Stapleton promised to marry her once her divorce was financed, Stapleton forbade her to keep the appointment, leaving Sir Charles alone at the gate
+
+''Choices:''
+* [[Hasten back to the prehistoric stone hut upon Black Tor before nightfall.|holmes_ch11_part2_stone_hut]]
+* [[[Switch POV to Dr. Watson] View Watson infiltrating the stone hut with revolver drawn.|ch11_part2_stone_hut]]
+
+:: holmes_ch11_part2_stone_hut [holmes branch]
+''Chapter 11: The Man on the Tor (Part II: 'A Lovely Evening, Watson!')'' (POV: Sherlock Holmes)
+
+I reached the prehistoric hut just as the last crimson gleams of sunset died upon the western horizon. As I approached the low stone portal, my acute senses detected an unmistakable intruder: the pungent aroma of an Egyptian cigarette, the very brand favoured by my friend Dr. Watson!
+
+I stepped quietly within the threshold. In the dim violet twilight, a figure sprang up from the heather, a cocked revolver gleaming in his fist.
+
+'A lovely evening, my dear Watson!' said I, stepping into the light. 'I really think you will be more comfortable outside than sitting upon that hard granite.'
+
+'Holmes!' he gasped, dropping his pistol upon the bed, his voice trembling with a mixture of immense relief and wounded bewilderment. 'Holmes! Good God, is it you? Can it be possible that you have been here all the time?'
+
+'Every hour of it, my dear fellow,' I replied, lighting my pipe. 'Forgive the necessary deception. Had Sir Henry or the Stapletons known of my presence, our cunning adversary would have retreated into impenetrable caution. By utilizing your honest, open observations, I have operated with total invisibility.'
+
+Watson grasped my hand with all his old soldierly warmth. We sat side by side upon the heather, pooling our discoveries.
+
+'And now, Watson,' said I, 'let me supply the master key to this labyrinth. You have met Miss Stapleton. Has it ever struck you as unnatural that a devoted brother should fly into a murderous frenzy when a wealthy, honourable baronet seeks to marry his penniless sister?'
+
+'It astonished me beyond measure,' Watson admitted.
+
+'It astonished you because you accepted a lie! That lady is not his sister, Watson. She is his lawful wife! A Costa Rican woman whom he married in South America! He brought her here under a false name, forced her to pass as his sister so that she might serve as a decoy to lure wealthy men to their destruction, while he watches her with the savage jealousy of a beast!'
+
+Watson's face darkened with righteous fury. 'Great God! Then Stapleton is—'
+
+'A murderer of the most cold-blooded and calculated type this world has ever seen!'
+
+''Clues:'' Watson enters hut with drawn revolver; Holmes greets him casually by the fire, Holmes reveals Beryl is Stapleton's lawful wife, not his sister, Stapleton is an imposter possessing sinister natural malice and hereditary claims
+
+''Choices:''
+* [[Step outside upon the crags with Watson to evaluate the impending peril.|holmes_ch12_part1_revelations]]
+* [[Pool all intelligence regarding Laura Lyons and Stapleton's past movements.|holmes_ch12_part1_revelations]]
+
+:: holmes_ch12_part1_revelations [holmes anchor anchor_death_holmes]
+''Chapter 12: Death on the Moor (Part I: The Cry on the Crags)'' (POV: Sherlock Holmes)
+
+We stepped out upon the narrow granite ledge outside the hut. The moon had dipped behind a bank of ragged, wind-torn clouds, and the vast expanse of Dartmoor lay buried in deep, suffocating shadow.
+
+'Our case is almost complete, Watson,' I whispered, resting a hand upon his shoulder. 'Laura Lyons has confessed how Sir Charles was lured to the gate. We know of the stolen boots—an old boot used to train a bloodhound to Sir Henry's personal scent. But we lack the tangible physical proof to place before an English jury. We cannot arrest a man upon circumstantial deductions—'
+
+Suddenly, out of the black vastness of the moor, there broke a sound that curdled the blood in our veins.
+
+A hound! Deep, resonant, hollow, booming across the silence of the night!
+
+It was no ordinary bark. It was the baying of a monster on a fresh, hot trail! And then, rising above the terrible baying, came a scream—a scream of utter, mortal agony!
+
+'Great God!' cried Watson, his hand flying to his revolver. 'Did you hear that?'
+
+'Sir Henry!' I gasped, a cold sweat breaking across my forehead. 'He has gone out upon the moor!'
+
+Again the cry rose—closer now, accompanied by the frantic scrabbling of boots upon shale and the heavy, panting thud of galloping paws. A second shriek rent the air, ending in a sickening, splintering crash at the base of the crags, followed by silence—a silence more dreadful than the cries.
+
+'This way, Watson! For God's sake, run!'
+
+We plunged down the jagged slope, leaping from boulder to boulder in the dark, our revolvers cocked, sprinting toward the foot of the sheer granite cliff!
+
+''Clues:'' A bloodcurdling hound baying echoes through the fog followed by screams of human agony, Holmes and Watson sprint across the moonlit boulders toward the sound of death
+
+''Choices:''
+* [[Sprint frantically toward the base of the sheer granite cliff to intercept the tragedy.|holmes_ch12_part2_selden_death]]
+* [[[Switch POV to Jack Stapleton] View Stapleton unleashing the hound upon Sir Henry's scent.|stapleton_ch12_part1_screams_on_crags]]
+
+:: holmes_ch12_part2_selden_death [holmes branch]
+''Chapter 12: Death on the Moor (Part II: The Fall of the Convict)'' (POV: Sherlock Holmes)
+
+At the foot of a perpendicular granite crag, forty feet high, lay a dark, crumpled heap.
+
+Watson fell upon his knees beside the body, crying out in bitter despair: 'Sir Henry! Oh, Holmes, the hound has had him!'
+
+The body was clad in a thick, ruddy-tinted tweed suit—the identical suit worn by Sir Henry Baskerville on the morning we had met him in London! The skull was crushed against the stones, and the neck was broken.
+
+I knelt down, struck a match, and turned the blood-stained face to the light. I cried aloud in fierce, triumphant joy!
+
+'Watson! Look at the beard! Look at the forehead! It is not Sir Henry! It is Selden, the escaped convict!'
+
+Watson stared in dumbfounded amazement. 'The convict? But how in heaven's name does he come to be wearing Sir Henry's clothes?'
+
+'Barrymore's wardrobe charity!' I laughed, the terrible weight lifting from my heart. 'Sir Henry gave his cast-off London garments to the butler, and the butler passed them to his starving brother-in-law! The hound was laid on Sir Henry's scent with the stolen boot—it tracked the scent of Sir Henry's clothes across the moor, chased the wretched convict over the edge of the crag, and dashed his brains out upon the stones!'
+
+At that moment, the yellow beam of a lantern bobbed through the darkness. A light, dapper figure stepped from behind the boulders.
+
+Jack Stapleton!
+
+He had come to gloat over Sir Henry's corpse! When his lantern fell upon me, he stopped dead, his face draining of all colour. For three seconds, the master villain stood frozen, caught between mortal terror and criminal cunning.
+
+'Mr. Holmes!' he stammered, recovering himself with an effort that strained every nerve. 'Is it possible? What an unexpected honour! And... who is this unfortunate man?'
+
+'An escaped convict, Mr. Stapleton,' I replied smoothly, puffing my pipe. 'He seems to have fallen from the crags and broken his neck. A tragic accident, nothing more. My friend Watson and I return to London tomorrow, our holiday at an end.'
+
+Stapleton smiled, a smile of infinite relief. The fool believed his secret was safe! In forty-eight hours, the trap would spring.
+
+''Clues:'' Dead man is Selden the convict, dressed in Sir Henry's discarded old tweed suit, The stolen boot scent caused the hound to track the scent of Sir Henry's clothes, Stapleton emerges from the darkness with a lantern, feigning innocence
+
+''Choices:''
+* [[Return to Baskerville Hall to examine the ancestral portraits and set the final snare.|holmes_ch13_portrait]]
+* [[Confront Stapleton directly upon the rocks before he retreats to Merripit House.|holmes_ch13_portrait]]
+
+:: holmes_ch13_portrait [holmes anchor anchor_portrait_holmes]
+''Chapter 13: Fixing the Nets (The Face of Hugo & The Fatal Dinner Invitation)'' (POV: Sherlock Holmes)
+
+That night, in the great dining-hall of Baskerville Hall, over cold fowl and claret, I stared up at the gallery of family portraits. Watson and Sir Henry watched me in silence.
+
+Suddenly, my eyes fastened upon a canvas dated 1647. It portrayed a cavalier with a harsh, wicked countenance, clad in black velvet and lace.
+
+'Who is that gentleman?' I asked.
+
+'That is the wicked Hugo himself,' said Sir Henry, 'the father of the family legend.'
+
+I waited until Sir Henry left the room. Then, stepping upon a chair, I held a candle before the portrait and placed my flat hands across the cavalier's broad plumed hat and flowing curls, concealing the seventeenth-century costume.
+
+Watson sprang up from the table with a loud cry of astonishment!
+
+'Good heavens!' he shouted. 'It is the face of Jack Stapleton!'
+
+'Precisely!' said I, stepping down. 'A case of hereditary reversion, a physical throwback of two hundred years! Jack Stapleton is a Baskerville! He is the son of Rodger Baskerville, Sir Charles's black-sheep younger brother who fled to South America! He stands next in succession after Sir Henry to the entire £740,000 estate!'
+
+Our net was ready. The next morning, I announced our public departure for London to deceive Stapleton's spies. But at Coombe Tracey station, we slipped from the train and met Inspector Lestrade of Scotland Yard, who had arrived with a search warrant and an English bulldog's tenacity.
+
+My final orders to Sir Henry were severe and absolute: he was to accept Stapleton's dinner invitation at Merripit House, announce that we had returned to London, and at ten o'clock, he must walk home alone across the moor along the track by the Great Grimpen Mire.
+
+The baronet's courage did not falter. He accepted the role of bait in our trap. As darkness gathered over the bog, Watson, Lestrade, and I took up our vigil behind the granite rocks, two hundred yards from the glowing windows of Merripit House.
+
+''Clues:'' Concealing Hugo Baskerville's hat and curls reveals Jack Stapleton's identical face, Stapleton is proven to be the son of Rodger Baskerville, seeking the £740,000 estate, Sir Henry is instructed to dine alone at Merripit House and walk home by the mire path
+
+''Choices:''
+* [[Meet Inspector Lestrade at the station and take position in the rocks outside Merripit House.|holmes_ch14_part1_fog_ambush]]
+* [[[Switch POV to Jack Stapleton] View the villain preparing the fatal dinner at Merripit House.|stapleton_ch13_fatal_dinner]]
+
+:: holmes_ch14_part1_fog_ambush [holmes anchor anchor_climax_holmes]
+''Chapter 14: The Hound of the Baskervilles (Part I: The Fire-Breathing Beast)'' (POV: Sherlock Holmes)
+
+The night was cold and damp, but our supreme peril came not from the adversary, but from the elements.
+
+From the Great Grimpen Mire, a dense, moonlit fog-bank was rolling inland. It advanced like a white wall, silent, swift, and relentless, creeping across the heather and blotting out the boulder field inch by inch.
+
+'If that fog covers the path before Sir Henry leaves the house,' I muttered through clenched teeth, 'we shall never see him alive!'
+
+At five minutes to ten, the front door of Merripit House opened. Sir Henry stepped out into the night, wrapped in his overcoat. He paused, looked up at the clearing sky, and began to walk briskly along the stone path that skirted the morass.
+
+He had passed our ambush by fifty yards when a sound broke from the fog.
+
+A patter of rapid, galloping feet—heavy, relentless, vibrating the damp earth!
+
+'Look out!' I roared, cocking my revolver. 'It's coming!'
+
+Out of the dense white wall of vapour leaped an apparition so hideous that the blood froze in our veins.
+
+A hound! But such a hound as never mortal eyes had beheld! A huge creature, coal-black, shaped like a cross between a bloodhound and a mastiff, but larger than either. Fire burst from its open mouth, its eyes glowed with smouldering embers, and its muzzle, hackles, and dewlap were outlined in flickering, bluish flame! Never in the delirious dream of a disordered brain could anything more savage, more appalling, more hellish be conceived!
+
+The beast sprang across the heather with giant bounds, its smoking jaws parted, bounding straight for Sir Henry's throat! Sir Henry looked back, shrieked in horror, and fell to his knees upon the path.
+
+I sprang from the rocks, leveled my revolver, and emptied five cartridges into the monster's flank!
+
+The bullets took effect! With a deafening howl of anguish, the beast rolled over upon its back, clawing wildly at the air. It leaped up once more, snapping furiously, but Watson and I fired together. A bullet pierced its brain. It gave a dying shiver, collapsed into the heather, and lay still.
+
+We had broken the curse of the Baskervilles!
+
+''Clues:'' Thick white fog bank rolls from Grimpen Mire threatening to engulf the path, The gigantic hound bursts through the fog, its jaws and eyes ablaze with phosphorus, Holmes fires five cartridges into the leaping beast, slaying the demon inches from Sir Henry
+
+''Choices:''
+* [[Storm Merripit House to rescue Beryl and pursue Stapleton into the Great Grimpen Mire.|holmes_ch14_part2_mire_pursuit]]
+* [[[Switch POV to Jack Stapleton] Experience the agony of defeat and the desperate flight into the mire.|stapleton_ch14_part2_panic_flight]]
+
+:: holmes_ch14_part2_mire_pursuit [holmes branch]
+''Chapter 14: The Hound of the Baskervilles (Part II: Sucked into Grimpen Mire)'' (POV: Sherlock Holmes)
+
+We knelt beside the dead hound. I ran my fingers over its muzzle. The glowing light had ceased, but a slick, greasy paste coated its fur.
+
+'Phosphorus!' whispered Lestrade, touching the wet skin.
+
+'A cunning preparation,' I remarked, wiping my hands. 'Odourless, so as not to spoil the beast's scent, yet luminous in the dark. A mastiff-bloodhound cross, bred and starved for savagery.'
+
+Leaving Lestrade to attend to the trembling Sir Henry, Watson and I battered down the door of Merripit House.
+
+The ground floor was deserted. On the upper floor, behind a locked door, we found a scene of horror. Beryl Stapleton was bound securely to an upright of the bed with heavy curtain cords, her mouth gagged with a scarf. Her delicate wrists and white neck were discoloured by brutal, recent bruises!
+
+Watson severed the cords. As the gag was removed, she gasped in agony:
+
+'Is he safe? Did Sir Henry escape?'
+
+'He is safe,' I answered gently. 'And the hound is dead.'
+
+'Thank God!' she wept, swaying upon her feet. 'He has fled into the Great Grimpen Mire! He has an old tin-mine on an island in the very heart of the bog where he kept the hound! But he can never navigate the path in this fog!'
+
+Guided by the desperate woman's directions, we pushed into the fringes of the morass next morning as the sun burned off the mist. We followed the tiny wands of lath that Stapleton had planted to mark the invisible trail. Halfway to the island, where the slime quivered like green jelly, a black object caught my eye, half-buried in the mud.
+
+I reached out with my crook and dragged it onto the heather.
+
+It was an old black boot, stamped 'Meyers, Toronto' upon the lining! The stolen boot that had sealed Sir Henry's doom—cast aside by the flying murderer in his panic!
+
+Beyond that point, the guiding wands ceased. Upon the wide expanse of trembling mire, there was no trace of a returning footstep. A heel-mark was stamped deep into the green slime, where a man had desperately striven to regain his balance—and failed. The bubbling mud had closed over him.
+
+Somewhere down in the foul slime of the huge morass, that cold, cruel heart was sleeping forever. The Great Grimpen Mire had claimed its master!
+
+''Clues:'' Beryl rescued from upstairs bedroom bound and gagged with brass bedpost marks, Phosphorus preparation and Sir Henry's stolen black boot found in mire island lair, Stapleton lost his footing in the dense fog and was swallowed alive by Great Grimpen Mire
+
+''Choices:''
+* [[Return to Baker Street to reconstruct the complete retrospective deduction.|ch15_holmes]]
+* [[Celebrate the heroic partnership with Dr. Watson by the crackling fireside.|ch15_watson]]
+* [[Review the full triumph of justice and the closure of the Baskerville curse.|ch15_victory]]
+* [[Reflect solemnly upon the tragic cost exacted from the innocent.|ch15_tragedy]]
+* [[Ponder the grim justice of the mire that swallowed the cruel murderer.|ch15_mire]]
+* [[Envision the trial and judgment of the villain before the bar of law.|ch15_arrest]]
+
+:: stapleton_ch01_part1_heritage [stapleton anchor anchor_chapter1_stapleton]
+''Chapter 1: The Genesis of the Plot (Part I: The Blood of Rodger Baskerville)'' (POV: Jack Stapleton)
+
+I sat in my study at Merripit House, pinning a rare specimen of the marsh fritillary to the cork board. Through the small window, the vast, treeless wilderness of Dartmoor rolled away toward the gray granite rampart of the tors. To the world, I was Jack Stapleton, an inoffensive, bespectacled schoolmaster turned naturalist, spending his blameless days chasing butterflies with a green gauze net.
+
+Fools! Blind, provincial dolts!
+
+In my veins ran the proud, turbulent blood of the Baskervilles. My father was Rodger Baskerville, the youngest of the three brothers—the reckless, dark-faced rover who had fled England in disgrace to seek his fortune in Central America. I was born in the heat of Costa Rica, christened with his name, and endowed with his fiery, ruthless intellect. When I returned to England with my exquisite wife, Beryl Garcia, I established a boarding school in Yorkshire under the name of Vandeleur. An epidemic of typhus broke out; three boys died, the school collapsed into ruin, and I found myself an impoverished outcast with a fortune in debts.
+
+It was then, in the depths of our flight, that I discovered the fortune awaiting me. My uncle, Sir Charles Baskerville, had returned from the South African diamond fields, an invalid childless widower with £740,000 invested in gold and consols, restoring the ancestral seat at Baskerville Hall.
+
+Between that colossal fortune and myself stood only two lives: an ailing old man with a ruined heart, and a distant nephew farming the Canadian bush!
+
+I sold the remnants of my Yorkshire property, moved south to Devonshire, and rented this lonely cottage upon the very edge of the Great Grimpen Mire. I compelled Beryl, under threat of death, to pass as my unmarried sister. And here, in the ancient library of Sir Charles, I unearthed the weapon of my salvation: the 1742 manuscript detailing the legend of the spectral hound that had torn the throat of wicked Hugo Baskerville!
+
+An ancestral curse! What genius could invent a more perfect instrument of untraceable murder?
+
+''Clues:'' Stapleton is born the son of Rodger Baskerville, the South American black sheep, Past bankruptcy of his Yorkshire school forced the adoption of the name Stapleton, Inheritance of the £740,000 Baskerville estate requires eliminating Charles and Henry
+
+''Choices:''
+* [[Inspect the secret lair on the mire island and examine the beast.|stapleton_ch01_part2_beast]]
+* [[[Switch POV to Sherlock Holmes] See Holmes examining Mortimer's walking stick.|holmes_ch01_part1_observation]]
+
+:: stapleton_ch01_part2_beast [stapleton branch]
+''Chapter 1: The Genesis of the Plot (Part II: The Monster in Grimpen Mire)'' (POV: Jack Stapleton)
+
+I crossed the quagmire along my secret path of sunken stones, stepping onto the isolated granite knoll at the heart of Grimpen Mire. Here, concealed within the crumbling stone huts of an abandoned Elizabethan tin-mine, lay my masterpiece.
+
+I pushed open the heavy wooden door of the old smelting shed. A low, terrifying growl rattled from the darkness, accompanied by the metallic rasp of an iron chain.
+
+Two eyes, burning with savage hunger, fixed upon me.
+
+It was an immense creature, coal-black, a devilish cross between a bloodhound and a mastiff, which I had purchased in London from Ross and Mangles in the Fulham Road. I had brought it down by northern routes, walking it by night across the tors so that no human eye had rested upon it. It stood nearly thirty inches at the shoulder, with the jaw of a tiger and the iron sinews of a lion.
+
+From my leather bag, I produced my secret chemical concoction: a paste of white phosphorus dissolved in refined bone oil and glycerin. It was completely odorless, so as not to deaden the creature's keen hunting scent.
+
+I approached the snarling brute, stroked its massive head, and smeared the paste over its muzzle, across the circles of its eyes, and down its bristling dewlap.
+
+I stepped back and extinguished my lantern.
+
+A cry of involuntary awe broke from my lips! In the pitch blackness of the shed, the beast stood transformed into a thing of pure nightmare! Its mouth appeared to vomit forth green and bluish flames; its eyes smouldered like twin coals from the pit; its massive jaws were dripping with cold fire!
+
+Sir Charles was an old man, steeped in superstitious terror, with a heart that fluttered like a wounded sparrow. He would never survive the shock. The hound would not need to set a tooth in him. One glimpse of this roaring phantom springing from the yew trees would burst his heart in his chest!
+
+The weapon was ready. Now, I needed the lure to draw the old baronet from his sanctuary into the dark.
+
+''Clues:'' Giant mastiff-bloodhound cross purchased from Ross and Mangles in Fulham Road, Hidden in abandoned tin mine island in the heart of Great Grimpen Mire, Luminous chemical preparation: phosphorus dissolved in bone oil glow without scorching
+
+''Choices:''
+* [[Entangle Laura Lyons into writing the appointment letter to lure Sir Charles.|stapleton_ch02_part1_laura_trap]]
+* [[Test the hound's ferocity upon the bog island with fresh red meat.|stapleton_ch02_part1_laura_trap]]
+
+:: stapleton_ch02_part1_laura_trap [stapleton anchor anchor_laura_trap_stapleton]
+''Chapter 2: The Fall of Sir Charles (Part I: The Pawn of Coombe Tracey)'' (POV: Jack Stapleton)
+
+The instrument to lure Sir Charles into my trap was ready to hand in Coombe Tracey: Mrs. Laura Lyons.
+
+She was a woman of desperate vanity and even more desperate poverty. Abandoned by her scoundrel husband, disowned by her cantankerous father Frankland, she was drowning in debt. I cultivated her with sweet, insidious sympathy. I played the chivalrous protector, listened to her tears, and gradually fed her romantic imagination with promises of marriage.
+
+'If only you were free of this monster Lyons,' I would whisper, stroking her hair. 'If only you had the funds to obtain a legal divorce, Beryl and I would welcome you as mistress of Merripit House!'
+
+Two thousand pounds was the sum required to clear her debts and fund the London lawyers. Who had such wealth and the generosity to bestow it? Sir Charles Baskerville!
+
+On the morning of May 4th, I called upon Laura at her cottage. I found her in a state of high agitation, receiving threats of legal attachment from her creditors.
+
+'Sir Charles leaves for London tomorrow,' I told her urgently. 'He is old, frail, and his heart is failing. If you write him a formal appeal, he will refer you to his lawyers. You must see him yourself, face to face! You must touch his chivalry before he departs!'
+
+I sat beside her and dictated the fateful words:
+
+'Please, please, as you are a gentleman, burn this letter, and be at the gate by ten o'clock.'
+
+She signed it with a trembling hand and posted it to Baskerville Hall.
+
+At five o'clock that afternoon, I returned to her cottage with a look of stern, wounded pride.
+
+'Laura,' I said, seizing her hands, 'I cannot permit it! My honor as a man revolts at the thought of my future wife begging money from another man! I have secured the two thousand pounds from my own investments. You shall not go to Baskerville Hall tonight!'
+
+She fell upon my neck with tears of overwhelming gratitude. The fool! She believed she was saved. In reality, she had sealed Sir Charles's death warrant, while leaving herself without an alibi to reveal my hand!
+
+''Clues:'' Stapleton promises marriage to Laura Lyons if she secures divorce funds from Sir Charles, Dictates the desperate letter demanding a meeting at 10 PM at the yew alley gate
+
+''Choices:''
+* [[Command Laura Lyons to stay away while you bring the hound to the yew alley.|stapleton_ch02_part2_yew_alley]]
+* [[Prepare the hound with the phosphorus paste as twilight falls upon the moor.|stapleton_ch02_part2_yew_alley]]
+
+:: stapleton_ch02_part2_yew_alley [stapleton branch]
+''Chapter 2: The Fall of Sir Charles (Part II: Terror at the Wicker Gate)'' (POV: Jack Stapleton)
+
+The night of May 4th was pitch-black and damp. At nine o'clock, I slipped out of Merripit House, leading my hound upon a heavy hemp lead. Its muzzle and eyes blazed with their hideous coat of phosphor, shielded beneath a thick woolen blanket.
+
+We reached the boundary of Baskerville Hall at a quarter to ten. Outside the dense, twelve-foot yew hedge that bordered the alley, the damp peat of the moor was silent as a tomb. I crouched behind a clump of furze bushes, twenty yards from the wooden wicker gate that opened onto the heath.
+
+Through the gaps in the hedge, I saw the red glow of a cigar.
+
+Sir Charles had arrived! He had opened the gate, looked out into the darkness, and was pacing nervously upon the turf, checking his pocket watch every few minutes.
+
+Ten o'clock struck from the village church across the valley.
+
+The old man grew restless. He tossed his first cigar ash to the gravel, struck a second match, and waited another ten minutes. The cold night air was tormenting his lungs.
+
+It was time.
+
+I stripped the blanket from the hound. I held the beast by its heavy brass collar, whispered into its ear, and pointed its glowing muzzle through the gloom toward the gate.
+
+'Go, boy!' I hissed. 'Take him!'
+
+The beast leaped forward with a low, bloodcurdling roar!
+
+Through the wicket, Sir Charles heard the thud of giant paws and turned. What met his superstitious gaze was the nightmare that had haunted his family for two hundred years: an immense, coal-black demon charging through the darkness, its jaws and eyes spouting hellish flame!
+
+He uttered a shriek that died in his throat. He did not even attempt to shut the gate. He whirled round and ran down the alley on his tiptoes, his hands clawing at his chest in mortal agony! After fifty yards, his heart ruptured, and he crashed headlong onto the turf.
+
+I blew my high-pitched galton whistle. The hound, trained to instant obedience, swerved twenty yards short of the body and bounded back to my side. I slipped the blanket over its head, patted its flank, and led it safely back into the black sanctuary of Grimpen Mire.
+
+Not a mark was on his body. A clean, untraceable kill! The first hurdle was down!
+
+''Clues:'' Sir Charles waited 20 minutes smoking at the gate expecting Laura Lyons, The phosphorescent hound was unleashed; Sir Charles fled in terminal cardiac panic, The hound was recalled into the mire, leaving only footprints twenty yards away
+
+''Choices:''
+* [[Plan the London expedition to eliminate the new Canadian heir, Sir Henry Baskerville.|stapleton_ch03_new_heir]]
+* [[[Switch POV to Sherlock Holmes] View Holmes receiving the case from Dr. Mortimer.|holmes_ch01_part2_consultation]]
+
+:: stapleton_ch03_new_heir [stapleton branch]
+''Chapter 3: The Threat from Canada (The Obstacle to the £740,000 Estate)'' (POV: Jack Stapleton)
+
+The coroner's verdict was everything I had prayed for: death from natural causes, cardiac syncope. The fools had looked at the yew hedge and seen nothing. Even Mortimer, with his ridiculous anthropological chatter, had kept silent out of fear of rural hysteria.
+
+I believed the prize was within my grasp. But within a fortnight, the Devon papers announced a bitter complication: Sir Charles had a surviving nephew, Henry Baskerville, son of his middle brother. The young man had emigrated to Canada in his youth, was farming near Lake Superior, and had already been summoned home by the family solicitors, Messrs. Gautier and Brown of London, to assume the title and the £740,000 estate!
+
+My fury was boundless! Was I to allow a colonial clodhopper to wrest the ancestral gold from my grasp after I had braved the gallows to win it?
+
+Never!
+
+A second strike was imperative. But to strike Sir Henry on the open moor would invite instant suspicion from the county constabulary. The ideal ground was London—a city of four million souls, where street accidents, river drownings, and drunken affrays are forgotten in a day!
+
+I locked my hound on the mire island with thirty pounds of horseflesh. I packed two leather valises, purchased a disguise of dark spectacles and an adhesive black beard, and dragged Beryl with me to a quiet boarding house in St. John's Wood under the name of Vandeleur.
+
+She wept, she pleaded, she went upon her knees, begging me to renounce the inheritance and fly with her back to Central America.
+
+'Touch that door,' I snarled, twisting her slender wrist until she cried out, 'or speak one word to a living soul, and I swear by heaven your Canadian lover will die a death ten times more hideous than his uncle!'
+
+On October 12th, Sir Henry landed at Southampton. Within two hours, I had picked up his trail at Waterloo station and followed him and Dr. Mortimer to the Northumberland Hotel in the Strand. The hunt had moved to the capital!
+
+''Clues:'' Sir Henry Baskerville is summoned from Canada as sole heir to the estate, Stapleton travels to London under an alias to shadow and eliminate Sir Henry, Beryl is forced to accompany him, watched day and night under constant surveillance
+
+''Choices:''
+* [[Shadow Sir Henry to the Northumberland Hotel and secure an agent within the staff.|stapleton_ch04_part1_hotel_shadow]]
+* [[[Switch POV to Dr. Watson] View Watson discussing the Dartmoor problem with Holmes at 221B.|ch03_problem]]
+
+:: stapleton_ch04_part1_hotel_shadow [stapleton anchor anchor_london_shadow_stapleton]
+''Chapter 4: Sir Henry Baskerville (Part I: Shadows at the Northumberland Hotel)'' (POV: Jack Stapleton)
+
+On the evening of October 12th, I returned to our lodgings in St. John's Wood to find Beryl crouched beside the table, her face bathed in tears. Scattered upon the rug lay an open copy of yesterday's Times and a pair of curved nail-scissors.
+
+My eye caught the jagged gap in the leading article. I seized her by the hair, dragging her head back until her dark eyes stared into mine.
+
+'What have you done?' I hissed.
+
+She sobbed in terror. 'I warned him! I pasted the words upon a sheet and dropped it into the Charing Cross pillar-box! I could not let you slaughter an innocent boy, Jack! I could not bear the blood on our souls!'
+
+A savage oath escaped my lips! I struck her across the face, hurling her against the sofa. The little traitress had almost destroyed my life's work! The letter was already in the post; it was beyond recall. If Sir Henry took fright and returned to Canada, the estate would slip through my fingers forever!
+
+I must act without an hour's delay.
+
+At dawn, disguised in a dark frock coat and heavy tinted glasses, I entered the Northumberland Hotel. I slipped half a sovereign into the apron pocket of the chambermaid who was cleaning the second-floor corridor.
+
+'My girl,' said I with a polite smile, 'the gentleman in Room 34 has asked me to take one of his boots to the cobbler in the Strand to be repaired. Hand me one from outside his door, and keep the gold for yourself.'
+
+She looked at the coin, grinned greedily, and darted to Room 34. She returned in thirty seconds, pressing a boot into my hands.
+
+I slipped it into my bag, hurried down the service stairs, and walked briskly into the morning air. But when I reached an alleyway and drew the boot from my bag, I uttered a roar of frustrated fury!
+
+It was a brand-new tan boot! The leather was stiff, polished, and virgin—it had never touched a human foot!
+
+An unworn boot carries no scent! The hound cannot hunt an abstract shape of calfskin—it requires the unmistakable, pungent scent of living sweat and blood!
+
+Furious at the maid's blundering stupidity, I resolved to follow Sir Henry on his morning walk, watch his movements, and contrive to seize a worn boot before the day was out!
+
+''Clues:'' Beryl secretly composes warning letter using words cut from yesterday's Times, Stapleton discovers the betrayal, terrifies Beryl, but the letter is already mailed, Stapleton bribes chambermaid to steal Sir Henry's boot to secure his scent
+
+''Choices:''
+* [[Discover the maid brought an unworn tan boot; trail Sir Henry into Regent Street in a hansom.|stapleton_ch04_part2_cab_chase]]
+* [[[Switch POV to Sherlock Holmes] View Holmes analyzing the cut Times letter at 221B.|holmes_ch04_part1_warning]]
+
+:: stapleton_ch04_part2_cab_chase [stapleton branch]
+''Chapter 4: Sir Henry Baskerville (Part II: The Duel in Regent Street: Cab 2704)'' (POV: Jack Stapleton)
+
+I applied a thick, adhesive black beard to my chin, pulled a dark slouch hat over my brow, and stationed myself near the Strand.
+
+At ten o'clock, Sir Henry and Mortimer emerged, walking briskly toward Oxford Street. I hailed a hansom cab driven by a burly fellow named Clayton.
+
+'Follow those two gentlemen at two hundred yards,' I commanded, tossing him a half-sovereign. 'Keep pace on the opposite side of the road!'
+
+For twenty minutes, the hunt proceeded smoothly. We crawled down Regent Street behind them. I observed their energetic gestures; Mortimer was evidently taking Sir Henry to a professional consultation. But to whom?
+
+Suddenly, cold horror seized my heart!
+
+Walking briskly down the pavement behind Sir Henry, his keen, aquiline profile unmistakable to any educated man in Europe, was Sherlock Holmes! Accompanying him was a sturdy military gentleman—Dr. Watson!
+
+Mortimer had brought Holmes into the case! The foremost detective in the world had taken the field!
+
+At that instant, Holmes turned his head. His hawk-like gray eyes bored straight through the glass of my cab! He had penetrated my shadow!
+
+'Quick!' I roared, thrusting my stick through the roof-trap into the cabby's back. 'Drive like the devil to Waterloo! A sovereign if you shake them off!'
+
+Clayton lashed his horse into a wild gallop. The hansom tore down Regent Street, swerving between omnibuses and drays, leaving Holmes sprinting in our wake. We careened into Waterloo Place, crossed the river, and pulled up amidst the chaos of Waterloo station.
+
+I leaped from the cab, pulled out two golden sovereigns, and pressed them into Clayton's palm.
+
+'You did well, cabby,' said I with a mocking, insolent grin. 'And if a tall gentleman asks you who your fare was, tell him: My name is Sherlock Holmes, and don't you forget it!'
+
+I plunged into the labyrinth of the station, vanished through the southern exit, and left the greatest detective in England grasping at smoke! But the game was now deadly earnest. I had crossed swords with Sherlock Holmes!
+
+''Clues:'' Stapleton hires cab No. 2704 disguised with adhesive black beard and dark glasses, Sherlock Holmes spots him; Stapleton escapes and brazenly uses Holmes's own name
+
+''Choices:''
+* [[Return to the hotel corridor to steal Sir Henry's worn black boot and flee to Devon.|stapleton_ch05_black_boot]]
+* [[[Switch POV to Sherlock Holmes] View Holmes receiving the report from cabman Clayton.|holmes_ch05_threads]]
+
+:: stapleton_ch05_black_boot [stapleton anchor anchor_arrival_stapleton]
+''Chapter 5: Three Broken Threads (Securing the Old Black Boot)'' (POV: Jack Stapleton)
+
+The encounter in Regent Street had sent an icy shudder of danger through my marrow, but it did not shake my resolve. A lesser intellect would have fled the city. I did the opposite: I doubled back to the Northumberland Hotel.
+
+In the confusion of the afternoon, while Sir Henry and Mortimer were closeted in consultation with Holmes in Baker Street, I re-entered the hotel. I slipped that useless, unscented tan boot beneath a wicker chair in the second-floor sitting-room. And outside the door of Room 34, my patience was rewarded by the gods of fortune!
+
+There, set out upon the drugget to be brushed, lay a pair of old black boots, their heels worn down and their toes caked with dried red mud from Sir Henry's Canadian rambles!
+
+I snatched one of the black boots, jammed it beneath my overcoat, and walked calmly out of the front entrance into the Strand.
+
+I had it! The master scent! The heavy, unmistakable odour of human sweat and leather that my starved beast could track across twenty miles of wind-swept bog!
+
+That evening, my private surveillance outside Baker Street bore another piece of priceless fruit: Sir Henry and Dr. Watson were observed purchasing railway tickets for Devonshire, but Sherlock Holmes was remaining behind in London! The great detective was sending his sheep to the slaughter while he occupied himself with metropolitan trifles!
+
+I laughed aloud in the shadows of the platform. Against Sherlock Holmes, the battle would have been fierce; against Dr. John Watson, the blundering, good-natured army surgeon, it would be child's play!
+
+I returned to St. John's Wood, dragged Beryl by the arm, and boarded the midnight mail train westward. By sunrise on October 14th, we were back at Merripit House.
+
+I went straight to the mire island. I held the muddy black boot beneath the panting nostrils of the monster. The beast snorted, its yellow eyes narrowing in ferocious recognition, and let out a low, slobbering whimper of bloodlust.
+
+The stage was set. Sir Henry was walking into the jaws of hell!
+
+''Clues:'' Stapleton returns the new tan boot and successfully steals Sir Henry's old black boot, Learns Holmes declined to go to Devon, sending only Dr. Watson as bodyguard, Returns triumphant to Merripit House to prepare the hound with the fatal scent
+
+''Choices:''
+* [[Take position upon the ridge overlooking the moor road to watch Sir Henry's arrival.|stapleton_ch06_part1_arrival_watch]]
+* [[[Switch POV to Dr. Watson] View Watson traveling west on the express to Devonshire.|ch06_part1_arrival]]
+
+:: stapleton_ch06_part1_arrival_watch [stapleton anchor anchor_arrival_moor_stapleton]
+''Chapter 6: Baskerville Hall (Part I: The Arrival of the Quarry)'' (POV: Jack Stapleton)
+
+On the afternoon of October 15th, I stood upon the granite crest of Belliver Tor, pressing my brass pocket telescope to my eye. The autumn sky was dull and overcast, and a cold, wet wind blew from the Atlantic across the waste.
+
+Upon the Bovey road, a cloud of dust heralded the approach of the wagonette.
+
+Through the glass, I brought the travelers into focus. There was young Sir Henry, looking eagerly about him at his ancestral moors, wrapped in a Canadian fur-trimmed coat. Beside him sat Dr. Watson, square-jawed, upright, his hand resting conspicuously upon the bulge of his tweed overcoat pocket where his army service revolver lay ready for action. And flanking the vehicle rode two county constables with carbines resting upon their saddlebows.
+
+A comical escort! As though a lead bullet could stop a demon forged of hell-fire and ancient darkness!
+
+The presence of the armed police had an unexpected cause: Selden, the Notting Hill murderer, had escaped from the granite cells at Princetown three days before and was starving somewhere upon the tors. A delicious complication! If an escaped cutthroat was known to roam the moor, any sudden violence, any cry in the dark, any mangled corpse upon the stones would instantly be laid at the convict's door!
+
+I watched the wagonette turn through the ancient stone piers of Baskerville Hall. The heavy iron gates swung shut behind them.
+
+The sheep was in the pen! Sir Henry was now separated from civilization by twenty miles of untamed moorland, with only a credulous doctor to shield his throat!
+
+A thrill of predatory exultation pulsed through my veins. The gold of Sir Charles was already glittering before my eyes. I packed my glass and hastened down the slope to Merripit House to ensure that my domestic cage was secure.
+
+''Clues:'' Sir Henry and Dr. Watson arrive under armed police escort due to Selden's prison break, Stapleton spots the Escaped Convict Selden factor as a chaotic wildcard
+
+''Choices:''
+* [[Return to Merripit House and brutally terrorize Beryl into absolute submission.|stapleton_ch06_part2_beryl_chains]]
+* [[[Switch POV to Sherlock Holmes] View Holmes observing the wagonette from the Black Tor hut.|holmes_ch06_part2_hut_surveillance]]
+
+:: stapleton_ch06_part2_beryl_chains [stapleton branch]
+''Chapter 6: Baskerville Hall (Part II: The Tyrant of Merripit House)'' (POV: Jack Stapleton)
+
+I entered Merripit House through the kitchen scullery. The house was cold and damp, filled with the sharp, acidic odor of the cyanide jars I used to kill my insect specimens.
+
+In the sitting-room, Beryl was standing by the window, staring out toward the dark towers of Baskerville Hall. When she heard my step, she started like a struck deer, her face blanching to the lips.
+
+'He has arrived,' I said, shutting the door behind me and locking it with a slow, deliberate turn of the key.
+
+She pressed her back against the wall, her dark eyes wide with terror. 'Jack... I implore you! In the name of the Christ you blaspheme, let this boy live! He has never wronged you! Take what money we have and let us fly!'
+
+I crossed the room in two strides, seized her by the throat, and forced her down into an armchair until her breath came in ragged, choking gasps.
+
+'Listen to me, my beautiful little hypocrite,' I murmured, leaning over her until my lips brushed her ear. 'You tried to ruin me in London with your cut newspaper. I forgave you because I needed your face. But here on Dartmoor, the game is played with blood, not paper! If you whisper one syllable to Sir Henry—if you breathe one hint that you are my wife and not my sister—I will not merely kill him. I will take you out to the tin-shed in the mire, chain you to the iron ring in the wall, and leave you in the dark with the beast!'
+
+A shudder of convulsive horror racked her slender frame. She slid from the chair onto her knees, weeping in broken, hopeless despair.
+
+'I will be silent,' she moaned, kissing the hem of my coat. 'God help me, I will be silent!'
+
+'See that you are,' I said, stepping over her. 'Tomorrow, the doctor will explore the moor. I shall go out with my butterfly net and introduce myself. A charming, garrulous naturalist—the very man to win an honest soldier's confidence!'
+
+I unlocked the door and went into the kitchen to prepare my poisons. The web was spun; the spider was ready.
+
+''Clues:'' Stapleton violently threatens Beryl with the hound if she speaks to Sir Henry, Beryl is kept prisoner in the lonely house surrounded by the deadly bog
+
+''Choices:''
+* [[Stroll onto the moor with butterfly net to intercept Watson and evaluate his intellect.|stapleton_ch07_part1_naturalist_act]]
+* [[Prepare the hound's feeding schedule on the mire island for the coming night.|stapleton_ch07_part1_naturalist_act]]
+
+:: stapleton_ch07_part1_naturalist_act [stapleton anchor anchor_naturalist_stapleton]
+''Chapter 7: The Stapletons of Merripit House (Part I: The Mask of the Naturalist)'' (POV: Jack Stapleton)
+
+The morning of October 16th was brilliant with pale, watery autumn sunshine. Armed with my green gauze net and botanical collecting box, I strolled along the cart track leading from Merripit House toward the Hall.
+
+Presently, as I had anticipated, the square, burly figure of Dr. Watson appeared upon the crest of the hill. He walked with his hands in his pockets, his pipe between his teeth, scanning the wilderness with the curious eye of a stranger.
+
+I quickened my pace, calling out with the cheerful, uninhibited warmth of an isolated country enthusiast.
+
+'Dr. Watson, I presume! Pray excuse the lack of ceremony, but here upon the moor we dispense with provincial etiquette. I am Jack Stapleton, of Merripit House.'
+
+The good doctor was charmed. In two minutes, we were conversing like old comrades. I pointed out the ancient ruins of the Neolithic stone huts upon the tors, descanted upon the rare flora of the peat-bogs, and spoke with tender melancholy of poor Sir Charles's tragic demise.
+
+Suddenly, from the emerald quagmire behind us, a wild shriek broke upon our ears. A Dartmoor pony, venturing onto the false green moss, was being sucked alive into the black morass!
+
+I gripped Watson's arm, pointing with my net. 'Look, Dr. Watson! The Great Grimpen Mire! A false step means instant, inescapable death! That pony will be under in two minutes!'
+
+Watson stared in frozen horror as the beast vanished beneath the bubbling slime. The lesson was etched into his soul: the moor was a place of deadly horror.
+
+Then, with casual indifference, I dropped the probe:
+
+'We were all deeply disappointed that Mr. Sherlock Holmes did not honor our county with a visit. Is it true that he remains entirely in London?'
+
+Watson smiled with modest pride. 'He is immersed in an urgent metropolitan affair. For the present, Sir Henry is under my sole charge.'
+
+Under your sole charge! I had to bite my lips to suppress the triumphant grin that threatened to unmask my face. The road to the fortune was clear!
+
+''Clues:'' Stapleton charms Watson with eccentric naturalist persona near Grimpen Mire, Demonstrates pony swallowed in mire to establish bog's terrifying lethality, Inquires about Sherlock Holmes to confirm the great detective is truly in London
+
+''Choices:''
+* [[Pursue a cyclopides moth into the heather, leaving Watson to encounter Beryl.|stapleton_ch07_part2_beryl_blunder]]
+* [[[Switch POV to Dr. Watson] View Watson's first encounter with Stapleton upon the moor.|ch07_part1_naturalist]]
+
+:: stapleton_ch07_part2_beryl_blunder [stapleton branch]
+''Chapter 7: The Stapletons of Merripit House (Part II: The Blunder on the Path)'' (POV: Jack Stapleton)
+
+I feigned sudden excitement, pointing my net toward a fluttering speck of brown among the heather, and sprinted away across the bog, leaving Watson to walk down the track alone.
+
+My departure was no accident. I wished to observe the doctor from behind the boulders. But what met my eyes as I crested the granite ridge turned my blood to liquid fire!
+
+Beryl! The wretched, rebellious little fool had slipped from the cottage and was running breathless across the heath!
+
+Through the gaps in the gorse, I watched her seize Watson by the arm. Her hands were flying, her eyes wild with passionate appeal. Even from a distance of two hundred yards, I could read her frantic pantomime: she was commanding him to turn back, to flee to London, to escape the doom of the Baskervilles! She had mistaken the stocky doctor for the Canadian baronet!
+
+My hand clenched around my butterfly stick until the bamboo groaked. One word of the hound, one whisper of our true marriage, and my neck would feel the hemp before the week was out!
+
+I leaped from the rocks, swinging my net, whistling a light operatic air as though returning from a successful chase.
+
+'Halloa, Beryl!' I shouted cheerfully. 'What brings you out upon the moor?'
+
+The effect was instantaneous. She stiffened as though an electric shock had passed through her spine. She stepped back from Watson, her face freezing into that blank, marble mask she wore when the whip was raised.
+
+'I was out walking, Jack,' she stammered, 'and I... I mistook this gentleman for Sir Henry.'
+
+I laughed, a rich, pleasant brotherly laugh that radiated amused indulgence.
+
+'Ah, my dear, you must forgive my sister, Dr. Watson! She is terrified of the moor, and the tragedy of poor Sir Charles has unstrung her nerves. Come, Watson, you must walk back with us to Merripit House and take a cup of coffee before you return to the Hall!'
+
+Watson was utterly disarmed. He suspected nothing. But as we walked three abreast down the gravel lane, my nails dug into the palms of my hands until the blood ran.
+
+Beryl's defiance was becoming an acute, intolerable hazard. When the night of the final kill arrived, she would not merely be warned—she would be bound, gagged, and broken beyond the power to betray!
+
+''Clues:'' Beryl secretly ran out to intercept Watson, mistaking him for Sir Henry, Stapleton catches her, suppresses her with cold sisterly domestic facade, Realizes Beryl's rebellious spirit must be crushed before the final strike
+
+''Choices:''
+* [[Invite Watson and Sir Henry to dine at Merripit House to cement the social trap.|stapleton_ch08_probing_watson]]
+* [[Inspect the hound's chains and security upon the mire island.|stapleton_ch08_probing_watson]]
+
+:: stapleton_ch08_probing_watson [stapleton branch]
+''Chapter 8: First Report of Dr. Watson (Probing the Doctor over Tea)'' (POV: Jack Stapleton)
+
+The days that followed were a masterpiece of calculated sociability.
+
+I called at Baskerville Hall, paying my respects to the young baronet with all the deferential charm of an eccentric country neighbor. Sir Henry, starving for companionship in that cavernous granite mausoleum, seized upon my company with boyish gratitude. Within forty-eight hours, he was a regular visitor at Merripit House.
+
+And there, the second half of my strategy bore instant, intoxicating fruit: Sir Henry fell passionately, blindly, head-over-heels in love with Beryl!
+
+He could not take his eyes from her exquisite face. Whenever she poured his tea, his hand trembled; whenever she spoke in that soft, foreign cadence, his eyes shone with adoration.
+
+It was a magnificent advantage, yet one that required razor-sharp navigation. If I permitted an open courtship, Sir Henry might marry her, take her away to London, and discover our true marriage before I could strike!
+
+I executed a stroke of psychological genius: I staged a scene of violent, hysterical jealousy!
+
+When Sir Henry attempted to declare his passion to Beryl upon the moor path, I burst from the gorse bushes, white with simulated fury. I insulted the baronet, accused him of taking advantage of an unprotected maiden, and ordered him from my property!
+
+Sir Henry was humiliated and bewildered, but his desire was inflamed a hundredfold. Opposition merely stoked his determination to possess her. He apologized, begged for my forgiveness, and promised to keep his distance until I gave my brotherly consent.
+
+Meanwhile, Dr. Watson was scribbling away in his notebook by the hall fireside. Through the village postmaster, whose daughter was friendly with my scullery maid, I learned that Watson was mailing voluminous packets of manuscript to Baker Street twice a week.
+
+Let the fool write! Let him describe the trees, the clouds, the melancholy butler, and my eccentric botanical collections! While Dr. Watson wrote romance and Sherlock Holmes sat idly smoking by his London fireplace, the clock was ticking down to the final catastrophe!
+
+''Clues:'' Sir Henry visits Merripit and falls violently in love with Beryl at first sight, Stapleton feigns hysterical brotherly jealousy to prevent dangerous intimacy, Watson writes extensive reports to Baker Street, unaware Holmes is secretly deployed
+
+''Choices:''
+* [[Sneak into the Great Grimpen Mire at midnight to feed raw meat to the hungry beast.|stapleton_ch09_part1_feeding_the_hound]]
+* [[[Switch POV to Sherlock Holmes] View Holmes in his stone hut reading Watson's first dispatch.|holmes_ch08_watson_report]]
+
+:: stapleton_ch09_part1_feeding_the_hound [stapleton anchor anchor_convict_stapleton]
+''Chapter 9: The Light upon the Moor (Part I: Feeding the Demon in the Mire)'' (POV: Jack Stapleton)
+
+At one in the morning of October 20th, when the house was silent and Beryl was safely locked in her bedroom, I slipped out into the fog.
+
+In my canvas sack, I carried ten pounds of bloody sheep-offal obtained from an outlying farm near Ashburton. The journey across the Great Grimpen Mire by night was a test that would have shattered the nerve of any ordinary man. The black slime bubbled and hissed on either side; a misstep of four inches would have meant plunging into the subterranean abyss. But my feet knew every sunken tussock and granite footing as a spider knows its web.
+
+I reached the island. The moment my boot scraped the threshold of the tin shed, a deep, resonant rumble vibrated the timber walls.
+
+The hound knew my step.
+
+I unhitched the lantern and hung it from the central beam. In the dim yellow glow, the beast loomed like a nightmare from the nether world. Its ribs were lean, its eyes blazing with famished fury. I flung the raw meat across the floor. It seized the flesh with savage, crunching jaws, tearing the sinews with sounds that turned my own heart to ice.
+
+While it fed, I dipped a rag into my bucket of water, wiped its crusted jaws, and smoothed the matted black fur of its flank.
+
+When the last scrap was devoured, the creature threw back its massive head and gave vent to a long, mournful, shuddering howl that rose and fell in a dreadful cadence, echoing out through the broken roof of the shed across the vast, moonlit expanse of the moor!
+
+I did not silence it.
+
+Let the moor hear the voice of its demon! Let Sir Henry tremble beneath his blankets in the Hall! Let the legend sink deeper into the superstitious marrow of the countryside! Every howl prepared the minds of the coroner and the jury to accept his death as the inevitable visitation of the ancestral curse!
+
+''Clues:'' Stapleton sneaks across the mire at 1 AM to feed blood and meat to the starving hound, The beast's muffled baying rolls across the moor, striking terror into the district
+
+''Choices:''
+* [[Hear gunshots across the granite tors and observe Watson chasing the convict.|stapleton_ch09_part2_night_alarm]]
+* [[[Switch POV to Dr. Watson] View Watson and Sir Henry hunting Selden across the moonlit moor.|ch09_part2_moor_chase]]
+
+:: stapleton_ch09_part2_night_alarm [stapleton branch]
+''Chapter 9: The Light upon the Moor (Part II: Chaos on the Moor)'' (POV: Jack Stapleton)
+
+I locked the shed and picked my way back to the mainland. But as I reached the firm heather of the northern ridge, the crack of a pistol shot ripped through the freezing air!
+
+A second shot followed, echoing sharp and clean against the granite tor!
+
+I crouched in the shadow of a peat-hagg, unbuttoning my revolver. Had the county police discovered my island?
+
+Then, through the silver moonlight, I saw the true cause of the commotion: across the high plateau, two miles distant, a shaggy, wild figure in yellow prison rags was leaping from boulder to boulder like a hunted stag. Pursuing him, firing into the dark, were Sir Henry and Dr. Watson!
+
+They were hunting Selden! The fools were wasting their powder on a starving wretch!
+
+I watched the chase with contemptuous amusement. But then, as my gaze followed the ridge of Black Tor against the brilliant disc of the full moon, my heart gave a sudden, violent thud!
+
+High upon the jagged pinnacle of rock, standing motionless as a pillar of basalt, was the silhouette of a man!
+
+A tall, gaunt figure, his arms crossed over his chest, his head bent forward in profound, vigilant concentration! He looked down into the valley where Sir Henry ran, watching the hunt like an omniscient bird of prey.
+
+Who was he?
+
+It was neither a constable nor a shepherd. No rustic ever held himself with that commanding, aristocratic poise. Could it be an accomplice of the convict? Or... could it be someone far more dangerous?
+
+I remembered the duel in Regent Street—the piercing gray eyes through the glass of cab No. 2704!
+
+Could Sherlock Holmes have lied? Could the great detective have slipped into Devonshire under a false name, camping upon the open moor like a wild beast?
+
+An icy prickle of unease rippled down my neck. I must know who lived upon Black Tor! But first, I had to ensure that my rear was secure: Laura Lyons must be silenced beyond all possibility of betrayal!
+
+''Clues:'' Watson and Sir Henry hunt Selden across the moonlit granite crags, Stapleton spots an unknown tall, thin figure standing upon the summit of Black Tor
+
+''Choices:''
+* [[Visit Laura Lyons at Coombe Tracey to ensure her absolute silence.|stapleton_ch10_coombe_control]]
+* [[Scout the prehistoric huts upon Black Tor to unmask the mysterious watcher.|stapleton_ch11_part1_spy_on_tor]]
+
+:: stapleton_ch10_coombe_control [stapleton branch]
+''Chapter 10: Extract from the Diary of Dr. Watson (Muzzling Laura Lyons)'' (POV: Jack Stapleton)
+
+On the morning of October 22nd, I rode into Coombe Tracey. A rumor had reached me through the village gossip that Dr. Watson had been inquiring into the charitable beneficiaries of the late Sir Charles Baskerville.
+
+If Watson approached Laura Lyons, the entire edifice of my plot was in mortal danger!
+
+I stepped into her modest parlor unannounced. Laura was sitting at her Remington typewriter, looking pale and nervous. When she saw me, she sprang to her feet, throwing her arms around my neck with that clinging, suffocating affection that made my gorge rise.
+
+'Jack!' she wept. 'I have been so terrified! The doctor from the Hall has been asking questions in the village! If they discover that I wrote to Sir Charles on the very day he died—'
+
+I caught her wrists and forced her gently back into her chair. I looked deep into her hazel eyes with an expression of tender, sorrowful reproach.
+
+'Laura, my dearest,' I murmured, stroking her trembling cheek. 'Have you so little faith in my love? Do you not understand that my silence is your only shield?'
+
+'My shield?' she stammered.
+
+'Consider your position!' I said, my voice hardening to the coldness of steel. 'You wrote an urgent letter pleading for a secret midnight interview at an isolated garden gate. That very night, Sir Charles died of terror. What will an English jury say if that letter comes to light? They will say you were an accomplice in a scheme of extortion! They will say you lured an old man to his doom! The lawyers will tear your character to shreds, and you will stand in the dock as a felon!'
+
+She shrieked, burying her face in her hands, shivering in convulsive terror.
+
+'I will never speak!' she gasped through her tears. 'I swear it by the holy cross, Jack! I burned his reply, and I will deny that I ever wrote a line!'
+
+'Good girl,' I whispered, pressing a kiss upon her brow. 'Keep silent for seven more days. The money for your divorce is almost in my hands. In one week, Laura, we shall leave Devonshire forever and begin our new life across the sea.'
+
+I left her comforted and terrified—the ideal psychological cage. But as I rode back to the moor, I knew that time was running out. Watson was sniffing at my heels. The climax could not be delayed!
+
+''Clues:'' Stapleton visits Laura Lyons, renewing false promises of marriage and financial aid, Warns her that any mention of the burnt letter will ruin her reputation and bring prison
+
+''Choices:''
+* [[Scout Black Tor with field glass and track the boy delivering supplies to the stone hut.|stapleton_ch11_part1_spy_on_tor]]
+* [[[Switch POV to Sherlock Holmes] View Holmes reading Watson's diary extract regarding L.L.|holmes_ch10_diary_and_laura]]
+
+:: stapleton_ch11_part1_spy_on_tor [stapleton anchor anchor_spy_stapleton]
+''Chapter 11: The Man on the Tor (Part I: The Unknown Watcher on Black Tor)'' (POV: Jack Stapleton)
+
+On the afternoon of October 23rd, I climbed to the crest of High Tor with my powerful field glass. My target was the ancient British settlement upon Black Tor.
+
+For three days, the mysterious silhouette against the moon had haunted my nightmares. If that watcher was an agent of Scotland Yard—or worse, if it was Sherlock Holmes himself—my time was measured in hours!
+
+I focused my lens upon the circular stone huts. For two hours, nothing moved save the wind in the gorse. Then, picking his way up the sheep-track from the direction of Coombe Tracey, came a boy!
+
+A sharp London lad of fourteen, carrying a wicker basket covered with a coarse cloth!
+
+I followed the urchin with my glass. He scrambled up the rocks, looked warily about him, and ducked straight into the low entrance of the largest stone hut. Five minutes later, he emerged with an empty basket and sprinted back toward the road.
+
+The proof was incontrovertible!
+
+A man was living in that hut! A man supplied with provisions from Coombe Tracey! A man who lived like a hunted fox, observing everything, keeping his existence a secret from the Hall and from the village!
+
+Who else in England possessed the audacity, the iron endurance, and the dramatic eccentricity to camp in a prehistoric stone hut in the freezing autumn winds of Dartmoor?
+
+Sherlock Holmes!
+
+The blood drummed against my temples like a war-drum. The master detective had outmaneuvered me! While I believed he was idling in London, he had been perched upon the tor above my head, watching my every stroll, tracking my every movement!
+
+There was no time for subtlety. No time for intricate legal traps. If Holmes completed his inquiries, he would tie me to the hound, to Laura Lyons, and to the stolen boots.
+
+I must strike Sir Henry down tonight! Once the heir was dead, the estate would pass to me as the next of kin. With seven hundred and forty thousand pounds, I could bribe, flee, or defy the world!
+
+I shut my glass, scrambled down the crags, and made straight for the mire island!
+
+''Clues:'' Stapleton spots young boy Cartwright delivering food parcels to Neolithic huts on Black Tor, Confirms a secret operative is camping upon the moor observing his movements
+
+''Choices:''
+* [[Hasten to the mire island and lay Sir Henry's stolen black boot before the hound.|stapleton_ch11_part2_setting_scent]]
+* [[[Switch POV to Dr. Watson] View Watson cornering Laura Lyons in Coombe Tracey.|ch11_part1_lyons]]
+
+:: stapleton_ch11_part2_setting_scent [stapleton branch]
+''Chapter 11: The Man on the Tor (Part II: Laying the Fatal Scent)'' (POV: Jack Stapleton)
+
+I entered the tin shed upon the mire island, my heart hardened to granite.
+
+The hound had not tasted meat for two days. When it saw me, it lunged against its chain with a ferocity that shook the iron staples in the wall. Foam dripped from its jaws; its red eyes were glazed with murderous hunger.
+
+I drew Sir Henry's stolen black boot from my oilskin pouch.
+
+I approached the beast, speaking in that low, harsh hiss that drove it to madness. I rubbed the muddy leather across its quivering nostrils. I thrust the worn heel between its jaws, forcing it to gnaw the leather, to inhale the sweat, the skin, the living essence of Henry Baskerville!
+
+The creature let out a low, choking whine of recognition. Its tail lashed like an iron rod. It knew its quarry! It knew the scent that it was born to tear from the bone!
+
+I took up my pot of phosphorus paste. With swift, merciless strokes, I painted the glowing venom over its eyes, down its muzzle, and along the ridges of its bristling spine.
+
+Outside, twilight was fading into an ocean of clinging, gray moorland fog. The wind shrieked through the rifts in the granite tor.
+
+I snapped the release on the brass collar.
+
+'Kill!' I snarled, pointing toward the Hall. 'Hunt him down and tear his throat!'
+
+The monster sprang through the open door like a bolt from a crossbow! A streak of roaring green fire across the black slime, vanishing into the fog toward the scent that called it!
+
+I stood upon the threshold, shivering with triumphant anticipation, waiting for the screams of death to roll back across the waste!
+
+''Clues:'' Stapleton starves the beast and rubs Sir Henry's worn black boot across its jaws, Prepares to release the hound into the darkness to slaughter the baronet
+
+''Choices:''
+* [[Unleash the hound into the foggy night and listen for the slaughter upon the crags.|stapleton_ch12_part1_screams_on_crags]]
+* [[[Switch POV to Sherlock Holmes] View Holmes revealing Stapleton's identity to Watson.|holmes_ch11_part2_stone_hut]]
+
+:: stapleton_ch12_part1_screams_on_crags [stapleton anchor anchor_screams_stapleton]
+''Chapter 12: Death on the Moor (Part I: The Hound Unleashed)'' (POV: Jack Stapleton)
+
+I followed the beast at a distance of three hundred yards, moving lightly across the heather with my unlit lantern.
+
+The fog had rolled into the hollows, leaving the granite crests floating like dark islands upon a milky sea. The silence was absolute.
+
+Then, from the direction of Black Tor, the baying began!
+
+A deep, rolling roar of pure malice that shook the granite rocks! The hound was in full cry! It had found the trail! It was running at speed across the high plateau!
+
+I quickened my pace to a run, my boots flying over the peat.
+
+Suddenly, high upon the crags above me, a human voice shrieked in mortal agony!
+
+'Help! For God's sake, help!'
+
+The scream was choked off by a frenzied snarling of jaws and the heavy thud of bounding paws. A wild scramble of feet echoed across the shale—the desperate, frantic flight of a hunted man sprinting along the edge of the abyss!
+
+A second scream tore through the mist, rising to a piercing, despairing shriek:
+
+'No! No! Ahhhh—'
+
+A sickening, splintering crash echoed from the base of the forty-foot precipice! The dull, heavy thud of bone and flesh smashing against solid granite! Then—total, unbroken silence.
+
+My heart surged with intoxicating, triumphant ecstasy!
+
+He had fallen! The hound had driven Sir Henry over the edge of the cliff! The young baronet lay dashed to pieces upon the stones!
+
+The title was extinct! The gold was mine!
+
+I struck a match, lit my yellow lantern, and hastened with eager, bounding strides through the dark boulders toward the foot of the crag to gaze upon my conquest!
+
+''Clues:'' Stapleton tracks the hound's progress by its muffled bays echoing off the crags, A scream of mortal terror and a heavy falling crash ring out near Black Tor
+
+''Choices:''
+* [[Hasten with your lantern to inspect the broken corpse at the foot of the cliff.|stapleton_ch12_part2_confronting_holmes]]
+* [[[Switch POV to Sherlock Holmes] View Holmes discovering the dead convict in Sir Henry's suit.|holmes_ch12_part2_selden_death]]
+
+:: stapleton_ch12_part2_confronting_holmes [stapleton branch]
+''Chapter 12: Death on the Moor (Part II: Face to Face with Sherlock Holmes)'' (POV: Jack Stapleton)
+
+I swung my lantern around the base of the crag, stepping eagerly toward the crumpled heap upon the stones.
+
+Two men were already kneeling beside the body.
+
+I raised the lantern. The yellow beam struck the face of the taller man, and my breath stopped dead in my lungs!
+
+Sherlock Holmes!
+
+He was standing upright, his gray eyes piercing the gloom like cold daggers! Beside him stood Watson, his pistol drawn!
+
+My mind convulsed in sheer, dizzying terror! But worse—infinitely worse—was the sight upon the ground!
+
+The dead man was clad in Sir Henry's ruddy tweed suit. But the face turned up to the lantern was not the strong, clean-shaven face of the baronet! It was a hideous, ape-like countenance, framed in a thick, matted black beard—the broken corpse of Selden, the Notting Hill convict!
+
+Selden! The dog had hunted Sir Henry's clothes, not Sir Henry himself! Barrymore had given the Canadian garments to his starving brother-in-law, and the beast had slaughtered the wrong man!
+
+My entire soul screamed in frustrated agony. Yet I had to stand there, thirty inches from Sherlock Holmes, and smile!
+
+'Mr. Holmes!' I stammered, my throat parched as sand. 'Is it possible? What an unexpected honour! And... who is this unfortunate man?'
+
+Holmes looked at me with cool, impenetrable amusement. 'An escaped convict, Mr. Stapleton. He seems to have fallen from the crags and broken his neck. A tragic accident. My friend Watson and I return to London tomorrow; our little holiday is at an end.'
+
+He was leaving! Holmes was returning to London!
+
+He did not know! He thought it was a common accident! The fool had missed the connection!
+
+I bowed, uttered a few hypocritical condolences, and walked back into the fog toward Merripit House. My knees were shaking, but my brain was afire with renewed, desperate resolve.
+
+One last throw of the dice remained! Tomorrow night, Sir Henry was dining with me at Merripit House. If Holmes was in London, the baronet would walk home alone across the moor! And this time, there would be no mistake!
+
+''Clues:'' Corpse is not Sir Henry, but Selden the convict wearing Sir Henry's old clothes, Sherlock Holmes is standing by the body in the flesh alongside Dr. Watson, Stapleton is forced to play the innocent neighbor while his life hangs by a thread
+
+''Choices:''
+* [[Retreat to Merripit House to invite Sir Henry to his final, fatal dinner.|stapleton_ch13_fatal_dinner]]
+* [[[Switch POV to Sherlock Holmes] View Holmes revealing the face of Hugo Baskerville.|holmes_ch13_portrait]]
+
+:: stapleton_ch13_fatal_dinner [stapleton anchor anchor_dinner_stapleton]
+''Chapter 13: Fixing the Nets (The Last Supper at Merripit House)'' (POV: Jack Stapleton)
+
+The evening of October 24th was the culmination of six months of meticulous preparation.
+
+In the afternoon, Beryl had fallen upon her knees before me once more, clawing at my hands, weeping that she would throw herself into the bog if I harmed the Canadian boy.
+
+I did not waste words. I struck her down, dragged her up the narrow staircase to the rear bedroom, and tied her wrists and ankles to the brass uprights of the bed with heavy sash cords. I wound a silk scarf tightly across her mouth until she could only moan through her nostrils, locked the door, and pocketed the heavy iron key.
+
+At seven o'clock, Sir Henry Baskerville arrived alone.
+
+He was in high spirits, cheerful and robust. He announced that Holmes and Watson had indeed boarded the morning express for London, leaving him to make his farewells to his neighbors.
+
+'A pity Mr. Holmes could not join us,' I remarked with polished regret, pouring him a generous goblet of old port. 'A remarkable intellect, though perhaps a trifle theatrical for country tastes.'
+
+Dinner went with deceptive brilliance. I was the charming host, discussing agriculture, cattle-breeding, and Canadian timber. Sir Henry drank freely, his eyes straying constantly toward the door, visibly saddened by Beryl's 'sudden, severe migraine.'
+
+At twenty minutes to ten, I excused myself, stepped into the scullery, and peered out into the night.
+
+Nature itself was fighting upon my side!
+
+From the Great Grimpen Mire, a dense, suffocating white fog was rolling inland across the heather like a rising tide! In fifteen minutes, it would swallow the rocks, the paths, and the gates! A man wandering upon the moor in that blinding white vapour would be helpless as a newborn babe!
+
+I hurried to the outhouse where I had concealed the hound. I smeared the cold, oily phosphorus across its jaws, its eyes, and its back until it glowed like an infernal forge.
+
+Ten o'clock chimed from my grandfather clock. In the parlor, Sir Henry was rising to take his leave! The hour of retribution had arrived!
+
+''Clues:'' Sir Henry arrives alone for dinner at Merripit House, believing Holmes returned to London, Beryl is brutally tied and gagged upstairs in the locked bedroom to ensure silence, Stapleton prepares the phosphorus paste and slips out into the dense rolling fog
+
+''Choices:''
+* [[Unleash the phosphorescent hound into the rolling fog as Sir Henry walks home.|stapleton_ch14_part1_release_hound]]
+* [[[Switch POV to Sherlock Holmes] View Holmes, Watson, and Lestrade waiting in the fog ambush.|holmes_ch14_part1_fog_ambush]]
+
+:: stapleton_ch14_part1_release_hound [stapleton anchor anchor_climax_stapleton]
+''Chapter 14: The Hound of the Baskervilles (Part I: The Fog and the Gunfire)'' (POV: Jack Stapleton)
+
+I watched from the shadows of the scullery door as Sir Henry stepped down the gravel path into the night. He paused at the garden gate, buttoned his collar against the damp chill, and set off along the stone track that led across the moor.
+
+Within twenty yards, the white fog swallowed him up.
+
+Now!
+
+I darted to the shed door. The hound was snarling in a frenzy of famished madness, snapping at the air, its mouth and eyes blazing with green fire.
+
+I slipped the lead from its collar.
+
+'Go!' I hissed, pointing down the path. 'Tear him to pieces!'
+
+The beast leaped into the fog with a monstrous roar! A flash of emerald fire, tearing across the heather with giant bounds! In three seconds, it had vanished into the white wall of vapour.
+
+I stood upon the gravel, listening with wild, exultant heartbeats for the screams of death.
+
+One second... two seconds... five seconds...
+
+Suddenly, a voice roared through the fog—a voice of brass that struck terror into my very soul:
+
+'Look out! It's coming!'
+
+Sherlock Holmes!
+
+Before my paralyzed brain could comprehend the disaster, the night exploded into flame!
+
+Crack! Crack! Crack! Crack! Crack!
+
+A volley of heavy revolver shots tore through the mist! A shriek of agony—not of a man, but of a beast—rent the heavens! A sound of thrashing bodies, a second sharp report, and then... a dying whimper that ceased in the wet heather.
+
+Silence.
+
+My hound was dead!
+
+Holmes had never left! He had laid an ambush in the rocks! The law was fifty yards from my doorstep, armed, triumphant, and closing the net!
+
+Panic—blind, primal, suffocating terror—shattered my iron nerves! If I was taken, the gallows at Exeter awaited me!
+
+I whirled round, bolted into the house, grabbed my boots, and fled into the swirling fog toward the Great Grimpen Mire!
+
+''Clues:'' Stapleton releases the phosphorescent hound into the rolling fog after Sir Henry, A sudden volley of revolver shots tears through the mist, accompanied by the dying shriek of the beast
+
+''Choices:''
+* [[Flee into the swirling fog of the Great Grimpen Mire to escape the law.|stapleton_ch14_part2_panic_flight]]
+* [[[Switch POV to Sherlock Holmes] View Holmes emptying his revolver into the fire-breathing beast.|holmes_ch14_part1_fog_ambush]]
+
+:: stapleton_ch14_part2_panic_flight [stapleton branch]
+''Chapter 14: The Hound of the Baskervilles (Part II: The Flight into the Abyss)'' (POV: Jack Stapleton)
+
+I stumbled into the churning white fog of the Great Grimpen Mire, my heart hammering like a dying engine.
+
+Behind me, in the direction of Merripit House, the shouts of men echoed through the vapor. I could hear the sharp, barking orders of Lestrade and the heavy pounding of boots! They had found Beryl! She would tell them everything—she would guide them straight to my island lair!
+
+I must reach the tin shed. I must seize my passport, my gold notes, and the Canadian boots, and escape north toward the Bristol Channel!
+
+The fog was an impenetrable white blanket, so thick that I could not see my own knees. I ran onto the bog path, gasping for breath.
+
+Left... right... three paces across the peat... then the diagonal jump to the submerged granite slab.
+
+My boot struck stone. I leaped again.
+
+Where was the willow wand? I reached out into the blinding white mist, my fingers trembling. The guide-pole was gone! Had a pony knocked it down? Had the rising mire swallowed the marker?
+
+A scream of panic broke from my parched throat. I took a wild step forward.
+
+Under my right foot, the solid earth gave way!
+
+It did not crack—it dissolved! A sickening, jelly-like suction clamped around my ankle and dragged me down!
+
+'No!' I shrieked, clawing frantically at the false green moss.
+
+The moss tore away in my bleeding fingers. My knee sank into the foul, bubbling black slime. I struggled with all the strength of a dying wolf, thrashing, kicking, throwing my body backward!
+
+Every movement only accelerated the suction! The cold, foul mud rose to my thigh—to my waist—to my chest! The sulfurous stench of the primeval abyss choked my nostrils.
+
+Through the drifting fog, across the waste, I heard the faint, distant whistle of the Plymouth express roaring toward London. Civilization! Wealth! Life! All slipping away into the black pit!
+
+'Beryl!' I screamed into the void. 'Help me!'
+
+Only the gurgling bubbles of the mire answered. The cold slime closed over my chin, over my lips, over my staring eyes.
+
+The Great Grimpen Mire held me in its eternal, bottomless embrace.
+
+''Clues:'' Stapleton flees into the Great Grimpen Mire in pitch-black blinding fog, Loses his secret path of sunken stones amidst the churning white morass, Swallowed alive by the foul slime of the Great Grimpen Mire
+
+''Choices:''
+* [[Plunge forever into the bottomless morass of Grimpen Mire (Canonical Ending).|ch15_mire]]
+* [[Face trial and the gallows at the Old Bailey before the bar of justice.|ch15_arrest]]
+* [[Witness Holmes deduce the complete anatomy of the crime in Baker Street.|ch15_holmes]]
+* [[Acknowledge the heroic triumph of Dr. Watson and the breaking of the curse.|ch15_watson]]
+* [[Witness the complete restoration of Baskerville Hall and the victory of reason.|ch15_victory]]
+* [[Reflect upon the shattered nerves of Sir Henry and the bitter cost of crime.|ch15_tragedy]]
 

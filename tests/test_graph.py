@@ -12,10 +12,11 @@ def test_story_graph_integrity(lang):
     manager = StoryGraphManager(story)
     stats = manager.validate_graph()
 
-    # All nodes reachable across 15 canonical chapters
-    assert stats["total_nodes"] == 29
-    assert stats["reachable_nodes"] == 29
+    # All nodes reachable across 15 canonical chapters and Multi-POV perspectives (75 nodes total)
+    assert stats["total_nodes"] == 75
+    assert stats["reachable_nodes"] == 75
     assert len(stats["orphan_nodes"]) == 0
+    assert stats["pov_breakdown"] == {"watson": 26, "holmes": 24, "stapleton": 25}
 
     # Anchors present across canonical milestones
     assert "anchor_chapter1" in stats["anchors"]
@@ -48,5 +49,5 @@ def test_paths_to_endings(lang):
     manager = StoryGraphManager(story)
 
     for pov, start_id in story.start_nodes.items():
-        paths = manager.get_paths_to_endings(start_id)
+        paths = manager.get_paths_to_endings(start_id, max_paths=5)
         assert len(paths) > 0, f"[{lang}] POV {pov.value} has no valid paths leading to an ending!"

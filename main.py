@@ -28,9 +28,12 @@ if sys.platform == "win32":
         pass
 
 
-def build_all(output_dir: str = "dist") -> dict:
+PROJECT_ROOT = Path(__file__).resolve().parent
+
+
+def build_all(output_dir: str = None) -> dict:
     """Builds all distribution targets: Bilingual Kindle Web, Offline EPUBs, AZW3, MOBI, and Twee 3."""
-    dist = Path(output_dir)
+    dist = Path(output_dir) if output_dir else PROJECT_ROOT / "dist"
     dist.mkdir(parents=True, exist_ok=True)
     web_dist = dist / "web"
 
@@ -153,9 +156,9 @@ def build_all(output_dir: str = "dist") -> dict:
     }
 
 
-def serve_web(port: int = 8080, directory: str = "dist/web"):
+def serve_web(port: int = 8080, directory: str = None):
     """Starts a local HTTP server to preview the Kindle Web Reader."""
-    web_dir = Path(directory)
+    web_dir = Path(directory) if directory else PROJECT_ROOT / "dist" / "web"
     if not web_dir.exists() or not (web_dir / "index.html").exists():
         print(f"Directory {directory} not found. Running build first...")
         build_all()

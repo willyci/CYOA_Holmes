@@ -1,0 +1,36 @@
+{
+  "holmes": [
+    "holmes_ch1_baker_street",
+    "holmes_ch2_mortimer",
+    "holmes_ch4_regent_street",
+    "holmes_ch5_broken_threads",
+    "holmes_start",
+    "holmes_chemical_analysis",
+    "holmes_moor_surveillance",
+    "holmes_read_reports",
+    "holmes_ancestral_clue",
+    "holmes_figure_on_tor",
+    "holmes_selden_crisis",
+    "holmes_hut_interior",
+    "holmes_moor_ambush",
+    "holmes_mire_recon",
+    "holmes_merripit_dinner"
+  ],
+  "stapleton": [
+    "stapleton_ch1_london",
+    "stapleton_ch4_cab",
+    "stapleton_ch5_devon_prep",
+    "stapleton_start",
+    "stapleton_moor_stroll",
+    "stapleton_check_hound",
+    "stapleton_beryl_control",
+    "stapleton_deceive_watson",
+    "stapleton_phosphor_prep",
+    "stapleton_search_tors",
+    "stapleton_moor_night",
+    "stapleton_attack_hut",
+    "stapleton_bind_beryl",
+    "stapleton_invite_henry",
+    "stapleton_dinner_trap"
+  ]
+}
