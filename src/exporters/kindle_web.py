@@ -290,18 +290,67 @@ class KindleWebExporter:
       text-align: justify;
     }}
 
-    /* Clues Box */
+    /* Clues Box (Collapsible) */
     .clues-panel {{
       border: 2px dashed var(--text);
-      padding: 10px 14px;
       margin: 20px 0;
       background-color: var(--card-bg);
       font-size: calc(14px * var(--font-scale));
     }}
 
-    .clues-panel ul {{
+    .clues-toggle-btn {{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-family: inherit;
+      font-size: calc(14px * var(--font-scale));
+      padding: 10px 14px;
+      cursor: pointer;
+      text-align: left;
+      min-height: 48px;
+    }}
+
+    .clues-toggle-btn:hover,
+    .clues-toggle-btn:focus {{
+      background-color: var(--card-bg);
+      outline: 1px dotted var(--text);
+    }}
+
+    .clues-title {{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }}
+
+    .clues-icon {{
+      font-size: 1.1em;
+      display: inline-block;
+      width: 1.2em;
+    }}
+
+    .clues-hint {{
+      font-size: 0.85em;
+      opacity: 0.8;
+      font-style: italic;
+    }}
+
+    .clues-content {{
+      padding: 4px 14px 12px 14px;
+      border-top: 1px dashed var(--text);
+    }}
+
+    .clues-content ul {{
       margin: 6px 0 0 18px;
       padding: 0;
+    }}
+
+    .clues-content li {{
+      margin-bottom: 6px;
+      line-height: 1.5;
     }}
 
     /* Choices */
@@ -749,6 +798,27 @@ class KindleWebExporter:
       }}
     }}
 
+    function toggleClues() {{
+      const content = document.getElementById("clues-content");
+      const icon = document.getElementById("clues-icon");
+      const hint = document.getElementById("clues-hint");
+      const btn = document.getElementById("clues-toggle-btn");
+      if (!content) return;
+
+      const isHidden = content.style.display === "none";
+      if (isHidden) {{
+        content.style.display = "block";
+        if (icon) icon.innerHTML = "&#9662;";
+        if (hint) hint.textContent = state.lang === "cn" ? "（点击收起）" : "(click to collapse)";
+        if (btn) btn.setAttribute("aria-expanded", "true");
+      }} else {{
+        content.style.display = "none";
+        if (icon) icon.innerHTML = "&#9656;";
+        if (hint) hint.textContent = state.lang === "cn" ? "（点击展开）" : "(click to expand)";
+        if (btn) btn.setAttribute("aria-expanded", "false");
+      }}
+    }}
+
     function renderScene(node) {{
       const isCn = state.lang === "cn";
       heading.textContent = isCn ? `当前视角：${{node.pov_name}}` : `POV: ${{node.pov_name}}`;
@@ -763,12 +833,21 @@ class KindleWebExporter:
           .map(c => `<li>${{escapeHtml(c)}}</li>`)
           .join("");
         const cluesTitle = isCn
-          ? `案件侦查线索 (${{state.cluesDiscovered.size}}):`
-          : `Case Notes &amp; Clues Discovered (${{state.cluesDiscovered.size}}):`;
+          ? `案件侦查线索 (${{state.cluesDiscovered.size}})`
+          : `Case Notes &amp; Clues Discovered (${{state.cluesDiscovered.size}})`;
+        const hintText = isCn ? "（点击展开）" : "(click to expand)";
         cluesHtml = `
-          <div class="clues-panel">
-            <strong>${{cluesTitle}}</strong>
-            <ul>${{cluesList}}</ul>
+          <div class="clues-panel" id="clues-panel">
+            <button type="button" class="clues-toggle-btn" id="clues-toggle-btn" onclick="toggleClues()" aria-expanded="false">
+              <span class="clues-title">
+                <span class="clues-icon" id="clues-icon">&#9656;</span>
+                <strong>${{cluesTitle}}</strong>
+              </span>
+              <span class="clues-hint" id="clues-hint">${{hintText}}</span>
+            </button>
+            <div class="clues-content" id="clues-content" style="display: none;">
+              <ul>${{cluesList}}</ul>
+            </div>
           </div>
         `;
       }}
