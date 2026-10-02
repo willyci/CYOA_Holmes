@@ -3,6 +3,7 @@
 import argparse
 import http.server
 import os
+import shutil
 import socketserver
 import sys
 from pathlib import Path
@@ -113,6 +114,8 @@ def build_all(output_dir: str = None) -> dict:
         mobi_cn_path=mobi_cn_path,
     )
     web_size_kb = web_path.stat().st_size / 1024
+    # Also sync to root index.html for GitHub Pages root deployment
+    shutil.copy2(web_path, PROJECT_ROOT / "index.html")
     print(f"  [OK] Kindle Web Reader generated: {web_path} ({web_size_kb:.1f} KB)")
     print("    - Language selector at startup (English / 中文)")
     print("    - Instant mid-story language toggle preserving reading position")
